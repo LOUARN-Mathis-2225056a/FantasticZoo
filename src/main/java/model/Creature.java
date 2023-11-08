@@ -1,60 +1,60 @@
 package model;
 
 public class Creature {
-    private String nom;
+    private String name;
     private boolean sexe;
-    private float poids;
-    private float taille;
-    private int faim = 100;
-    private boolean sommeil = false;
-    private int sante = 100;
+    private float weight;
+    private float height;
+    private int hunger = 100;
+    private boolean sleep = false;
+    private int health = 100;
     private int age = 0;
 
-    public void manger(){
-        if (faim<=90){
-            faim += 10;
-            System.out.println("La faim de l'animal est à " + faim);
+    public void eat(){
+        if (hunger<=90){
+            hunger += 10;
+            System.out.println("The animal's hunger is at " + hunger);
         }
         else{
-            System.out.println("Cet animal n'a pas faim");
+            System.out.println("This animal is not hungry.");
         }
     }
 
-    public void emmetreSon(){
+    public void emitSound(){
         System.out.println("???");
     }
-    public void soigner(){
-        if (sante<=90){
-            sante += 10;
-            System.out.println("La santé de l'animal est passée à " + sante);
+    public void heal(){
+        if (health<=90){
+            health += 10;
+            System.out.println("The animal's health is now at  " + health);
         }
         else{
-            System.out.println("Cet animal est déjà en bonne santé");
+            System.out.println("This animal is already healthy.");
         }
     }
 
-    public void reveiller(){
-        if(sommeil){
-            sommeil = false;
-            System.out.println("Cet animal se réveil");
+    public void wake(){
+        if(sleep){
+            sleep = false;
+            System.out.println("This animal wake up.");
         }
         else{
-            System.out.println("Cet animal est déjà réveillé");
+            System.out.println("This animal is already sleeping.");
         }
     }
 
-    public void dormir(){
-        if(!sommeil){
-            sommeil = true;
-            System.out.println("Cet animal s'endors'");
+    public void sleep(){
+        if(!sleep){
+            sleep = true;
+            System.out.println("this animal falls asleep.");
         }
         else{
-            System.out.println("Cet animal est déjà endormi");
+            System.out.println("This animal is already asleep.");
         }
     }
 
-    public void vieillir(){
-        // a voir
+    public void gettingOld(){
+        // see
     }
 }
 
