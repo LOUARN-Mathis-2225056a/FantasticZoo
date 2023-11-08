@@ -1,4 +1,6 @@
-package model;
+package model.enclosure;
+
+import model.creature.Creature;
 
 import java.util.ArrayList;
 

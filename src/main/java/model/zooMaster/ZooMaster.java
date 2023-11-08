@@ -1,4 +1,7 @@
-package model;
+package model.zooMaster;
+
+import model.creature.Creature;
+import model.enclosure.Enclosure;
 
 public class ZooMaster {
     private String name;

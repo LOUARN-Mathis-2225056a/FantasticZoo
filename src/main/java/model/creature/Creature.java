@@ -1,4 +1,4 @@
-package model;
+package model.creature;
 
 public class Creature {
     private String name;
