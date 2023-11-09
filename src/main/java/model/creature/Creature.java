@@ -1,6 +1,6 @@
 package model.creature;
 
-public class Creature {
+public abstract class Creature {
     private String name;
     private boolean sexe;
     private float weight;
