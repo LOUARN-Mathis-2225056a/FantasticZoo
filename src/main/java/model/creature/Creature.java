@@ -1,5 +1,7 @@
 package model.creature;
 
+import java.util.Arrays;
+
 public abstract class Creature implements Runnable {
     private String name;
     private boolean sexe;
@@ -102,6 +104,10 @@ public abstract class Creature implements Runnable {
         else{
             System.out.println(name + " is already asleep.");
         }
+    }
+
+    public String getInterface(){
+        return Arrays.toString(getClass().getInterfaces());
     }
 
     public String shortToString(){

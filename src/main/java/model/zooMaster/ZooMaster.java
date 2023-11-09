@@ -20,7 +20,7 @@ public class ZooMaster {
         creature.eat();
     }
 
-    public void transfer(Creature creature, Enclosure enclosureFrom, Enclosure enclosureTarget){
+    public void transfer(Creature creature, Enclosure enclosureFrom, Enclosure enclosureTarget) throws Exception {
         enclosureFrom.removeCreature(creature);
         enclosureTarget.addCreature(creature);
     }
