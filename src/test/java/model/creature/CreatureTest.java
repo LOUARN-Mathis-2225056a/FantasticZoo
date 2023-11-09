@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreatureTest {
-    Creature cr1 = new Creature("cr1",true,100,100,1);
+    Nymph cr1 = new Nymph("cr1",true,100,100,1);
 
     @BeforeEach
     void setUp() {
