@@ -9,4 +9,9 @@ public class Kraken extends Oviparous implements Swimmer{
     public String creatureSwim() {
         return (getName() + " is swimming !");
     }
+
+    @Override
+    public void run() {
+
+    }
 }
