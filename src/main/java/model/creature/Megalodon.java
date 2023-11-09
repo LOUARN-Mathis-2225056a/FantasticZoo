@@ -7,6 +7,6 @@ public class Megalodon extends Oviparous implements Swimmer{
 
     @Override
     public void creatureSwim() {
-
+        System.out.println(getName() + " is swimming !");
     }
 }

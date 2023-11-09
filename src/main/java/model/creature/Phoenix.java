@@ -7,7 +7,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
 
     @Override
     public void creatureFly() {
-
+        System.out.println(getName() + " is flying !");
     }
 
     @Override

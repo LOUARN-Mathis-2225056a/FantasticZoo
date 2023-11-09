@@ -7,7 +7,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
 
     @Override
     public void creatureFly() {
-
+        System.out.println(getName() + " is flying !");
     }
 
     @Override
@@ -17,11 +17,11 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
 
     @Override
     public void creatureRun() {
-
+        System.out.println(getName() + " is running !");
     }
 
     @Override
     public void creatureSwim() {
-
+        System.out.println(getName() + " is swimming !");
     }
 }

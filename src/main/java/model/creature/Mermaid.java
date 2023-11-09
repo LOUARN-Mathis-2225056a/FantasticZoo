@@ -7,6 +7,6 @@ public class Mermaid extends Viviparous implements Swimmer{
 
     @Override
     public void creatureSwim() {
-
+        System.out.println(getName() + " is swimming !");
     }
 }

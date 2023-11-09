@@ -8,6 +8,6 @@ public class Lycanthrope extends Viviparous implements Runner{
 
     @Override
     public void creatureRun() {
-
+        System.out.println(getName() + " is running !");
     }
 }

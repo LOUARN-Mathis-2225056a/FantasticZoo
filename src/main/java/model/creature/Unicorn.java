@@ -7,6 +7,6 @@ public class Unicorn extends Viviparous implements Runner{
 
     @Override
     public void creatureRun() {
-
+        System.out.println(getName() + " is running !");
     }
 }

@@ -40,7 +40,7 @@ class CreatureTest {
         cr1.setHealth(100);
         cr1.heal();
         if (cr1.getHealth() > 100){
-            fail("CR1 at more than 100% health");
+            fail("CR1 has more than 100% health");
         }
         cr1.setHealth(90);
         cr1.heal();
