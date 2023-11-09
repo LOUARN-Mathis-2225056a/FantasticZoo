@@ -10,6 +10,7 @@ public class Creature {
     private int health = 100;
     private int age = 0;
 
+    /* CONSTRUCTOR */
     public Creature(String name, boolean sexe, float weight, float height, int hunger, boolean sleep, int health, int age) {
         this.name = name;
         this.sexe = sexe;
@@ -21,13 +22,65 @@ public class Creature {
         this.age = age;
     }
 
+    /* SETTER */
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public void setHunger(int hunger) {
+        this.hunger = hunger;
+    }
+
+    public void setSleep(boolean sleep) {
+        this.sleep = sleep;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /* GETTER */
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public int getHunger() {
+        return hunger;
+    }
+
+    public boolean isSleep() {
+        return sleep;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    /* METHOD */
     public void eat(){
         if (hunger<=90){
             hunger += 10;
-            System.out.println("The animal's hunger is at " + hunger);
+            System.out.println(name + "'s hunger is at " + hunger);
         }
         else{
-            System.out.println("This animal is not hungry.");
+            System.out.println(name + " is not hungry.");
         }
     }
 
@@ -37,35 +90,31 @@ public class Creature {
     public void heal(){
         if (health<=90){
             health += 10;
-            System.out.println("The animal's health is now at  " + health);
+            System.out.println(name + "'s health is now at  " + health);
         }
         else{
-            System.out.println("This animal is already healthy.");
+            System.out.println(name + " is already healthy.");
         }
     }
 
     public void wake(){
         if(sleep){
             sleep = false;
-            System.out.println("This animal wake up.");
+            System.out.println(name + " wake up.");
         }
         else{
-            System.out.println("This animal is already sleeping.");
+            System.out.println(name + " is already sleeping.");
         }
     }
 
     public void sleep(){
         if(!sleep){
             sleep = true;
-            System.out.println("this animal falls asleep.");
+            System.out.println(name + " falls asleep.");
         }
         else{
-            System.out.println("This animal is already asleep.");
+            System.out.println(name + " is already asleep.");
         }
-    }
-
-    public void gettingOld(){
-        // see
     }
 }
 
