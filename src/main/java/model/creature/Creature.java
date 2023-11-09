@@ -1,6 +1,6 @@
 package model.creature;
 
-public abstract class Creature {
+public abstract class Creature implements Runnable {
     private String name;
     private boolean sexe;
     private float weight;
@@ -26,50 +26,39 @@ public abstract class Creature {
     public void setWeight(float weight) {
         this.weight = weight;
     }
-
     public void setHeight(float height) {
         this.height = height;
     }
-
     public void setHunger(int hunger) {
         this.hunger = hunger;
     }
-
     public void setSleep(boolean sleep) {
         this.sleep = sleep;
     }
-
     public void setHealth(int health) {
         this.health = health;
     }
-
     public void setAge(int age) {
         this.age = age;
     }
 
     /* GETTER */
-
     public String getName(){return name;}
     public float getWeight() {
         return weight;
     }
-
     public float getHeight() {
         return height;
     }
-
     public int getHunger() {
         return hunger;
     }
-
     public boolean isSleep() {
         return sleep;
     }
-
     public int getHealth() {
         return health;
     }
-
     public int getAge() {
         return age;
     }
@@ -84,7 +73,6 @@ public abstract class Creature {
             System.out.println(name + " is not hungry.");
         }
     }
-
     public void emitSound(){
         System.out.println("???");
     }
@@ -97,7 +85,6 @@ public abstract class Creature {
             System.out.println(name + " is already healthy.");
         }
     }
-
     public void wake(){
         if(sleep){
             sleep = false;
@@ -107,7 +94,6 @@ public abstract class Creature {
             System.out.println(name + " is already sleeping.");
         }
     }
-
     public void sleep(){
         if(!sleep){
             sleep = true;

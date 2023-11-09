@@ -10,4 +10,9 @@ public class Lycanthrope extends Viviparous implements Runner{
     public String creatureRun() {
         return(getName() + " is running !");
     }
+
+    @Override
+    public void run() {
+
+    }
 }

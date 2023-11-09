@@ -14,4 +14,9 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
     public void creatureReborn() {
 
     }
+
+    @Override
+    public void run() {
+
+    }
 }
