@@ -12,6 +12,10 @@ public class Enclosure {
     private String cleanliness = "good";
     private ArrayList<Creature> listeCreature = new ArrayList<>();
 
+    public ArrayList<Creature> getListeCreature() {
+        return listeCreature;
+    }
+
     public Enclosure(String name, float surface, int nbMaxCreature){
         this.name = name;
         this.surface = surface;
@@ -39,5 +43,6 @@ public class Enclosure {
 
         }
     }
+
 }
 
