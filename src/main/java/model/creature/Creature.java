@@ -10,6 +10,17 @@ public class Creature {
     private int health = 100;
     private int age = 0;
 
+    public Creature(String name, boolean sexe, float weight, float height, int hunger, boolean sleep, int health, int age) {
+        this.name = name;
+        this.sexe = sexe;
+        this.weight = weight;
+        this.height = height;
+        this.hunger = hunger;
+        this.sleep = sleep;
+        this.health = health;
+        this.age = age;
+    }
+
     public void eat(){
         if (hunger<=90){
             hunger += 10;
