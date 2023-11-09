@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreatureTest {
-    Nymph cr1 = new Nymph("cr1",true,100,100,1);
+    Creature cr1 = new Nymph("cr1",true,100,100,1);
 
     @BeforeEach
     void setUp() {
@@ -76,5 +76,6 @@ class CreatureTest {
         if (!cr1.isSleep()){
             fail("CR1 should sleep");
         }
+        System.out.println(cr1.toString());
     }
 }

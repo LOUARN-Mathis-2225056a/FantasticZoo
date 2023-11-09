@@ -103,5 +103,22 @@ public abstract class Creature implements Runnable {
             System.out.println(name + " is already asleep.");
         }
     }
+
+    public String shortToString(){
+        return "";
+    }
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "{\n" +
+                "    name : " + name + "\n" +
+                "    sexe : " + sexe + "\n" +
+                "    weight : " + weight + "\n" +
+                "    height : " + height + "\n" +
+                "    hunger : " + hunger + "%" + "\n" +
+                "    sleep : " + sleep + "\n" +
+                "    health : " + health + "%" + "\n" +
+                "    age : " + age + "\n" +
+                "}";
+    }
 }
 

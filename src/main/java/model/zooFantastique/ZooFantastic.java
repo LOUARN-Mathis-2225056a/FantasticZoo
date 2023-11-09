@@ -13,7 +13,6 @@ public class ZooFantastic {
     private ArrayList<Enclosure> listEnclosures;
 
     public void main(String[] args){
-
     }
     private void showNBCreature(){
         int count = 0;
