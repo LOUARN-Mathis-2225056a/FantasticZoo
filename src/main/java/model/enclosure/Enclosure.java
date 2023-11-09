@@ -12,6 +12,20 @@ public class Enclosure {
     private String cleanliness = "good";
     private ArrayList<Creature> listeCreature = new ArrayList<>();
 
+    public Enclosure(String name, float surface, int nbMaxCreature){
+        this.name = name;
+        this.surface = surface;
+        this. nbMaxCreature = nbMaxCreature;
+        nbCurrentCreature = 0;
+        listeCreature = new ArrayList<>();
+    }
+    public Enclosure(String name, float surface, int nbMaxCreature, ArrayList<Creature> listeCreature){
+        this.name = name;
+        this.surface = surface;
+        this. nbMaxCreature = nbMaxCreature;
+        this.listeCreature = listeCreature;
+        nbCurrentCreature = listeCreature.size();
+    }
     public void addCreature(Creature creature){
         listeCreature.add(creature);
     }
