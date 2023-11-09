@@ -11,14 +11,11 @@ public class Creature {
     private int age = 0;
 
     /* CONSTRUCTOR */
-    public Creature(String name, boolean sexe, float weight, float height, int hunger, boolean sleep, int health, int age) {
+    public Creature(String name, boolean sexe, float weight, float height, int age) {
         this.name = name;
         this.sexe = sexe;
         this.weight = weight;
         this.height = height;
-        this.hunger = hunger;
-        this.sleep = sleep;
-        this.health = health;
         this.age = age;
     }
 
