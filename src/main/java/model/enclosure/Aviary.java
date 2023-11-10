@@ -4,12 +4,18 @@ import model.creature.Creature;
 
 import java.util.ArrayList;
 
-public class Aviary extends Enclosure {
+public class Aviary extends AbstractEnclosure {
     private float height;
 
     public Aviary(String name, float surface, int nbMaxCreature, ArrayList<Creature> listeCreature, float height) throws Exception {
         super(name, surface, nbMaxCreature, listeCreature);
         this.height = height;
+        setEnclosureType("Flyer");
+    }
+    public Aviary(String name, float surface, int nbMaxCreature, float height) {
+        super(name, surface, nbMaxCreature);
+        this.height = height;
+        setEnclosureType("Flyer");
     }
 
     @Override
@@ -27,7 +33,7 @@ public class Aviary extends Enclosure {
     }
 
     @Override
-    public void clean() {
-        /*code*/
+    public void clean(int cleanlinessLevel) {
+
     }
 }

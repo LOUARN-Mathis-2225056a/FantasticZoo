@@ -10,7 +10,7 @@ public class FantasticZoo {
     private String nom;
     private ZooMaster zooMaster;
     private int nbMaxEnclosure;
-    private ArrayList<Enclosure> listEnclosures;
+    private ArrayList<AbstractEnclosure> listAbstractEnclosures;
 
     public void main(String[] args){
 
@@ -45,15 +45,15 @@ public class FantasticZoo {
     }
     public void showNBCreature(){
         int count = 0;
-        for (Enclosure enclosure : listEnclosures){
-            count += enclosure.getCreatureList().size();
+        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+            count += abstractEnclosure.getCreatureList().size();
         }
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
 
     public void showCreature(){
-        for (Enclosure enclosure : listEnclosures){
-            for (Creature creature : enclosure.getCreatureList()){
+        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+            for (Creature creature : abstractEnclosure.getCreatureList()){
                 creature.toString();
             }
         }

@@ -5,7 +5,7 @@ import model.creature.Unicorn;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EnclosureTest {
+public class AbstractEnclosureTest {
     @Test
     void addCreatureIntoEnclosure() throws Exception {
         Unicorn u1 = new Unicorn("a",true,1,1,1);
