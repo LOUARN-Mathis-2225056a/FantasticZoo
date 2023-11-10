@@ -1,6 +1,6 @@
 package model.fantasticZoo;
 
-import model.creature.Creature;
+import model.creature.*;
 import model.enclosure.*;
 import model.zooMaster.ZooMaster;
 
@@ -13,6 +13,35 @@ public class FantasticZoo {
     private ArrayList<Enclosure> listEnclosures;
 
     public void main(String[] args){
+
+        // CREATURES
+        Dragon drg1 = new Dragon("drg1",false,75,100,1);
+        Dragon drg2 = new Dragon("drg2",true,75,100,1);
+
+        Kraken kra1 = new Kraken("kra1",true,2,20,1);
+        Kraken kra2 = new Kraken("kra2",true,2,20,1);
+
+        Lycanthrope lyc1 = new Lycanthrope("kra1",false,5,30,1);
+        Lycanthrope lyc2 = new Lycanthrope("kra2",false,5,30,1);
+
+        Megalodon meg1 = new Megalodon("meg1",true,4000, 10000,1);
+        Megalodon meg2 = new Megalodon("meg2",false,4000, 10000,1);
+
+        Mermaid mer1 = new Mermaid("mer1",false,5,30,1);
+        Mermaid mer2 = new Mermaid("mer2",false,5,30,1);
+
+        Nymph nym1 = new Nymph("nym1",true,5,30,1);
+        Nymph nym2 = new Nymph("nym2",true,5,30,1);
+
+        Phoenix pho1 = new Phoenix("pho1",true,4,54,1);
+        Phoenix pho2 = new Phoenix("pho2",false,4,54,1);
+
+        Unicorn uni1 = new Unicorn("uni1",false,18,100,1);
+        Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
+
+
+
+
     }
     public void showNBCreature(){
         int count = 0;
