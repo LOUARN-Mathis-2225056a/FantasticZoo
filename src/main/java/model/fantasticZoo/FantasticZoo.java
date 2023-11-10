@@ -14,7 +14,7 @@ public class FantasticZoo {
 
     public void main(String[] args){
     }
-    private void showNBCreature(){
+    public void showNBCreature(){
         int count = 0;
         for (Enclosure enclosure : listEnclosures){
             count += enclosure.getCreatureList().size();
@@ -22,13 +22,11 @@ public class FantasticZoo {
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
 
-    private void showCreature(){
+    public void showCreature(){
         for (Enclosure enclosure : listEnclosures){
             for (Creature creature : enclosure.getCreatureList()){
                 creature.toString();
             }
         }
     }
-
-
 }
