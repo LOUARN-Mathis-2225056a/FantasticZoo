@@ -39,8 +39,49 @@ public class FantasticZoo {
         Unicorn uni1 = new Unicorn("uni1",false,18,100,1);
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
+        Thread tdrg1 = new Thread(drg1);
+        Thread tdrg2 = new Thread(drg2);
 
+        Thread tkra1 = new Thread(kra1);
+        Thread tkra2 = new Thread(kra2);
 
+        Thread tlyc1 = new Thread(lyc1);
+        Thread tlyc2 = new Thread(lyc2);
+
+        Thread tmer1 = new Thread(mer1);
+        Thread tmer2 = new Thread(mer2);
+
+        Thread tnym1 = new Thread(nym1);
+        Thread tnym2 = new Thread(nym2);
+
+        Thread tpho1 = new Thread(pho1);
+        Thread tpho2 = new Thread(pho2);
+
+        Thread tuni1 = new Thread(uni1);
+        Thread tuni2 = new Thread(uni2);
+
+        tdrg1.run();
+        tdrg2.run();
+
+        tkra2.run();
+        tkra1.run();
+
+        tlyc2.run();
+        tlyc1.run();
+
+        tmer2.run();
+        tmer1.run();
+
+        tnym2.run();
+        tnym1.run();
+
+        tpho2.run();
+        tpho1.run();
+
+        tuni2.run();
+        tuni1.run();
+
+        
 
     }
     public void showNBCreature(){
