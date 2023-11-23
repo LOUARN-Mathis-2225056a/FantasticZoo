@@ -23,8 +23,18 @@ public class Enclosure extends AbstractEnclosure{
         if (getNbCurrentCreature() == getNbMaxCreature()) {
             System.out.println("This enclosure is already full");
         } else if (creature.getInterface().contains("Runner")) {
-            creatureList.add(creature);
-            setNbCurrentCreature(getNbCurrentCreature()+1);
+            if(getAnimalType()!=null){
+                if(creature.getClass() == getAnimalType()){
+                    creatureList.add(creature);
+                    setNbCurrentCreature(getNbCurrentCreature()+1);
+                }else {
+                    System.out.println("You cannot add this type of creature in this enclosure.");
+                }
+            } else{
+                setAnimalType(creature.getClass());
+                creatureList.add(creature);
+                setNbCurrentCreature(getNbCurrentCreature()+1);
+            }
         } else {
             System.out.println("You cannot add this creature in this type of enclosure.");
         }
