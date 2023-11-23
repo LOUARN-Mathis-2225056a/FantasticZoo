@@ -3,6 +3,7 @@ package model.creature;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
+    private Thread life;
     private String name;
     private boolean sexe;
     private float weight;
@@ -19,6 +20,8 @@ public abstract class Creature implements Runnable {
         this.weight = weight;
         this.height = height;
         this.age = age;
+        life = new Thread(this);
+        life.start();
     }
 
     /* GETTER */
@@ -93,8 +96,10 @@ public abstract class Creature implements Runnable {
         if (value > hunger) {
             hunger = 0;
             health -= 1; /* take damage */
+            System.out.println(name + " is starving.\n");
         } else {
             hunger -= value;
+            System.out.println(name + " gets a little hungrier.\n");
         }
     }
 
@@ -105,27 +110,27 @@ public abstract class Creature implements Runnable {
     public void heal() {
         if (health <= 90) {
             health += 10;
-            System.out.println(name + "'s health is now at  " + health);
+            System.out.println(name + "'s health is now at  " + health + "\n");
         } else {
-            System.out.println(name + " is already healthy.");
+            System.out.println(name + " is already healthy.\n");
         }
     }
 
     public void wake() {
         if (sleep) {
             sleep = false;
-            System.out.println(name + " wake up.");
+            System.out.println(name + " wake up.\n");
         } else {
-            System.out.println(name + " is already sleeping.");
+            System.out.println(name + " is already awake.\n");
         }
     }
 
     public void sleep() {
         if (!sleep) {
             sleep = true;
-            System.out.println(name + " falls asleep.");
+            System.out.println(name + " falls asleep.\n");
         } else {
-            System.out.println(name + " is already asleep.");
+            System.out.println(name + " is already asleep.\n");
         }
     }
 
