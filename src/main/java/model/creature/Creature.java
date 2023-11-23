@@ -1,8 +1,12 @@
 package model.creature;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
+
     private Thread life;
     private String name;
     private boolean sexe;
@@ -22,6 +26,29 @@ public abstract class Creature implements Runnable {
         this.age = age;
         life = new Thread(this);
         life.start();
+    }
+
+    private void writeInFile(String str){
+
+        String fileName = "logs";
+
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            writer.write(str);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /* GETTER */
@@ -84,11 +111,12 @@ public abstract class Creature implements Runnable {
 
     /* METHOD */
     public void eat() {
+        String str = null;
         if (hunger <= 90) {
             hunger += 10;
-            System.out.println(name + "'s hunger is at " + hunger);
+            writeInFile(name + "'s hunger is at " + hunger);
         } else {
-            System.out.println(name + " is not hungry.");
+            writeInFile(name + " is not hungry.");
         }
     }
 
@@ -96,10 +124,10 @@ public abstract class Creature implements Runnable {
         if (value > hunger) {
             hunger = 0;
             health -= 1; /* take damage */
-            System.out.println(name + " is starving.\n");
+            writeInFile(name + " is starving.\n");
         } else {
             hunger -= value;
-            System.out.println(name + " gets a little hungrier.\n");
+            writeInFile(name + " gets a little hungrier.\n");
         }
     }
 
@@ -108,29 +136,30 @@ public abstract class Creature implements Runnable {
     }
 
     public void heal() {
+        String str = null;
         if (health <= 90) {
             health += 10;
-            System.out.println(name + "'s health is now at  " + health + "\n");
+            writeInFile(name + "'s health is now at  " + health + "\n");
         } else {
-            System.out.println(name + " is already healthy.\n");
+            writeInFile(name + " is already healthy.\n");
         }
     }
 
     public void wake() {
         if (sleep) {
             sleep = false;
-            System.out.println(name + " wake up.\n");
+            writeInFile(name + " wake up.\n");
         } else {
-            System.out.println(name + " is already awake.\n");
+            writeInFile(name + " is already awake.\n");
         }
     }
 
     public void sleep() {
         if (!sleep) {
             sleep = true;
-            System.out.println(name + " falls asleep.\n");
+            writeInFile(name + " falls asleep.\n");
         } else {
-            System.out.println(name + " is already asleep.\n");
+            writeInFile(name + " is already asleep.\n");
         }
     }
 
