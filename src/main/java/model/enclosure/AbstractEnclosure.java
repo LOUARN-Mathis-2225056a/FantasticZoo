@@ -12,6 +12,7 @@ public abstract class AbstractEnclosure {
     private int nbCurrentCreature;
     private int cleanlinessLevel = 3;
     private String type = "";
+    private Object animalType = null;
 
     public AbstractEnclosure(String name, float surface, int nbMaxCreature) {
         this.name = name;
@@ -72,6 +73,10 @@ public abstract class AbstractEnclosure {
     protected void setEnclosureType(String type){
         this.type = type;
     }
+
+    public Object getAnimalType() { return animalType;}
+
+    public void setAnimalType(Object animalType) {this.animalType = animalType;}
 
     public void clean(int cleanlinessLevel) {
         if (cleanlinessLevel > 3) {

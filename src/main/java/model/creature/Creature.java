@@ -168,7 +168,7 @@ public abstract class Creature implements Runnable {
     }
 
     public String shortToString() {
-        return "";
+        return name + " aged of " + age + "years old.";
     }
 
     @Override
@@ -185,4 +185,3 @@ public abstract class Creature implements Runnable {
                 "}";
     }
 }
-
