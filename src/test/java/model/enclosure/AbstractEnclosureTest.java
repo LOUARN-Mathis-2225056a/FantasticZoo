@@ -1,8 +1,6 @@
 package model.enclosure;
 
-import model.creature.Kraken;
-import model.creature.Phoenix;
-import model.creature.Unicorn;
+import model.creature.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,5 +40,22 @@ public class AbstractEnclosureTest {
         Aviary a1 = new Aviary("aviary 1", 10, 1, 1);
         a1.removeCreature(p1);
         assertEquals(0, a1.getNbCurrentCreature());
+    }
+
+    @Test
+    void cannotAddDifferentCreaturesTypeInSameEnclosure(){
+        Nymph n1 = new Nymph("nymp1",true,1,1,1);
+        Lycanthrope l1 = new Lycanthrope("lycanthrope1",true,1,1,1);
+        Enclosure e1 = new Enclosure("enclosure",10,5);
+        e1.addCreature(n1);
+        e1.addCreature(l1);
+        assertEquals(1,e1.getNbCurrentCreature());
+    }
+    @Test
+    void cannotAddNonCompatibleCreaturesTypeInEnclosure(){
+        Nymph n1 = new Nymph("nymp1",true,1,1,1);
+        Aquarium a1 = new Aquarium("aquarium 1",1,10,10,10);
+        a1.addCreature(n1);
+        assertEquals(0,a1.getNbCurrentCreature());
     }
 }
