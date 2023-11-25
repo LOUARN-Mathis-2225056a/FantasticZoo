@@ -17,6 +17,7 @@ public class Nymph extends Viviparous implements Reborner{
         System.out.println(getName() + " reborned !");
         setHealth(100);
         setAge(0);
+        run();
     }
 
     @Override
@@ -46,5 +47,7 @@ public class Nymph extends Viviparous implements Reborner{
             }
         }
         System.out.println(getName() + " died.\n");
+        System.out.println(getName() + " is coming to fife again.\n");
+        creatureReborn();
     }
 }
