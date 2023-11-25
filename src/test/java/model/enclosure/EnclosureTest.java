@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AbstractEnclosureTest {
+public class EnclosureTest {
     @Test
     void addCreatureIntoEnclosure() {
         Unicorn u1 = new Unicorn("a", true, 1, 1, 1);
@@ -57,5 +57,14 @@ public class AbstractEnclosureTest {
         Aquarium a1 = new Aquarium("aquarium 1",1,10,10,10);
         a1.addCreature(n1);
         assertEquals(0,a1.getNbCurrentCreature());
+    }
+    @Test
+    void animalTypeSetToNullWhenNoMoreCreaturesAreIn(){
+        Nymph n1 = new Nymph("nymp1",true,1,1,1);
+        Enclosure e1 = new Enclosure("enclosure",10,5);
+        e1.addCreature(n1);
+        assertEquals(Nymph.class,e1.getAnimalType());
+        e1.removeCreature(n1);
+        assertEquals(null,e1.getAnimalType());
     }
 }

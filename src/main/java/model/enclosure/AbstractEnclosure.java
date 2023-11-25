@@ -43,6 +43,9 @@ public abstract class AbstractEnclosure {
         if (creatureList.contains(creature)) {
             creatureList.remove(creature);
             --nbCurrentCreature;
+            if(nbCurrentCreature<=0){
+                setAnimalType(null);
+            }
         }
         else{
             System.out.println("The creature you are trying to remove is not in this enclosure.");

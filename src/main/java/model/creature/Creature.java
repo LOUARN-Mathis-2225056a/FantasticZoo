@@ -164,8 +164,16 @@ public abstract class Creature implements Runnable {
     }
 
     public String getInterface() {
-        return Arrays.toString(getClass().getInterfaces());
+        String implementedInterface = Arrays.toString(getClass().getInterfaces());
+        if(implementedInterface.contains("Runner") ||
+                implementedInterface.contains("Flyer") ||
+                implementedInterface.contains("Swimmer")){
+            return implementedInterface;
+        }
+        return "none";
     }
+
+
 
     public String shortToString() {
         return name + " aged of " + age + "years old.";
