@@ -4,7 +4,7 @@ import model.creature.Creature;
 
 import java.util.ArrayList;
 
-public abstract class AbstractEnclosure {
+public abstract class AbstractEnclosure implements Runnable{
     protected ArrayList<Creature> creatureList = new ArrayList<>();
     private String name;
     private float surface;
@@ -13,6 +13,8 @@ public abstract class AbstractEnclosure {
     private int cleanlinessLevel = 3;
     private String type = "";
     private Object animalType = null;
+    private Thread life = new Thread(this);
+    private int hp = 100;
 
     public AbstractEnclosure(String name, float surface, int nbMaxCreature) {
         this.name = name;
@@ -21,6 +23,7 @@ public abstract class AbstractEnclosure {
         nbCurrentCreature = 0;
         creatureList = new ArrayList<>();
         type = "";
+        life.start();
     }
 
     public AbstractEnclosure(String name, float surface, int nbMaxCreature, ArrayList<Creature> creatureList) throws Exception {
@@ -89,6 +92,18 @@ public abstract class AbstractEnclosure {
         } else {
             this.cleanlinessLevel = cleanlinessLevel;
         }
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setCleanlinessLevel(int cleanlinessLevel) {
+        this.cleanlinessLevel = cleanlinessLevel;
     }
 }
 
