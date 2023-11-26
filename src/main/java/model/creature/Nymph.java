@@ -17,7 +17,8 @@ public class Nymph extends Viviparous implements Reborner{
         System.out.println(getName() + " reborned !");
         setHealth(100);
         setAge(0);
-        run();
+        setLife(new Thread(this));
+        getLife().start();
     }
 
     @Override

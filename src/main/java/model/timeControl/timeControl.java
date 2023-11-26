@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class timeControl implements Runnable{
     private boolean status = true;
     private FantasticZoo zoo;
+    Thread time = new Thread(this);
     public timeControl(FantasticZoo zoo){
         this.zoo = zoo;
-        Thread time = new Thread(this);
         time.start();
     }
     @Override
@@ -27,11 +27,10 @@ public class timeControl implements Runnable{
             throw new RuntimeException(e);
         }
     }
-    public void timePause(){
-        status = false;
-    }
+    public void timePause(){status = false;}
     public void timeResume(){
         status = true;
-        run();
+        time = new Thread(this);
+        time.start();
     }
 }
