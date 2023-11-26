@@ -1,6 +1,6 @@
 package model.creature;
 
-import model.fileWritter.FileWritter;
+import model.fileWritter.FileWriter;
 
 import java.util.Arrays;
 
@@ -91,9 +91,9 @@ public abstract class Creature implements Runnable {
         String str = null;
         if (hunger <= 90) {
             hunger += 10;
-            FileWritter.writeInFile(name + "'s hunger is at " + hunger, "logs");
+            FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
         } else {
-            FileWritter.writeInFile(name + " is not hungry.","logs");
+            FileWriter.writeInFile(name + " is not hungry.","logs");
         }
     }
 
@@ -101,10 +101,10 @@ public abstract class Creature implements Runnable {
         if (value > hunger) {
             hunger = 0;
             health -= 1; /* take damage */
-            FileWritter.writeInFile(name + " is starving.\n","logs");
+            FileWriter.writeInFile(name + " is starving.\n","logs");
         } else {
             hunger -= value;
-            FileWritter.writeInFile(name + " gets a little hungrier.\n","logs");
+            FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
         }
     }
 
@@ -116,27 +116,27 @@ public abstract class Creature implements Runnable {
         String str = null;
         if (health <= 90) {
             health += 10;
-            FileWritter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
+            FileWriter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
         } else {
-            FileWritter.writeInFile(name + " is already healthy.\n","logs");
+            FileWriter.writeInFile(name + " is already healthy.\n","logs");
         }
     }
 
     public void wake() {
         if (sleep) {
             sleep = false;
-            FileWritter.writeInFile(name + " wake up.\n","logs");
+            FileWriter.writeInFile(name + " wake up.\n","logs");
         } else {
-            FileWritter.writeInFile(name + " is already awake.\n","logs");
+            FileWriter.writeInFile(name + " is already awake.\n","logs");
         }
     }
 
     public void sleep() {
         if (!sleep) {
             sleep = true;
-            FileWritter.writeInFile(name + " falls asleep.\n","logs");
+            FileWriter.writeInFile(name + " falls asleep.\n","logs");
         } else {
-            FileWritter.writeInFile(name + " is already asleep.\n","logs");
+            FileWriter.writeInFile(name + " is already asleep.\n","logs");
         }
     }
 
