@@ -58,4 +58,13 @@ public class FantasticZoo {
             }
         }
     }
+    public ArrayList<Creature> getAllCreatures(){
+        ArrayList<Creature> lCreatures = new ArrayList<Creature>();
+        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+            for (Creature creature : abstractEnclosure.getCreatureList()){
+                lCreatures.add(creature);
+            }
+        }
+        return lCreatures;
+    }
 }
