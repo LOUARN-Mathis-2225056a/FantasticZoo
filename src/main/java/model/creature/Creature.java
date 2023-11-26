@@ -1,8 +1,7 @@
 package model.creature;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import model.fileWritter.FileWritter;
+
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
@@ -26,29 +25,7 @@ public abstract class Creature implements Runnable {
         this.age = age;
         life = new Thread(this);
         life.start();
-    }
 
-    private void writeInFile(String str){
-
-        String fileName = "logs";
-
-        BufferedWriter writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(fileName));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            writer.write(str);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     /* GETTER */
@@ -114,9 +91,9 @@ public abstract class Creature implements Runnable {
         String str = null;
         if (hunger <= 90) {
             hunger += 10;
-            writeInFile(name + "'s hunger is at " + hunger);
+            FileWritter.writeInFile(name + "'s hunger is at " + hunger, "logs");
         } else {
-            writeInFile(name + " is not hungry.");
+            FileWritter.writeInFile(name + " is not hungry.","logs");
         }
     }
 
@@ -124,10 +101,10 @@ public abstract class Creature implements Runnable {
         if (value > hunger) {
             hunger = 0;
             health -= 1; /* take damage */
-            writeInFile(name + " is starving.\n");
+            FileWritter.writeInFile(name + " is starving.\n","logs");
         } else {
             hunger -= value;
-            writeInFile(name + " gets a little hungrier.\n");
+            FileWritter.writeInFile(name + " gets a little hungrier.\n","logs");
         }
     }
 
@@ -139,41 +116,47 @@ public abstract class Creature implements Runnable {
         String str = null;
         if (health <= 90) {
             health += 10;
-            writeInFile(name + "'s health is now at  " + health + "\n");
+            FileWritter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
         } else {
-            writeInFile(name + " is already healthy.\n");
+            FileWritter.writeInFile(name + " is already healthy.\n","logs");
         }
     }
 
     public void wake() {
         if (sleep) {
             sleep = false;
-            writeInFile(name + " wake up.\n");
+            FileWritter.writeInFile(name + " wake up.\n","logs");
         } else {
-            writeInFile(name + " is already awake.\n");
+            FileWritter.writeInFile(name + " is already awake.\n","logs");
         }
     }
 
     public void sleep() {
         if (!sleep) {
             sleep = true;
-            writeInFile(name + " falls asleep.\n");
+            FileWritter.writeInFile(name + " falls asleep.\n","logs");
         } else {
-            writeInFile(name + " is already asleep.\n");
+            FileWritter.writeInFile(name + " is already asleep.\n","logs");
         }
     }
 
     public String getInterface() {
         String implementedInterface = Arrays.toString(getClass().getInterfaces());
-        if(implementedInterface.contains("Runner") ||
+        if (implementedInterface.contains("Runner") ||
                 implementedInterface.contains("Flyer") ||
-                implementedInterface.contains("Swimmer")){
+                implementedInterface.contains("Swimmer")) {
             return implementedInterface;
         }
         return "none";
     }
 
+    public Thread getLife() {
+        return life;
+    }
 
+    public void setLife(Thread life) {
+        this.life = life;
+    }
 
     public String shortToString() {
         return name + " aged of " + age + "years old.";
