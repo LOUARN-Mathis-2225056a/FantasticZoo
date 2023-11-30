@@ -1,6 +1,7 @@
 package model.creature;
 
 import java.util.Random;
+import model.fileWritter.FileWriter;
 
 public class Unicorn extends Viviparous implements Runner{
     public Unicorn(String name, boolean sexe, float weight, float height, int age) {
@@ -31,7 +32,7 @@ public class Unicorn extends Viviparous implements Runner{
             }
 
             if (percentage.nextInt(101) < 25) {
-                System.out.println(creatureRun());
+                FileWriter.writeInFile(creatureRun());
             }
 
             int cooldown = (3+percentage.nextInt(5))*1000;
@@ -43,6 +44,6 @@ public class Unicorn extends Viviparous implements Runner{
             }
 
         }
-        System.out.println(getName() + " died.\n");
+        FileWriter.writeInFile(getName() + " died.\n");
     }
 }

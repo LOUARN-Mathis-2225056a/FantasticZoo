@@ -1,9 +1,10 @@
 package model.creature;
 
 import model.enclosure.Enclosure;
+import model.fileWritter.FileWriter;
+
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
@@ -14,7 +15,7 @@ public class Nymph extends Viviparous implements Reborner{
 
     @Override
     public void creatureReborn() {
-        System.out.println(getName() + " reborned !");
+        FileWriter.writeInFile(getName() + " reborned !");
         setHealth(100);
         setAge(0);
         setLife(new Thread(this));
@@ -47,8 +48,8 @@ public class Nymph extends Viviparous implements Reborner{
                 throw new RuntimeException(e);
             }
         }
-        System.out.println(getName() + " died.\n");
-        System.out.println(getName() + " is coming to fife again.\n");
+        FileWriter.writeInFile(getName() + " died.\n");
+        FileWriter.writeInFile(getName() + " is coming to fife again.\n");
         creatureReborn();
     }
 }

@@ -4,6 +4,7 @@ import model.creature.*;
 import model.enclosure.*;
 import model.zooMaster.ZooMaster;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FantasticZoo {
@@ -12,7 +13,10 @@ public class FantasticZoo {
     private int nbMaxEnclosure;
     private ArrayList<AbstractEnclosure> listAbstractEnclosures;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
+
+        // Pour avoir le résultat dans une autre fenetre
+        Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
 
         // CREATURES
         Dragon drg1 = new Dragon("drg1",false,75,100,1);

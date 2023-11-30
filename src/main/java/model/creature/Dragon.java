@@ -1,5 +1,7 @@
 package model.creature;
+import model.fileWritter.FileWriter;
 
+import java.io.File;
 import java.util.Random;
 
 public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
@@ -13,7 +15,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
 
     @Override
     public void creatureReborn() {
-        System.out.println(getName() + " reborned !");
+        FileWriter.writeInFile(getName() + " reborned !");
         setHealth(100);
         setAge(0);
     }
@@ -47,13 +49,13 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
             }
 
             if (percentage.nextInt(101) < 25) {
-                System.out.println(creatureSwim());
+                FileWriter.writeInFile(creatureSwim());
             }
             else if (percentage.nextInt(101) < 25) {
-                System.out.println(creatureRun());
+                FileWriter.writeInFile(creatureRun());
             }
             else if (percentage.nextInt(101) < 25) {
-                System.out.println(creatureFly());
+                FileWriter.writeInFile(creatureFly());
             }
 
             int cooldown = (3+percentage.nextInt(5))*1000;
@@ -65,6 +67,6 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
             }
 
         }
-        System.out.println(getName() + " died.\n");
+        FileWriter.writeInFile(getName() + " died.\n");
     }
 }

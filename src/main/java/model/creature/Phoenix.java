@@ -1,6 +1,7 @@
 package model.creature;
 
 import java.util.Random;
+import model.fileWritter.FileWriter;
 
 public class Phoenix extends Oviparous implements Flyer,Reborner{
     public Phoenix(String name, boolean sexe, float weight, float height, int age) {
@@ -14,7 +15,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
 
     @Override
     public void creatureReborn() {
-        System.out.println(getName() + " reborned !");
+        FileWriter.writeInFile(getName() + " reborned !");
         setHealth(100);
         setAge(0);
     }
@@ -38,7 +39,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
             }
 
             if (percentage.nextInt(101) < 25) {
-                System.out.println(creatureFly());
+                FileWriter.writeInFile(creatureFly());
             }
 
             int cooldown = (3+percentage.nextInt(5))*1000;
@@ -50,7 +51,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
             }
 
         }
-        System.out.println(getName() + " died.\n");
+        FileWriter.writeInFile(getName() + " died.\n");
         creatureReborn();
     }
 }

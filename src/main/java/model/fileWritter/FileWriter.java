@@ -4,15 +4,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class FileWriter {
-    public static void writeInFile(String str, String fileName) {
-
+    private static void write(String str, String fileName){
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new java.io.FileWriter(fileName));
+            writer = new BufferedWriter(new java.io.FileWriter(fileName, true));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try {
+            writer.newLine();
             writer.write(str);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -23,5 +23,11 @@ public class FileWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static void writeInFile(String str) {
+        write(str, "logs");
+    }
+    public static void writeInFile(String str, String fileName) {
+        write(str, fileName);
     }
 }
