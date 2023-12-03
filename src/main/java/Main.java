@@ -11,6 +11,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+        else Runtime.getRuntime().exec("cmd /c start cmd.exe");
         // Pour avoir le résultat dans une autre fenetre
         // LINUX
 //         Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
@@ -42,7 +44,6 @@ public class Main {
         ft.addEnclosure(avia3);
         ft.addEnclosure(aqua2);
 
-        GetOperatingSystem.getOperatingSystem();
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);
         Tzm.run();
