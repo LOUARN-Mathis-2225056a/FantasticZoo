@@ -44,9 +44,6 @@ public class FantasticZoo {
         Unicorn uni1 = new Unicorn("uni1",false,18,100,1);
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
-
-
-
     }
     public ArrayList<AbstractEnclosure> getListAbstractEnclosures() {
         return listAbstractEnclosures;

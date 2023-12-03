@@ -2,8 +2,10 @@ package model.timeControl;
 
 import model.creature.Creature;
 import model.fantasticZoo.FantasticZoo;
+import model.fileWritter.FileWriter;
 
 import javax.xml.datatype.Duration;
+import java.io.File;
 import java.util.ArrayList;
 
 public class timeControl implements Runnable{
@@ -19,6 +21,10 @@ public class timeControl implements Runnable{
         while(status){
             for (Creature creature : zoo.getAllCreatures()) {
                 creature.setAge(creature.getAge()+1);
+                if(creature.getAge() >= 0){
+                    FileWriter.writeInFile(creature.getName() + " has hatched !");
+                    creature.getLife().notify();
+                }
             }
         }
         try {

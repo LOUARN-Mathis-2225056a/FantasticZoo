@@ -7,6 +7,5 @@ public abstract class Viviparous extends Creature{
     }
 
     public void giveBirth(){
-
     }
 }
