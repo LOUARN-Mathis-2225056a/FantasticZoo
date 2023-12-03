@@ -9,7 +9,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         // Pour avoir le résultat dans une autre fenetre
-        Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+        // LINUX
+        // Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+        // Window
+        Runtime.getRuntime().exec("cmd /c start cmd.exe");
 
         Dragon m1 = new Dragon("Mermaid", false, 10,10,10);
         System.out.println(Arrays.toString(m1.getClass().getInterfaces()));
