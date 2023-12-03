@@ -4,8 +4,8 @@ import java.util.Random;
 import td1.fileWritter.FileWriter;
 
 public class Megalodon extends Oviparous implements Swimmer{
-    public Megalodon(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Megalodon(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(20);
     }
 

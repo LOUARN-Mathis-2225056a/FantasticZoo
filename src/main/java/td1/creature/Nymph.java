@@ -6,8 +6,8 @@ import td1.fileWritter.FileWriter;
 import java.util.Random;
 
 public class Nymph extends Viviparous implements Reborner{
-    public Nymph(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Nymph(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(2);
     }
 

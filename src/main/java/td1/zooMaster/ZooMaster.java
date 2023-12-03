@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class ZooMaster implements Runnable{
     private String name;
-    private boolean sexe;
+    private boolean sex;
     private int age;
     private FantasticZoo myZoo;
 
-    public ZooMaster(String name, boolean sexe, int age, FantasticZoo myZoo) {
+    public ZooMaster(String name, boolean sex, int age, FantasticZoo myZoo) {
         this.name = name;
-        this.sexe = sexe;
+        this.sex = sex;
         this.age = age;
         this.myZoo = myZoo;
     }
