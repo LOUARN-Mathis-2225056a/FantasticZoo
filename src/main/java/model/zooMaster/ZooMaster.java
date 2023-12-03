@@ -47,36 +47,49 @@ public class ZooMaster implements Runnable{
                 ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
                 int sizeOfListEnclosure = listEnclosure.size();
                 System.out.println(
-                                "       ------------------\n" +
-                                "       | LIST ENCLOSURE |\n" +
-                                "       ------------------\n");
+                                "                               ------------------\n" +
+                                "                               | LIST ENCLOSURE |\n" +
+                                "                               ------------------\n");
                 int numberOfEnclosure = 1;
+                String stringUpDown = new String();
+                String stringSide = new String();
+                String stringMid = new String();
                 for (AbstractEnclosure enclosure : listEnclosure){
-                    String stringNumberEnclosure = new String();
+                    stringSide += "|             | ";
                     if (numberOfEnclosure<10){
-                        stringNumberEnclosure = "|      "+numberOfEnclosure+"      |";
+                        stringMid += "|      "+numberOfEnclosure+"      | ";
                     }
                     else{
-                        stringNumberEnclosure = "|     "+numberOfEnclosure+"      |";
+                        stringMid += "|     "+numberOfEnclosure+"      | ";
                     }
                     if (enclosure.getClass() == Aquarium.class){
-                        System.out.println(
-                            "~~~~~~~~~~~~~~~\n" +
-                            "|             |");
-                        System.out.println(stringNumberEnclosure);
-                        System.out.println(
-                                "|             |\n" +
-                                "~~~~~~~~~~~~~~~\n");
+                        stringUpDown += "~~~~~~~~~~~~~~~ ";
                     }
                     else if (enclosure.getClass() == Aviary.class){
-                        System.out.println("Aviary");
+                        stringUpDown += "ooooooooooooooo ";
                     }
                     else{
-                        System.out.println("Enclosure");
+                        stringUpDown += "--------------- ";
+                    }
+                    if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
+                        System.out.println(stringUpDown);
+                        System.out.println(stringSide);
+                        System.out.println(stringMid);
+                        System.out.println(stringSide);
+                        System.out.println(stringUpDown);
+                        stringUpDown = "";
+                        stringMid = "";
+                        stringSide = "";
                     }
                     ++numberOfEnclosure;
                 }
-                System.out.println("Choose your enclosure number to get its information : ");
+                System.out.print("Choose your enclosure number to get its information : ");
+                Scanner textIn2 = new Scanner(System.in);
+                String action2 = textIn.nextLine();
+                // waiting for message to enter
+                while (action2.equals(null)){}
+                int numEnclosure = Integer.parseInt(action2);
+                System.out.println(listEnclosure.get(numEnclosure-1).toString());
 
             } else if (action.equals("CleanEnclosure")) {
 

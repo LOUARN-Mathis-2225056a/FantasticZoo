@@ -30,9 +30,15 @@ public class Main {
         AbstractEnclosure aqua1 = new Aquarium();
         AbstractEnclosure avia1 = new Aviary();
         AbstractEnclosure enclo1 = new Enclosure();
+        AbstractEnclosure avia2 = new Aviary();
+        AbstractEnclosure avia3 = new Aviary();
+        AbstractEnclosure aqua2 = new Aquarium();
         ft.addEnclosure(aqua1);
         ft.addEnclosure(avia1);
         ft.addEnclosure(enclo1);
+        ft.addEnclosure(avia2);
+        ft.addEnclosure(avia3);
+        ft.addEnclosure(aqua2);
 
         GetOperatingSystem.getOperatingSystem();
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);

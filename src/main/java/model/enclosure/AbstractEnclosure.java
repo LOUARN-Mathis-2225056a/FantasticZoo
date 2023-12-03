@@ -109,5 +109,21 @@ public abstract class AbstractEnclosure implements Runnable{
     public void setCleanlinessLevel(int cleanlinessLevel) {
         this.cleanlinessLevel = cleanlinessLevel;
     }
+
+    @Override
+    public String toString() {
+        return "AbstractEnclosure{" +
+                "creatureList=" + creatureList +
+                ", name='" + name + '\'' +
+                ", surface=" + surface +
+                ", nbMaxCreature=" + nbMaxCreature +
+                ", nbCurrentCreature=" + nbCurrentCreature +
+                ", cleanlinessLevel=" + cleanlinessLevel +
+                ", type='" + type + '\'' +
+                ", animalType=" + animalType +
+                ", life=" + life +
+                ", hp=" + hp +
+                '}';
+    }
 }
 
