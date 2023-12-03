@@ -7,6 +7,7 @@ import java.util.Random;
 public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
     public Dragon(String name, boolean sexe, float weight, float height, int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(25);
     }
     @Override
     public String creatureFly() {

@@ -7,6 +7,7 @@ public class Lycanthrope extends Viviparous implements Runner{
 
     public Lycanthrope(String name, boolean sexe, float weight, float height,int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(6);
     }
 
     @Override
@@ -35,7 +36,9 @@ public class Lycanthrope extends Viviparous implements Runner{
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureRun());
             }
-
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
+            }
             int cooldown = (3+percentage.nextInt(5))*1000;
 
             try {

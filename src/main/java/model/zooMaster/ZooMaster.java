@@ -111,9 +111,7 @@ public class ZooMaster implements Runnable{
         abstractEnclosure.clean(cleanlinessLevel);
     }
 
-    public void feed(Creature creature){
-        creature.eat();
-    }
+    public void feed(Enclosure enclosure, int quantity){enclosure.addFood(quantity);}
 
     public void transfer(Creature creature, AbstractEnclosure abstractEnclosureFrom, AbstractEnclosure abstractEnclosureTarget) throws Exception {
         abstractEnclosureFrom.removeCreature(creature);

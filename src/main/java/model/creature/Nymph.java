@@ -11,6 +11,7 @@ import java.util.Random;
 public class Nymph extends Viviparous implements Reborner{
     public Nymph(String name, boolean sexe, float weight, float height, int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(2);
     }
 
     @Override
@@ -39,7 +40,9 @@ public class Nymph extends Viviparous implements Reborner{
             else if(percentage.nextInt(101) < 10 && !isSleep()){
                 sleep();
             }
-
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
+            }
             int cooldown = (3+percentage.nextInt(5))*1000;
 
             try {

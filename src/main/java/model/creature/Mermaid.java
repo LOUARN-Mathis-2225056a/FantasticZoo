@@ -6,6 +6,7 @@ import model.fileWritter.FileWriter;
 public class Mermaid extends Viviparous implements Swimmer{
     public Mermaid(String name, boolean sexe, float weight, float height, int age){
         super(name,sexe,weight,height,age);
+        setEatingValue(6);
     }
 
     @Override
@@ -30,7 +31,9 @@ public class Mermaid extends Viviparous implements Swimmer{
             else if(percentage.nextInt(101) < 10 && !isSleep()){
                 sleep();
             }
-
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
+            }
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureSwim());
             }
