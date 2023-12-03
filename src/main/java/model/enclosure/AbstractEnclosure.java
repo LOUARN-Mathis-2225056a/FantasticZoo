@@ -15,6 +15,7 @@ public abstract class AbstractEnclosure implements Runnable{
     private Object animalType = null;
     private Thread life = new Thread(this);
     private int hp = 100;
+    private int feeder;
 
     public AbstractEnclosure(String name, float surface, int nbMaxCreature) {
         this.name = name;
@@ -109,7 +110,17 @@ public abstract class AbstractEnclosure implements Runnable{
     public void setCleanlinessLevel(int cleanlinessLevel) {
         this.cleanlinessLevel = cleanlinessLevel;
     }
+    public void addFood(int quantity){
+        feeder = feeder + quantity;
+    }
 
+    public int getFeeder() {
+        return feeder;
+    }
+
+    public void setFeeder(int feeder) {
+        this.feeder = feeder;
+    }
     @Override
     public String toString() {
         return "AbstractEnclosure{" +

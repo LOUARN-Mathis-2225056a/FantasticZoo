@@ -6,6 +6,7 @@ import model.fileWritter.FileWriter;
 public class Megalodon extends Oviparous implements Swimmer{
     public Megalodon(String name, boolean sexe, float weight, float height, int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(20);
     }
 
     @Override
@@ -30,7 +31,9 @@ public class Megalodon extends Oviparous implements Swimmer{
             else if(percentage.nextInt(101) < 10 && !isSleep()){
                 sleep();
             }
-
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
+            }
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureSwim());
             }

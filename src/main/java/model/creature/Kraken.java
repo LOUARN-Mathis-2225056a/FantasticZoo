@@ -6,6 +6,7 @@ import model.fileWritter.FileWriter;
 public class Kraken extends Oviparous implements Swimmer{
     public Kraken(String name, boolean sexe, float weight, float height, int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(25);
     }
 
     @Override
@@ -23,7 +24,9 @@ public class Kraken extends Oviparous implements Swimmer{
             if (percentage.nextInt(101) < 8) {
                 setHealth(getHealth() - 5);
             }
-
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
+            }
             if (percentage.nextInt(101) < 10 && isSleep()) {
                 wake();
             }

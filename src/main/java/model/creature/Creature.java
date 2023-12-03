@@ -1,5 +1,6 @@
 package model.creature;
 
+import model.enclosure.Enclosure;
 import model.fileWritter.FileWriter;
 
 import java.util.Arrays;
@@ -15,6 +16,8 @@ public abstract class Creature implements Runnable {
     private boolean sleep = false;
     private int health = 100;
     private int age = 0;
+    private int eatingValue;
+    private Enclosure currentEnclosure;
 
     /* CONSTRUCTOR */
     public Creature(String name, boolean sexe, float weight, float height, int age) {
@@ -25,7 +28,16 @@ public abstract class Creature implements Runnable {
         this.age = age;
         life = new Thread(this);
         life.start();
-
+    }
+    public Creature(String name, boolean sexe, float weight, float height, int age, Enclosure currentEnclosure) {
+        this.name = name;
+        this.sexe = sexe;
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
+        life = new Thread(this);
+        life.start();
+        this.currentEnclosure = currentEnclosure;
     }
 
     /* GETTER */
@@ -86,17 +98,23 @@ public abstract class Creature implements Runnable {
         this.age = age;
     }
 
+    public Enclosure getCurrentEnclosure() {
+        return currentEnclosure;
+    }
+
+    public void setCurrentEnclosure(Enclosure currentEnclosure) {
+        this.currentEnclosure = currentEnclosure;
+    }
+
     /* METHOD */
     public void eat() {
-        String str = null;
-        if (hunger <= 90) {
-            hunger += 10;
+        if (hunger <= eatingValue) {
+            hunger += eatingValue;
             FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
         } else {
             FileWriter.writeInFile(name + " is not hungry.","logs");
         }
     }
-
     public void consumeFood(int value) {
         if (value > hunger) {
             hunger = 0;
@@ -107,7 +125,12 @@ public abstract class Creature implements Runnable {
             FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
         }
     }
-
+    public void checkForFood(Enclosure enclosure){
+        if(enclosure.getFeeder() > eatingValue){
+            eat();
+            enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
+        }
+    }
     public void emitSound() {
         System.out.println("???");
     }
@@ -157,6 +180,11 @@ public abstract class Creature implements Runnable {
     public void setLife(Thread life) {
         this.life = life;
     }
+
+    public void setEatingValue(int eatingValue) {
+        this.eatingValue = eatingValue;
+    }
+
 
     public String shortToString() {
         return name + " aged of " + age + "years old.";

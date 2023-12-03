@@ -6,6 +6,7 @@ import model.fileWritter.FileWriter;
 public class Unicorn extends Viviparous implements Runner{
     public Unicorn(String name, boolean sexe, float weight, float height, int age) {
         super(name, sexe, weight, height, age);
+        setEatingValue(9);
     }
 
     @Override
@@ -19,6 +20,9 @@ public class Unicorn extends Viviparous implements Runner{
             Random percentage = new Random();
             if (percentage.nextInt(4) == 0) {
                 consumeFood(10);
+            }
+            if(percentage.nextInt(150) < 100-getHunger()){
+                checkForFood(getCurrentEnclosure());
             }
             if (percentage.nextInt(101) < 8) {
                 setHealth(getHealth() - 5);
