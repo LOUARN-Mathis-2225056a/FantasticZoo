@@ -41,8 +41,7 @@ public class ZooMaster implements Runnable{
             String action = textIn.nextLine();
 
             // waiting for message to enter
-            while (action.equals(null)){
-            }
+            while (action.equals(null)){}
 
             if (action.equals("CheckEnclosure")){
                 ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
@@ -51,9 +50,23 @@ public class ZooMaster implements Runnable{
                                 "       ------------------\n" +
                                 "       | LIST ENCLOSURE |\n" +
                                 "       ------------------\n");
+                int numberOfEnclosure = 1;
                 for (AbstractEnclosure enclosure : listEnclosure){
+                    String stringNumberEnclosure = new String();
+                    if (numberOfEnclosure<10){
+                        stringNumberEnclosure = "|      "+numberOfEnclosure+"      |";
+                    }
+                    else{
+                        stringNumberEnclosure = "|     "+numberOfEnclosure+"      |";
+                    }
                     if (enclosure.getClass() == Aquarium.class){
-                        System.out.println("Aquarium");
+                        System.out.println(
+                            "~~~~~~~~~~~~~~~\n" +
+                            "|             |");
+                        System.out.println(stringNumberEnclosure);
+                        System.out.println(
+                                "|             |\n" +
+                                "~~~~~~~~~~~~~~~\n");
                     }
                     else if (enclosure.getClass() == Aviary.class){
                         System.out.println("Aviary");
@@ -61,7 +74,9 @@ public class ZooMaster implements Runnable{
                     else{
                         System.out.println("Enclosure");
                     }
+                    ++numberOfEnclosure;
                 }
+                System.out.println("Choose your enclosure number to get its information : ");
 
             } else if (action.equals("CleanEnclosure")) {
 
