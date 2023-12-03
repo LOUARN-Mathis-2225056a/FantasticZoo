@@ -32,7 +32,13 @@ public class Main {
         AbstractEnclosure enclo1 = new Enclosure();
         AbstractEnclosure avia2 = new Aviary();
         AbstractEnclosure avia3 = new Aviary();
+
+        //Kraken kra1 = new Kraken("kra1",true,2,20,1);
+        //Kraken kra2 = new Kraken("kra2",true,2,20,1);
         AbstractEnclosure aqua2 = new Aquarium();
+        //aqua2.addCreature(kra1);
+        //aqua2.addCreature(kra2);
+
         ft.addEnclosure(aqua1);
         ft.addEnclosure(avia1);
         ft.addEnclosure(enclo1);

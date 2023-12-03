@@ -7,6 +7,7 @@ import model.enclosure.Aviary;
 import model.enclosure.Enclosure;
 import model.fantasticZoo.FantasticZoo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -59,6 +60,14 @@ public class ZooMaster implements Runnable{
                 String action2 = textIn.nextLine();
                 // waiting for message to enter
                 while (action2.equals(null)){}
+                int numEnclosure = Integer.parseInt(action2);
+                if (listEnclosure.get(numEnclosure-1).getCreatureList().isEmpty()){
+                    listEnclosure.get(numEnclosure-1).clean(3);
+                    System.out.println("This enclosure is clean !");
+                }
+                else {
+                    System.out.println("This enclosure is not empty!");
+                }
 
             } else if (action.equals("Feed")) {
                 System.out.print("Choose your enclosure number to feed creature in enclosure : ");
@@ -78,6 +87,9 @@ public class ZooMaster implements Runnable{
                 while (action2.equals(null)){}
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
+            }
+            for (int i=0; i<100;++i){
+                System.out.println("\n");
             }
         }
     }
