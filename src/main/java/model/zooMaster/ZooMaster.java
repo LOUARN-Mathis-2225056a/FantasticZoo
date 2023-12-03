@@ -21,6 +21,8 @@ public class ZooMaster implements Runnable{
 
     public void run() {
         while (true){
+            System.out.print("\033[H\033[2J"); // fonctionne peut être sur linux ? 
+            System.out.flush();
             System.out.println(
                             "       ---------------------\n" +
                             "       | ACTION ZOO MASTER |\n" +
