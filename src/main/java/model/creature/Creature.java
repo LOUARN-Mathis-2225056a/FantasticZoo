@@ -126,8 +126,9 @@ public abstract class Creature implements Runnable {
         }
     }
     public void checkForFood(Enclosure enclosure){
-        if(enclosure.getFoodMeter() > eatingValue){
+        if(enclosure.getFeeder() > eatingValue){
             eat();
+            enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
         }
     }
     public void emitSound() {
