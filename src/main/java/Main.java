@@ -4,6 +4,7 @@ import model.enclosure.Aquarium;
 import model.enclosure.Aviary;
 import model.enclosure.Enclosure;
 import model.fantasticZoo.FantasticZoo;
+import model.getOperatingSystem.GetOperatingSystem;
 import model.zooMaster.ZooMaster;
 
 import java.io.BufferedWriter;
@@ -16,7 +17,7 @@ public class Main {
 
         // Pour avoir le résultat dans une autre fenetre
         // LINUX
-        // Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+//         Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
         // Window
         /*
         Runtime.getRuntime().exec("cmd /c start cmd.exe");
@@ -33,6 +34,7 @@ public class Main {
         ft.addEnclosure(avia1);
         ft.addEnclosure(enclo1);
 
+        GetOperatingSystem.getOperatingSystem();
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);
         Tzm.run();
