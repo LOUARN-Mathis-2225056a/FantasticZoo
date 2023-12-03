@@ -1,4 +1,8 @@
 import model.creature.*;
+import model.enclosure.AbstractEnclosure;
+import model.enclosure.Aquarium;
+import model.enclosure.Aviary;
+import model.enclosure.Enclosure;
 import model.fantasticZoo.FantasticZoo;
 import model.zooMaster.ZooMaster;
 
@@ -22,6 +26,13 @@ public class Main {
 
         Nymph n1 = new Nymph("Michel", true, 100, 10, 1);*/
         FantasticZoo ft = new FantasticZoo();
+        AbstractEnclosure aqua1 = new Aquarium();
+        AbstractEnclosure avia1 = new Aviary();
+        AbstractEnclosure enclo1 = new Enclosure();
+        ft.addEnclosure(aqua1);
+        ft.addEnclosure(avia1);
+        ft.addEnclosure(enclo1);
+
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);
         Tzm.run();

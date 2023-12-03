@@ -18,6 +18,10 @@ public class Enclosure extends AbstractEnclosure{
         setEnclosureType("Runner");
     }
 
+    public Enclosure() {
+
+    }
+
 
     @Override
     public void addCreature(Creature creature){

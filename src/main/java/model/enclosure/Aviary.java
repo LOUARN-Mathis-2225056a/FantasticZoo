@@ -19,6 +19,10 @@ public class Aviary extends AbstractEnclosure implements Runnable{
         setEnclosureType("Flyer");
     }
 
+    public Aviary() {
+
+    }
+
     @Override
     public void addCreature(Creature creature) {
         if(getNbCurrentCreature()==getNbMaxCreature()){

@@ -38,6 +38,10 @@ public abstract class AbstractEnclosure implements Runnable{
         }
     }
 
+    public AbstractEnclosure() {
+
+    }
+
     public void addCreature(Creature creature) {
 
     }

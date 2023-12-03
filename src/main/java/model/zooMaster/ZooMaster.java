@@ -2,8 +2,12 @@ package model.zooMaster;
 
 import model.creature.Creature;
 import model.enclosure.AbstractEnclosure;
+import model.enclosure.Aquarium;
+import model.enclosure.Aviary;
+import model.enclosure.Enclosure;
 import model.fantasticZoo.FantasticZoo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZooMaster implements Runnable{
@@ -21,7 +25,7 @@ public class ZooMaster implements Runnable{
 
     public void run() {
         while (true){
-            System.out.print("\033[H\033[2J"); // fonctionne peut être sur linux ? 
+            System.out.print("\033[H\033[2J"); // fonctionne peut être sur linux ?
             System.out.flush();
             System.out.println(
                             "       ---------------------\n" +
@@ -35,18 +39,38 @@ public class ZooMaster implements Runnable{
             );
             Scanner textIn = new Scanner(System.in);
             String action = textIn.nextLine();
+
+            // waiting for message to enter
             while (action.equals(null)){
-                if (action.equals("CheckEnclosure")){
+            }
 
-                } else if (action.equals("CleanEnclosure")) {
-
-                } else if (action.equals("Feed")) {
-
-                }else if (action.equals("Transfer")) {
-
-                }else{
-                    System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
+            if (action.equals("CheckEnclosure")){
+                ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
+                int sizeOfListEnclosure = listEnclosure.size();
+                System.out.println(
+                                "       ------------------\n" +
+                                "       | LIST ENCLOSURE |\n" +
+                                "       ------------------\n");
+                for (AbstractEnclosure enclosure : listEnclosure){
+                    if (enclosure.getClass() == Aquarium.class){
+                        System.out.println("Aquarium");
+                    }
+                    else if (enclosure.getClass() == Aviary.class){
+                        System.out.println("Aviary");
+                    }
+                    else{
+                        System.out.println("Enclosure");
+                    }
                 }
+
+            } else if (action.equals("CleanEnclosure")) {
+
+            } else if (action.equals("Feed")) {
+
+            }else if (action.equals("Transfer")) {
+
+            }else{
+                System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
             }
         }
     }

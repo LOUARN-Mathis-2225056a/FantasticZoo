@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Aquarium extends AbstractEnclosure {
-    private final float depht;
+    private float depht = 0;
     private int salinity;
 
     public Aquarium(String name, float surface, int nbMaxCreature, ArrayList<Creature> creatureList, float depht, int salinity) throws Exception {
@@ -21,6 +21,11 @@ public class Aquarium extends AbstractEnclosure {
         this.salinity = salinity;
         setEnclosureType("Swimmer");
     }
+
+    public Aquarium() {
+        super();
+    }
+
     @Override
     public void addCreature(Creature creature){
         if(getNbCurrentCreature()==getNbMaxCreature()){

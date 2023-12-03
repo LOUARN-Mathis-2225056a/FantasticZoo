@@ -11,7 +11,7 @@ public class FantasticZoo {
     private String nom;
     private ZooMaster zooMaster;
     private int nbMaxEnclosure;
-    private ArrayList<AbstractEnclosure> listAbstractEnclosures;
+    private ArrayList<AbstractEnclosure> listAbstractEnclosures = new ArrayList<AbstractEnclosure>();
 
     public static void main(String[] args) throws IOException {
 
@@ -48,6 +48,12 @@ public class FantasticZoo {
 
 
     }
+    public ArrayList<AbstractEnclosure> getListAbstractEnclosures() {
+        return listAbstractEnclosures;
+    }
+    public void addEnclosure(AbstractEnclosure enclosure){
+        listAbstractEnclosures.add(enclosure);
+    }
     public void showNBCreature(){
         int count = 0;
         for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
@@ -55,7 +61,6 @@ public class FantasticZoo {
         }
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
-
     public void showCreature(){
         for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
             for (Creature creature : abstractEnclosure.getCreatureList()){
