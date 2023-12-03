@@ -54,6 +54,46 @@ public class FantasticZoo {
     public void addEnclosure(AbstractEnclosure enclosure){
         listAbstractEnclosures.add(enclosure);
     }
+    public void showEnclosure(){
+        int sizeOfListEnclosure = listAbstractEnclosures.size();
+        System.out.println(
+                "                               ------------------\n" +
+                        "                               | LIST ENCLOSURE |\n" +
+                        "                               ------------------\n");
+        int numberOfEnclosure = 1;
+        String stringUpDown = new String();
+        String stringSide = new String();
+        String stringMid = new String();
+        for (AbstractEnclosure enclosure : listAbstractEnclosures){
+            stringSide += "|             | ";
+            if (numberOfEnclosure<10){
+                stringMid += "|      "+numberOfEnclosure+"      | ";
+            }
+            else{
+                stringMid += "|     "+numberOfEnclosure+"      | ";
+            }
+            if (enclosure.getClass() == Aquarium.class){
+                stringUpDown += "~~~~~~~~~~~~~~~ ";
+            }
+            else if (enclosure.getClass() == Aviary.class){
+                stringUpDown += "ooooooooooooooo ";
+            }
+            else{
+                stringUpDown += "--------------- ";
+            }
+            if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
+                System.out.println(stringUpDown);
+                System.out.println(stringSide);
+                System.out.println(stringMid);
+                System.out.println(stringSide);
+                System.out.println(stringUpDown);
+                stringUpDown = "";
+                stringMid = "";
+                stringSide = "";
+            }
+            ++numberOfEnclosure;
+        }
+    }
     public void showNBCreature(){
         int count = 0;
         for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){

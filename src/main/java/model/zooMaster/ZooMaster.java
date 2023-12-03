@@ -28,9 +28,9 @@ public class ZooMaster implements Runnable{
             System.out.print("\033[H\033[2J"); // fonctionne peut être sur linux ?
             System.out.flush();
             System.out.println(
-                            "       ---------------------\n" +
-                            "       | ACTION ZOO MASTER |\n" +
-                            "       ---------------------\n" +
+                            "                               ---------------------\n" +
+                            "                               | ACTION ZOO MASTER |\n" +
+                            "                               ---------------------\n" +
                             "To perform an action you must enter the text:\n" +
                             "    - \"CheckEnclosure\" to be able to select the enclosure you want to see.\n" +
                             "    - \"CleanEnclosure\" to be able to select the enclusure you want clean.\n" +
@@ -42,47 +42,9 @@ public class ZooMaster implements Runnable{
 
             // waiting for message to enter
             while (action.equals(null)){}
-
+            myZoo.showEnclosure();
+            ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
             if (action.equals("CheckEnclosure")){
-                ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
-                int sizeOfListEnclosure = listEnclosure.size();
-                System.out.println(
-                                "                               ------------------\n" +
-                                "                               | LIST ENCLOSURE |\n" +
-                                "                               ------------------\n");
-                int numberOfEnclosure = 1;
-                String stringUpDown = new String();
-                String stringSide = new String();
-                String stringMid = new String();
-                for (AbstractEnclosure enclosure : listEnclosure){
-                    stringSide += "|             | ";
-                    if (numberOfEnclosure<10){
-                        stringMid += "|      "+numberOfEnclosure+"      | ";
-                    }
-                    else{
-                        stringMid += "|     "+numberOfEnclosure+"      | ";
-                    }
-                    if (enclosure.getClass() == Aquarium.class){
-                        stringUpDown += "~~~~~~~~~~~~~~~ ";
-                    }
-                    else if (enclosure.getClass() == Aviary.class){
-                        stringUpDown += "ooooooooooooooo ";
-                    }
-                    else{
-                        stringUpDown += "--------------- ";
-                    }
-                    if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
-                        System.out.println(stringUpDown);
-                        System.out.println(stringSide);
-                        System.out.println(stringMid);
-                        System.out.println(stringSide);
-                        System.out.println(stringUpDown);
-                        stringUpDown = "";
-                        stringMid = "";
-                        stringSide = "";
-                    }
-                    ++numberOfEnclosure;
-                }
                 System.out.print("Choose your enclosure number to get its information : ");
                 Scanner textIn2 = new Scanner(System.in);
                 String action2 = textIn.nextLine();
@@ -92,11 +54,26 @@ public class ZooMaster implements Runnable{
                 System.out.println(listEnclosure.get(numEnclosure-1).toString());
 
             } else if (action.equals("CleanEnclosure")) {
+                System.out.print("Choose your enclosure number to clean : ");
+                Scanner textIn2 = new Scanner(System.in);
+                String action2 = textIn.nextLine();
+                // waiting for message to enter
+                while (action2.equals(null)){}
 
             } else if (action.equals("Feed")) {
+                System.out.print("Choose your enclosure number to feed creature in enclosure : ");
+                Scanner textIn2 = new Scanner(System.in);
+                String action2 = textIn.nextLine();
+                // waiting for message to enter
+                while (action2.equals(null)){}
+                int numEnclosure = Integer.parseInt(action2);
 
             }else if (action.equals("Transfer")) {
-
+                System.out.print("Choose your enclosure number one : ");
+                Scanner textIn2 = new Scanner(System.in);
+                String action2 = textIn.nextLine();
+                // waiting for message to enter
+                while (action2.equals(null)){}
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
             }
