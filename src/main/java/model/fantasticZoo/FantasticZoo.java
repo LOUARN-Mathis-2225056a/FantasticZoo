@@ -58,8 +58,8 @@ public class FantasticZoo {
         int sizeOfListEnclosure = listAbstractEnclosures.size();
         System.out.println(
                 "                               ------------------\n" +
-                        "                               | LIST ENCLOSURE |\n" +
-                        "                               ------------------\n");
+                "                               | LIST ENCLOSURE |\n" +
+                "                               ------------------\n");
         int numberOfEnclosure = 1;
         String stringUpDown = new String();
         String stringSide = new String();

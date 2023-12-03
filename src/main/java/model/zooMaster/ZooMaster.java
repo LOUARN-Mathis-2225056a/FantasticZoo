@@ -67,6 +67,8 @@ public class ZooMaster implements Runnable{
                 // waiting for message to enter
                 while (action2.equals(null)){}
                 int numEnclosure = Integer.parseInt(action2);
+                listEnclosure.get(numEnclosure-1).addFood(250);
+                System.out.println("This enclosure has : " + listEnclosure.get(numEnclosure-1).getFeeder() + " food");
 
             }else if (action.equals("Transfer")) {
                 System.out.print("Choose your enclosure number one : ");
