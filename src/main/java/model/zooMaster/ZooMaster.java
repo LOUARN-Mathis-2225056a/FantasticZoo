@@ -81,10 +81,26 @@ public class ZooMaster implements Runnable{
 
             }else if (action.equals("Transfer")) {
                 System.out.print("Choose your enclosure number one : ");
-                Scanner textIn2 = new Scanner(System.in);
-                String action2 = textIn.nextLine();
+                Scanner textInEnclosure1 = new Scanner(System.in);
+                String enclosure1 = textInEnclosure1.nextLine();
                 // waiting for message to enter
-                while (action2.equals(null)){}
+                while (enclosure1.equals(null)){}
+                System.out.print("Choose your enclosure number two : ");
+                Scanner textInEnclosure2 = new Scanner(System.in);
+                String enclosure2 = textInEnclosure1.nextLine();
+                // waiting for message to enter
+                while (enclosure2.equals(null)){}
+                int numEnclosure2 = Integer.parseInt(enclosure2)-1;
+                int numEnclosure1 = Integer.parseInt(enclosure1)-1;
+                if (listEnclosure.get(numEnclosure2).getCreatureList().isEmpty() &&
+                        listEnclosure.get(numEnclosure2).getNbMaxCreature() <= listEnclosure.get(numEnclosure1).getCreatureList().size()){
+                    listEnclosure.get(numEnclosure2).setCreatureList(listEnclosure.get(numEnclosure1).getCreatureList());
+                    listEnclosure.get(numEnclosure1).setCreatureList(new ArrayList<Creature>());
+                    System.out.println("Ok it's done !");
+                }
+                else {
+                    System.out.println("You can't do that...");
+                }
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
             }

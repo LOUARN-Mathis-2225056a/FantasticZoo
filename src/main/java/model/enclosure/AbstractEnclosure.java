@@ -81,6 +81,10 @@ public abstract class AbstractEnclosure implements Runnable{
         return cleanlinessLevel;
     }
 
+    public void setCreatureList(ArrayList<Creature> creatureList) {
+        this.creatureList = creatureList;
+    }
+
     protected void setEnclosureType(String type){
         this.type = type;
     }
