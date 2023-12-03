@@ -4,8 +4,8 @@ import java.util.Random;
 import model.fileWritter.FileWriter;
 
 public class Phoenix extends Oviparous implements Flyer,Reborner{
-    public Phoenix(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Phoenix(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(11);
     }
 

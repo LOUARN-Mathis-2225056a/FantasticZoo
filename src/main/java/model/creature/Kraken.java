@@ -4,8 +4,8 @@ import java.util.Random;
 import model.fileWritter.FileWriter;
 
 public class Kraken extends Oviparous implements Swimmer{
-    public Kraken(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Kraken(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(25);
     }
 

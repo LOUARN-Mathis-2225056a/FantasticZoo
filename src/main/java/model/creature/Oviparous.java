@@ -1,9 +1,10 @@
 package model.creature;
+import java.util.Random;
 
 public abstract class Oviparous extends Creature{
 
-    public Oviparous(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Oviparous(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
     }
 
     public void giveBirth(){

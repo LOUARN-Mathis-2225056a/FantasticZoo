@@ -5,8 +5,8 @@ import java.io.File;
 import java.util.Random;
 
 public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
-    public Dragon(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Dragon(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(25);
     }
     @Override
@@ -19,6 +19,13 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
         FileWriter.writeInFile(getName() + " reborned !");
         setHealth(100);
         setAge(0);
+    }
+    
+    @Override
+    public void giveBirth() {
+        Random rd = new Random();
+        Dragon egg = new Dragon(getName() + "'s egg", rd.nextBoolean(), 12, 12, -10); 
+        egg.setCurrentEnclosure(getCurrentEnclosure());
     }
 
     @Override
