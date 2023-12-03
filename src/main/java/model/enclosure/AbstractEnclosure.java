@@ -112,6 +112,9 @@ public abstract class AbstractEnclosure implements Runnable{
     }
     public void addFood(int quantity){
         feeder = feeder + quantity;
+        if (feeder > 500){
+            feeder = 500;
+        }
     }
 
     public int getFeeder() {
@@ -119,6 +122,9 @@ public abstract class AbstractEnclosure implements Runnable{
     }
 
     public void setFeeder(int feeder) {
+        if (feeder > 500){
+            feeder = 500;
+        }
         this.feeder = feeder;
     }
     @Override
