@@ -2,12 +2,9 @@ package model.zooMaster;
 
 import model.creature.Creature;
 import model.enclosure.AbstractEnclosure;
-import model.enclosure.Aquarium;
-import model.enclosure.Aviary;
 import model.enclosure.Enclosure;
 import model.fantasticZoo.FantasticZoo;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -102,7 +99,8 @@ public class ZooMaster implements Runnable{
         abstractEnclosure.clean(cleanlinessLevel);
     }
 
-    public void feed(Enclosure enclosure, int quantity){enclosure.addFood(quantity);}
+    public void feed(Enclosure enclosure, int quantity){
+        enclosure.addFood(quantity);}
 
     public void transfer(Creature creature, AbstractEnclosure abstractEnclosureFrom, AbstractEnclosure abstractEnclosureTarget) throws Exception {
         abstractEnclosureFrom.removeCreature(creature);

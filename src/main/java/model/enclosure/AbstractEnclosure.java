@@ -4,14 +4,14 @@ import model.creature.Creature;
 
 import java.util.ArrayList;
 
-public abstract class AbstractEnclosure implements Runnable{
+public abstract class AbstractEnclosure<Type> implements Runnable{
+    protected Type type;
     protected ArrayList<Creature> creatureList = new ArrayList<>();
     private String name;
     private float surface;
     private int nbMaxCreature;
     private int nbCurrentCreature;
     private int cleanlinessLevel = 3;
-    private String type = "";
     private Object animalType = null;
     private Thread life = new Thread(this);
     private int hp = 100;
@@ -23,7 +23,6 @@ public abstract class AbstractEnclosure implements Runnable{
         this.nbMaxCreature = nbMaxCreature;
         nbCurrentCreature = 0;
         creatureList = new ArrayList<>();
-        type = "";
         life.start();
     }
 
@@ -43,8 +42,26 @@ public abstract class AbstractEnclosure implements Runnable{
 
     }
 
-    public void addCreature(Creature creature) {
-
+    public void addCreature(Creature creature){
+        if(getNbCurrentCreature()==getNbMaxCreature()){
+            System.out.println("This enclosure is already full");
+        }
+        else if (creature.getInterface().contains(type.toString())){
+            if(getAnimalType()!=null){
+                if(creature.getClass() == getAnimalType()){
+                    creatureList.add(creature);
+                    setNbCurrentCreature(getNbCurrentCreature()+1);
+                }else {
+                    System.out.println("You cannot add this type of creature in this enclosure.");
+                }
+            } else{
+                setAnimalType(creature.getClass());
+                creatureList.add(creature);
+                setNbCurrentCreature(getNbCurrentCreature()+1);
+            }
+        } else {
+            System.out.println("You cannot add this creature in this type of enclosure.");
+        }
     }
 
     public void removeCreature(Creature creature) {
@@ -79,10 +96,6 @@ public abstract class AbstractEnclosure implements Runnable{
 
     public int getCleanlinessLevel() {
         return cleanlinessLevel;
-    }
-
-    protected void setEnclosureType(String type){
-        this.type = type;
     }
 
     public Object getAnimalType() { return animalType;}
