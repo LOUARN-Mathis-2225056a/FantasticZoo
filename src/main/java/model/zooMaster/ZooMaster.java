@@ -41,7 +41,7 @@ public class ZooMaster implements Runnable{
             // waiting for message to enter
             while (action.equals(null)){}
             myZoo.showEnclosure();
-            ArrayList<AbstractEnclosure> listEnclosure = myZoo.getListAbstractEnclosures();
+            ArrayList<AbstractEnclosure<?>> listEnclosure = myZoo.getListAbstractEnclosures();
             if (action.equals("CheckEnclosure")){
                 System.out.print("Choose your enclosure number to get its information : ");
                 Scanner textIn2 = new Scanner(System.in);

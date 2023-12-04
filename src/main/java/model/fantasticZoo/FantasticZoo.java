@@ -12,7 +12,7 @@ public class FantasticZoo {
     private String nom;
     private ZooMaster zooMaster;
     private int nbMaxEnclosure;
-    private ArrayList<AbstractEnclosure> listAbstractEnclosures = new ArrayList<AbstractEnclosure>();
+    private ArrayList<AbstractEnclosure<?>> listAbstractEnclosures = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -46,7 +46,7 @@ public class FantasticZoo {
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
     }
-    public ArrayList<AbstractEnclosure> getListAbstractEnclosures() {
+    public ArrayList<AbstractEnclosure<?>> getListAbstractEnclosures() {
         return listAbstractEnclosures;
     }
     public void addEnclosure(AbstractEnclosure enclosure){
@@ -59,10 +59,10 @@ public class FantasticZoo {
                 "                               | LIST ENCLOSURE |\n" +
                 "                               ------------------\n");
         int numberOfEnclosure = 1;
-        String stringUpDown = new String();
-        String stringSide = new String();
-        String stringMid = new String();
-        for (AbstractEnclosure enclosure : listAbstractEnclosures){
+        String stringUpDown = "";
+        String stringSide = "";
+        String stringMid = "";
+        for (AbstractEnclosure<?> enclosure : listAbstractEnclosures){
             stringSide += "|             | ";
             if (numberOfEnclosure<10){
                 stringMid += "|      "+numberOfEnclosure+"      | ";
@@ -94,13 +94,13 @@ public class FantasticZoo {
     }
     public void showNBCreature(){
         int count = 0;
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
             count += abstractEnclosure.getCreatureList().size();
         }
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
     public void showCreature(){
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
             for (Creature creature : abstractEnclosure.getCreatureList()){
                 creature.toString();
             }
@@ -108,10 +108,8 @@ public class FantasticZoo {
     }
     public ArrayList<Creature> getAllCreatures(){
         ArrayList<Creature> lCreatures = new ArrayList<Creature>();
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
-            for (Creature creature : abstractEnclosure.getCreatureList()){
-                lCreatures.add(creature);
-            }
+        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
+            lCreatures.addAll(abstractEnclosure.getCreatureList());
         }
         return lCreatures;
     }
