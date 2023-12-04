@@ -6,7 +6,6 @@ import td1.fileWritter.FileWriter;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
-
     private Thread life;
     private String name;
     private boolean sex;

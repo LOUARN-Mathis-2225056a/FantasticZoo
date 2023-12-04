@@ -12,7 +12,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
-        else Runtime.getRuntime().exec("cmd /c start cmd.exe");
+        else {
+            System.out.println("Passez sous linux svp");
+            System.exit(1);
+        }
         // Pour avoir le résultat dans une autre fenetre
         // LINUX
 //         Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
