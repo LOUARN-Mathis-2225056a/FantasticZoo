@@ -2,6 +2,7 @@ package model.fantasticZoo;
 
 import model.creature.*;
 import model.enclosure.*;
+import model.getOperatingSystem.GetOperatingSystem;
 import model.zooMaster.ZooMaster;
 
 import java.io.IOException;
@@ -16,8 +17,8 @@ public class FantasticZoo {
     public static void main(String[] args) throws IOException {
 
         // Pour avoir le résultat dans une autre fenetre
-        //Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
-        Runtime.getRuntime().exec("cmd /c start cmd.exe");
+        if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+        else Runtime.getRuntime().exec("cmd /C Get-Content log -Wait ");
 
         // CREATURES
         Dragon drg1 = new Dragon("drg1",false,75,100,1);
