@@ -21,8 +21,8 @@ class CreatureTest {
     void eat() {
         cr1.setHunger(50);
         cr1.eat();
-        if (cr1.getHunger() != 60){
-            fail("CR1 did not gain 10 food points");
+        if (cr1.getHunger() != 50+cr1.getEatingValue()){
+            fail("CR1 did not gain "+ cr1.getEatingValue() + " food points");
         }
         cr1.setHunger(100);
         cr1.eat();

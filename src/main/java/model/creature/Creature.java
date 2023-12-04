@@ -107,7 +107,7 @@ public abstract class Creature implements Runnable {
 
     /* METHOD */
     public void eat() {
-        if (hunger <= eatingValue) {
+        if (hunger <= 100-eatingValue) {
             hunger += eatingValue;
             FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
         } else {
@@ -184,6 +184,7 @@ public abstract class Creature implements Runnable {
         this.eatingValue = eatingValue;
     }
 
+    public int getEatingValue() {return eatingValue;}
 
     public String shortToString() {
         return name + " aged of " + age + "years old.";
