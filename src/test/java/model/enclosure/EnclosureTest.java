@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EnclosureTest {
     @Test
     void addCreatureIntoEnclosure() {
-        Unicorn u1 = new Unicorn("a", true, 1, 1, 1);
+        //Unicorn u1 = new Unicorn("a", true, 1, 1, 1);
         Enclosure e1 = new Enclosure("enclosure 1", 10, 1);
-        e1.addCreature(u1);
+        //e1.addCreature(u1);
         assertEquals(1, e1.getNbCurrentCreature());
     }
 

@@ -40,11 +40,13 @@ public abstract class AbstractEnclosure implements Runnable{
     }
 
     public AbstractEnclosure() {
-
+        nbMaxCreature = 5;
     }
 
     public void addCreature(Creature creature) {
-
+        if (creatureList.size()+1<=nbMaxCreature){
+            creatureList.add(creature);
+        }
     }
 
     public void removeCreature(Creature creature) {

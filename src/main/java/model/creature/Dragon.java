@@ -1,12 +1,14 @@
 package model.creature;
+import model.enclosure.AbstractEnclosure;
+import model.enclosure.Enclosure;
 import model.fileWritter.FileWriter;
 
 import java.io.File;
 import java.util.Random;
 
 public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
-    public Dragon(String name, boolean sexe, float weight, float height, int age) {
-        super(name, sexe, weight, height, age);
+    public Dragon(String name, boolean sexe, float weight, float height, int age, AbstractEnclosure currentEnclosure) {
+        super(name, sexe, weight, height, age, currentEnclosure);
         setEatingValue(25);
     }
     @Override
