@@ -13,7 +13,7 @@ public class Nymph extends Viviparous implements Reborner{
 
     @Override
     public void creatureReborn() {
-        FileWriter.writeInFile(getName() + " reborned !");
+        FileWriter.writeInFile(getName() + " reborned !\n");
         setHealth(100);
         setAge(0);
         setLife(new Thread(this));
@@ -23,8 +23,8 @@ public class Nymph extends Viviparous implements Reborner{
     @Override
     public void giveBirth(){
         Random rd = new Random();
-        FileWriter.writeInFile(getName() + " just gave birth.");
-        Nymph d1 = new Nymph(getName() + "'s child", rd.nextBoolean(), 10, 10, 0);
+        FileWriter.writeInFile(getName() + " just got engrossed.\n");
+        Nymph d1 = new Nymph(getName() + "'s child", rd.nextBoolean(), 10, 10, -3);
         d1.setParentName(getName());
         d1.setCurrentEnclosure(getCurrentEnclosure());
         try {

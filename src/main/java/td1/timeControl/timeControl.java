@@ -19,7 +19,7 @@ public class timeControl implements Runnable{
         while(status){
             for (Creature creature : zoo.getAllCreatures()) {
                 if(creature.getAge() == -1){
-                    FileWriter.writeInFile(creature.getName() + " viens à la vie !");
+                    FileWriter.writeInFile(creature.getName() + " is coming to life !\n");
                     creature.getLife().notify();
                     creature.setName(creature.getParentName() + "'s child");
                 }

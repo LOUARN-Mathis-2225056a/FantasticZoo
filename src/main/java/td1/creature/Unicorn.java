@@ -17,8 +17,8 @@ public class Unicorn extends Viviparous implements Runner{
     @Override
     public void giveBirth(){
         Random rd = new Random();
-        FileWriter.writeInFile(getName() + " just gave birth.");
-        Unicorn d1 = new Unicorn(getName() + "'s child", rd.nextBoolean(), 10, 10, 0);
+        FileWriter.writeInFile(getName() + " just got engrossed.\n");
+        Unicorn d1 = new Unicorn(getName() + "'s child", rd.nextBoolean(), 10, 10, -3);
         d1.setParentName(getName());
         d1.setCurrentEnclosure(getCurrentEnclosure());
         try {
