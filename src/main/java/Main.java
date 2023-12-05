@@ -32,6 +32,7 @@ public class Main {
         AbstractEnclosure v1 = new Aviary();
 
         Phoenix p1 = new Phoenix("Michel", false, 10, 10, 1);
+        v1.addCreature(p1);
 
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);

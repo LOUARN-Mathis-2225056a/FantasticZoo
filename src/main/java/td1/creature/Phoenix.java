@@ -56,7 +56,9 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
                 else if(percentage.nextInt(101) < 10 && !isSleep()){
                     sleep();
                 }
-
+                if (percentage.nextInt(500) == 1){
+                    giveBirth();
+                }
                 if (percentage.nextInt(101) < 25) {
                     FileWriter.writeInFile(creatureFly());
                 }
