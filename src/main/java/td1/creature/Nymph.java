@@ -21,6 +21,20 @@ public class Nymph extends Viviparous implements Reborner{
     }
 
     @Override
+    public void giveBirth(){
+        Random rd = new Random();
+        FileWriter.writeInFile(getName() + " just gave birth.");
+        Nymph d1 = new Nymph(getName() + "'s child", rd.nextBoolean(), 10, 10, 0);
+        d1.setParentName(getName());
+        d1.setCurrentEnclosure(getCurrentEnclosure());
+        try {
+            d1.getLife().wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void run() {
         while (getHealth() > 0) {
             Random percentage = new Random();
@@ -40,6 +54,10 @@ public class Nymph extends Viviparous implements Reborner{
             if(percentage.nextInt(150) < 100-getHunger()){
                 checkForFood(getCurrentEnclosure());
             }
+            if (percentage.nextInt(500) == 1){
+                giveBirth();
+            }
+
             int cooldown = (3+percentage.nextInt(5))*1000;
 
             try {

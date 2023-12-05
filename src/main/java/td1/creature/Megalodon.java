@@ -39,7 +39,6 @@ public class Megalodon extends Oviparous implements Swimmer{
                 if (percentage.nextInt(101) < 8) {
                     setHealth(getHealth() - 5);
                 }
-
                 if (percentage.nextInt(101) < 10 && isSleep()) {
                     wake();
                 } else if (percentage.nextInt(101) < 10 && !isSleep()) {
@@ -50,6 +49,9 @@ public class Megalodon extends Oviparous implements Swimmer{
                 }
                 if (percentage.nextInt(101) < 25) {
                     FileWriter.writeInFile(creatureSwim());
+                }
+                if (percentage.nextInt(500) == 1){
+                    giveBirth();
                 }
 
                 int cooldown = (3 + percentage.nextInt(5)) * 1000;
