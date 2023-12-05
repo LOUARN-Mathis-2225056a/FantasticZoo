@@ -15,6 +15,20 @@ public class Unicorn extends Viviparous implements Runner{
     }
 
     @Override
+    public void giveBirth(){
+        Random rd = new Random();
+        FileWriter.writeInFile(getName() + " just gave birth.");
+        Unicorn d1 = new Unicorn(getName() + "'s child", rd.nextBoolean(), 10, 10, 0);
+        d1.setParentName(getName());
+        d1.setCurrentEnclosure(getCurrentEnclosure());
+        try {
+            d1.getLife().wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void run() {
         while (getHealth() > 0) {
             Random percentage = new Random();
@@ -34,9 +48,11 @@ public class Unicorn extends Viviparous implements Runner{
             else if(percentage.nextInt(101) < 10 && !isSleep()){
                 sleep();
             }
-
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureRun());
+            }
+            if (percentage.nextInt(500) == 1){
+                giveBirth();
             }
 
             int cooldown = (3+percentage.nextInt(5))*1000;
