@@ -30,4 +30,9 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
         this.enclosure = enclosure;
         enclosure.addLycanSolitary(this);
     }
+    @Override
+    public String toString(){
+        return super.toString()
+                + "             -enclosure number : " + enclosure.getID() + "\n";
+    }
 }

@@ -8,7 +8,6 @@ public class LycanthropeEnMeute extends Lycanthrope2 implements Runnable{
     @Override
     public void run() {
         while (this.isOn()){
-            System.out.println("i'm alive");
         }
     }
     public LycanthropeEnMeute(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity,String rank,LycanPack lycanPack) {
@@ -21,7 +20,8 @@ public class LycanthropeEnMeute extends Lycanthrope2 implements Runnable{
     @Override
     public String toString(){
         return super.toString()
-                + "             -rank : " + rank + "\n";
+                + "             -rank : " + rank + "\n"
+                + "             -enclosure number : " + lycanPack.getEnclosure().getID() + "\n";
     }
     public void leaveLycanPack(){
         lycanPack.removeLycan(this);
