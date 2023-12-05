@@ -51,7 +51,7 @@ public class Mermaid extends Viviparous implements Swimmer{
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureSwim());
             }
-            if (percentage.nextInt(500) == 1){
+            if (isSex() && percentage.nextInt(500) == 1){
                 giveBirth();
             }
 

@@ -53,7 +53,7 @@ public class Lycanthrope extends Viviparous implements Runner{
             if(percentage.nextInt(150) < 100-getHunger()){
                 checkForFood(getCurrentEnclosure());
             }
-            if (percentage.nextInt(500) == 1){
+            if (isSex() && percentage.nextInt(500) == 1){
                 giveBirth();
             }
 

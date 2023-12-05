@@ -47,7 +47,7 @@ public class Kraken extends Oviparous implements Swimmer{
                 } else if (percentage.nextInt(101) < 10 && !isSleep()) {
                     sleep();
                 }
-                if (percentage.nextInt(500) == 1){
+                if (isSex() && percentage.nextInt(500) == 1){
                     giveBirth();
                 }
 

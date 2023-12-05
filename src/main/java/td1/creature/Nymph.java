@@ -54,7 +54,7 @@ public class Nymph extends Viviparous implements Reborner{
             if(percentage.nextInt(150) < 100-getHunger()){
                 checkForFood(getCurrentEnclosure());
             }
-            if (percentage.nextInt(500) == 1){
+            if (isSex() && percentage.nextInt(500) == 1){
                 giveBirth();
             }
 

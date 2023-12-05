@@ -69,7 +69,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
                 } else if (percentage.nextInt(101) < 25) {
                     FileWriter.writeInFile(creatureFly());
                 }
-                if (percentage.nextInt(500) == 1){
+                if (isSex() && percentage.nextInt(500) == 1){
                     giveBirth();
                 }
 

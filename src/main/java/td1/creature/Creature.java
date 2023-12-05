@@ -9,6 +9,8 @@ public abstract class Creature implements Runnable {
     private String parentName;
     private Thread life;
     private String name;
+    //true = female
+    //false = male
     private boolean sex;
     private float weight;
     private float height;
@@ -96,6 +98,10 @@ public abstract class Creature implements Runnable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public boolean isSex() {
+        return sex;
     }
 
     public Enclosure getCurrentEnclosure() {

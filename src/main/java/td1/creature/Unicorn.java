@@ -51,7 +51,7 @@ public class Unicorn extends Viviparous implements Runner{
             if (percentage.nextInt(101) < 25) {
                 FileWriter.writeInFile(creatureRun());
             }
-            if (percentage.nextInt(500) == 1){
+            if (isSex() && percentage.nextInt(500) == 1){
                 giveBirth();
             }
 
