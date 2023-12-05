@@ -12,7 +12,7 @@ public class FantasticZoo {
     private String nom;
     private ZooMaster zooMaster;
     private int nbMaxEnclosure;
-    private ArrayList<AbstractEnclosure<?>> listAbstractEnclosures = new ArrayList<>();
+    private ArrayList<AbstractEnclosure<?>> listEnclosure = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -46,14 +46,14 @@ public class FantasticZoo {
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
     }
-    public ArrayList<AbstractEnclosure<?>> getListAbstractEnclosures() {
-        return listAbstractEnclosures;
+    public ArrayList<AbstractEnclosure<?>> getlistEnclosure() {
+        return listEnclosure;
     }
-    public void addEnclosure(AbstractEnclosure enclosure){
-        listAbstractEnclosures.add(enclosure);
+    public void addEnclosure(AbstractEnclosure<?> enclosure){
+        listEnclosure.add(enclosure);
     }
     public void showEnclosure(){
-        int sizeOfListEnclosure = listAbstractEnclosures.size();
+        int sizeOfListEnclosure = listEnclosure.size();
         System.out.println(
                 "                               ------------------\n" +
                 "                               | LIST ENCLOSURE |\n" +
@@ -62,7 +62,7 @@ public class FantasticZoo {
         String stringUpDown = "";
         String stringSide = "";
         String stringMid = "";
-        for (AbstractEnclosure<?> enclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> enclosure : listEnclosure){
             stringSide += "|             | ";
             if (numberOfEnclosure<10){
                 stringMid += "|      "+numberOfEnclosure+"      | ";
@@ -94,21 +94,21 @@ public class FantasticZoo {
     }
     public void showNBCreature(){
         int count = 0;
-        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
             count += abstractEnclosure.getCreatureList().size();
         }
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
     public void showCreature(){
-        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
             for (Creature creature : abstractEnclosure.getCreatureList()){
-                creature.toString();
+                creature.shortToString();
             }
         }
     }
     public ArrayList<Creature> getAllCreatures(){
         ArrayList<Creature> lCreatures = new ArrayList<Creature>();
-        for (AbstractEnclosure<?> abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
             lCreatures.addAll(abstractEnclosure.getCreatureList());
         }
         return lCreatures;

@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZooMaster implements Runnable{
-    private String name;
-    private boolean sex;
-    private int age;
-    private FantasticZoo myZoo;
+    private final String name;
+    private final boolean sex;
+    private final int age;
+    private final FantasticZoo myZoo;
 
     public ZooMaster(String name, boolean sex, int age, FantasticZoo myZoo) {
         this.name = name;
@@ -41,7 +41,7 @@ public class ZooMaster implements Runnable{
             // waiting for message to enter
             while (action.equals(null)){}
             myZoo.showEnclosure();
-            ArrayList<AbstractEnclosure<?>> listEnclosure = myZoo.getListAbstractEnclosures();
+            ArrayList<AbstractEnclosure<?>> listEnclosure = myZoo.getlistEnclosure();
             if (action.equals("CheckEnclosure")){
                 System.out.print("Choose your enclosure number to get its information : ");
                 Scanner textIn2 = new Scanner(System.in);
@@ -91,18 +91,18 @@ public class ZooMaster implements Runnable{
         }
     }
 
-    public void checkEnclosure(AbstractEnclosure abstractEnclosure){
+    public void checkEnclosure(AbstractEnclosure<?> abstractEnclosure){
         System.out.println(abstractEnclosure);
     }
 
-    public void cleanEnclosure(AbstractEnclosure abstractEnclosure, int cleanlinessLevel){
+    public void cleanEnclosure(AbstractEnclosure<?> abstractEnclosure, int cleanlinessLevel){
         abstractEnclosure.clean(cleanlinessLevel);
     }
 
     public void feed(Enclosure enclosure, int quantity){
         enclosure.addFood(quantity);}
 
-    public void transfer(Creature creature, AbstractEnclosure abstractEnclosureFrom, AbstractEnclosure abstractEnclosureTarget) throws Exception {
+    public void transfer(Creature creature, AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget) {
         abstractEnclosureFrom.removeCreature(creature);
         abstractEnclosureTarget.addCreature(creature);
     }
