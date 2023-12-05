@@ -1,7 +1,9 @@
 package td2.model.lycan;
 
+import td2.model.roar.*;
+
 public class Lycanthrope2 {
-    private boolean sex;
+    private boolean sex; // true = female && false == mal
 
     public enum AgeCategory {
         YOUNG,
@@ -33,4 +35,15 @@ public class Lycanthrope2 {
                 + "             -impetuosity : " + impetuosity + "\n";
     }
     public void ShowToString(){System.out.println(this.toString());}
+    public void emitHowl(Roar roar){
+        if (roar.getClass() == Domination.class){
+            
+        } else if (roar.getClass() == Submission.class) {
+            
+        } else if (roar.getClass() == Aggressiveness.class) {
+            
+        } else if (roar.getClass() == Membership.class) {
+            System.out.println(((Membership) roar).getWhatISay());
+        }
+    }
 }
