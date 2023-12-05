@@ -6,6 +6,7 @@ import td1.fileWritter.FileWriter;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
+    private String parentName;
     private Thread life;
     private String name;
     private boolean sex;
@@ -105,6 +106,14 @@ public abstract class Creature implements Runnable {
         this.currentEnclosure = currentEnclosure;
     }
 
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
     /* METHOD */
     public void eat() {
         if (hunger <= eatingValue && !sleep) {
@@ -150,7 +159,7 @@ public abstract class Creature implements Runnable {
     public void wake() {
         if (sleep) {
             sleep = false;
-            FileWriter.writeInFile(name + " wake up.\n","logs");
+            FileWriter.writeInFile(name + " wakes up.\n","logs");
         } else {
             FileWriter.writeInFile(name + " is already awake.\n","logs");
         }

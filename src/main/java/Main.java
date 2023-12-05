@@ -15,7 +15,7 @@ public class Main {
         if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
         else {
             System.out.println("Passez sous linux svp");
-            //Runtime.getRuntime().exec("start cmd /k \"dir\"");
+            //Runtime.getRuntime().exec("powershell");
         }
         // Pour avoir le résultat dans une autre fenetre
         // LINUX
@@ -33,10 +33,10 @@ public class Main {
 
         Phoenix p1 = new Phoenix("Michel", false, 10, 10, 1);
 
-        p1.giveBirth();
-
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);
         Tzm.run();
+
+        p1.giveBirth();
     }
 }

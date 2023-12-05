@@ -15,6 +15,10 @@ public class timeControl implements Runnable{
     public void run() {
         while(status){
             for (Creature creature : zoo.getAllCreatures()) {
+                if(creature.getAge() == -1){
+                    creature.getLife().notify();
+                    creature.setName(creature.getParentName() + "'s child");
+                }
                 creature.setAge(creature.getAge()+1);
             }
         }

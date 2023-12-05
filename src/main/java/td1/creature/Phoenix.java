@@ -22,6 +22,18 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
     }
 
     @Override
+    public void giveBirth(){
+        Random rd = new Random();
+        Phoenix p1 = new Phoenix(getName() + "'s egg", rd.nextBoolean(), 10, 10, -10);
+        p1.setParentName(getName());
+        try {
+            p1.getLife().wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void run() {
         while (getHealth() > 0) {
             Random percentage = new Random();
