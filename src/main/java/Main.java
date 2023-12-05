@@ -1,16 +1,12 @@
-import model.creature.*;
-import model.enclosure.AbstractEnclosure;
-import model.enclosure.Aquarium;
-import model.enclosure.Aviary;
-import model.enclosure.Enclosure;
-import model.fantasticZoo.FantasticZoo;
-import model.getOperatingSystem.GetOperatingSystem;
-import model.zooMaster.ZooMaster;
+import td1.enclosure.AbstractEnclosure;
+import td1.enclosure.Aquarium;
+import td1.enclosure.Aviary;
+import td1.enclosure.Enclosure;
+import td1.fantasticZoo.FantasticZoo;
+import td1.getOperatingSystem.GetOperatingSystem;
+import td1.zooMaster.ZooMaster;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
