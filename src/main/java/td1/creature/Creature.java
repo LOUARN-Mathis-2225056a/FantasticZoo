@@ -107,11 +107,14 @@ public abstract class Creature implements Runnable {
 
     /* METHOD */
     public void eat() {
-        if (hunger <= eatingValue) {
+        if (hunger <= eatingValue && !sleep) {
             hunger += eatingValue;
             FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
-        } else {
+        } else if (!sleep) {
             FileWriter.writeInFile(name + " is not hungry.","logs");
+        }
+        else {
+            FileWriter.writeInFile(name + " is sleeping : it can not eat right now !", "logs");
         }
     }
     public void consumeFood(int value) {
