@@ -23,8 +23,15 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
     @Override
     public void giveBirth() {
         Random rd = new Random();
-        Dragon egg = new Dragon(getName() + "'s egg", rd.nextBoolean(), 12, 12, -10); 
-        egg.setCurrentEnclosure(getCurrentEnclosure());
+        FileWriter.writeInFile(getName() + " just laid an egg.");
+        Dragon d1 = new Dragon(getName() + "'s egg", rd.nextBoolean(), 10, 10, -10);
+        d1.setParentName(getName());
+        d1.setCurrentEnclosure(getCurrentEnclosure());
+        try {
+            d1.getLife().wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -40,37 +47,36 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            Random percentage = new Random();
-            if (percentage.nextInt(4) == 0) {
-                consumeFood(10);
-            }
-            if (percentage.nextInt(101) < 8) {
-                setHealth(getHealth() - 5);
-            }
+            if(getAge() >= 0) {
+                Random percentage = new Random();
+                if (percentage.nextInt(4) == 0) {
+                    consumeFood(10);
+                }
+                if (percentage.nextInt(101) < 8) {
+                    setHealth(getHealth() - 5);
+                }
 
-            if (percentage.nextInt(101) < 10 && isSleep()) {
-                wake();
-            }
-            else if(percentage.nextInt(101) < 10 && !isSleep()){
-                sleep();
-            }
+                if (percentage.nextInt(101) < 10 && isSleep()) {
+                    wake();
+                } else if (percentage.nextInt(101) < 10 && !isSleep()) {
+                    sleep();
+                }
 
-            if (percentage.nextInt(101) < 25) {
-                FileWriter.writeInFile(creatureSwim());
-            }
-            else if (percentage.nextInt(101) < 25) {
-                FileWriter.writeInFile(creatureRun());
-            }
-            else if (percentage.nextInt(101) < 25) {
-                FileWriter.writeInFile(creatureFly());
-            }
+                if (percentage.nextInt(101) < 25) {
+                    FileWriter.writeInFile(creatureSwim());
+                } else if (percentage.nextInt(101) < 25) {
+                    FileWriter.writeInFile(creatureRun());
+                } else if (percentage.nextInt(101) < 25) {
+                    FileWriter.writeInFile(creatureFly());
+                }
 
-            int cooldown = (3+percentage.nextInt(5))*1000;
+                int cooldown = (3 + percentage.nextInt(5)) * 1000;
 
-            try {
-                Thread.sleep(cooldown);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                try {
+                    Thread.sleep(cooldown);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         }

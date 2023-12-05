@@ -36,7 +36,5 @@ public class Main {
         ZooMaster zm = new ZooMaster("Léo",true,19,ft);
         Thread Tzm = new Thread(zm);
         Tzm.run();
-
-        p1.giveBirth();
     }
 }
