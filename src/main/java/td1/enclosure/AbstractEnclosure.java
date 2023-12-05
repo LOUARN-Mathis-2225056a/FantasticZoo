@@ -12,7 +12,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
     private int nbMaxCreature;
     private int nbCurrentCreature;
     private int cleanlinessLevel = 3;
-    private Object animalType = null;
+    private String animalType = null;
     private Thread life = new Thread(this);
     private int hp = 100;
     private int feeder;
@@ -47,18 +47,26 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
             System.out.println("This enclosure is already full");
         } else if (creature.getInterface().contains(type.toString())) {
             if (getAnimalType() != null) {
-                if (creature.getClass() == getAnimalType()) {
+                if (creature.getClass().getSimpleName() == getAnimalType()) {
                     creatureList.add(creature);
+                    creature.setCurrentEnclosure(this);
                     setNbCurrentCreature(getNbCurrentCreature() + 1);
                 } else {
                     System.out.println("You cannot add this type of creature in this enclosure.");
                 }
             } else {
-                setAnimalType(creature.getClass());
+                setAnimalType(creature.getClass().getSimpleName());
                 setEnclosureType(type);
                 creatureList.add(creature);
+                creature.setCurrentEnclosure(this);
                 setNbCurrentCreature(getNbCurrentCreature() + 1);
             }
+        } else if (creature.getInterface() == "none") {
+            setAnimalType(creature.getClass().getSimpleName());
+            setEnclosureType(type);
+            creatureList.add(creature);
+            creature.setCurrentEnclosure(this);
+            setNbCurrentCreature(getNbCurrentCreature() + 1);
         } else {
             System.out.println("You cannot add this creature in this type of enclosure.");
         }
@@ -92,7 +100,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
     public Type getEnclosureType() {
         return type;
     }
-        public void setAnimalType(Object animalType) {
+        public void setAnimalType(String animalType) {
             this.animalType = animalType;
         }
 
@@ -138,18 +146,15 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
 
     @Override
     public String toString() {
-        return "AbstractEnclosure{" +
-                "creatureList=" + creatureList +
-                ", name='" + name + '\'' +
-                ", surface=" + surface +
-                ", nbMaxCreature=" + nbMaxCreature +
-                ", nbCurrentCreature=" + nbCurrentCreature +
-                ", cleanlinessLevel=" + cleanlinessLevel +
-                ", type='" + type + '\'' +
-                ", animalType=" + animalType +
-                ", life=" + life +
-                ", hp=" + hp +
-                '}';
+        return name +
+                "\nCreature list :" + creatureList +
+                "\nSurface : " + surface +
+                "\nNumber of maximum creatures : " + nbMaxCreature +
+                "\nNumber of current creatures : " + nbCurrentCreature +
+                "\nCleanliness level : " + cleanlinessLevel +
+                "\nEnclosure's type : " + type +
+                "\nEnclosure's animals' specie : " + animalType +
+                "\nEnclosure's health : " + hp;
     }
 
     public int getNbCurrentCreature() {

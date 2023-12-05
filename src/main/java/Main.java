@@ -29,7 +29,7 @@ public class Main {
 
         Nymph n1 = new Nymph("Michel", true, 100, 10, 1);*/
         FantasticZoo ft = new FantasticZoo();
-        AbstractEnclosure v1 = new Aviary();
+        Aviary v1 = new Aviary();
 
         Phoenix p1 = new Phoenix("Michel", false, 10, 10, 1);
         v1.addCreature(p1);

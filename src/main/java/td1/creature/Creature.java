@@ -1,5 +1,6 @@
 package td1.creature;
 
+import td1.enclosure.AbstractEnclosure;
 import td1.enclosure.Enclosure;
 import td1.fileWritter.FileWriter;
 
@@ -19,7 +20,7 @@ public abstract class Creature implements Runnable {
     private int health = 100;
     private int age = 0;
     private int eatingValue;
-    private Enclosure currentEnclosure;
+    private AbstractEnclosure<?> currentEnclosure;
 
     /* CONSTRUCTOR */
     public Creature(String name, boolean sex, float weight, float height, int age) {
@@ -31,7 +32,7 @@ public abstract class Creature implements Runnable {
         life = new Thread(this);
         life.start();
     }
-    public Creature(String name, boolean sex, float weight, float height, int age, Enclosure currentEnclosure) {
+    public Creature(String name, boolean sex, float weight, float height, int age, AbstractEnclosure<?> currentEnclosure) {
         this.name = name;
         this.sex = sex;
         this.weight = weight;
@@ -104,11 +105,11 @@ public abstract class Creature implements Runnable {
         return sex;
     }
 
-    public Enclosure getCurrentEnclosure() {
+    public AbstractEnclosure<?> getCurrentEnclosure() {
         return currentEnclosure;
     }
 
-    public void setCurrentEnclosure(Enclosure currentEnclosure) {
+    public void setCurrentEnclosure(AbstractEnclosure<?> currentEnclosure) {
         this.currentEnclosure = currentEnclosure;
     }
 
@@ -142,14 +143,14 @@ public abstract class Creature implements Runnable {
             FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
         }
     }
-    public void checkForFood(Enclosure enclosure){
+    public void checkForFood(AbstractEnclosure<?> enclosure){
         if(enclosure.getFeeder() > eatingValue){
             eat();
             enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
         }
     }
     public void emitSound() {
-        System.out.println("???");
+        FileWriter.writeInFile(name + " emits a sound.");
     }
 
     public void heal() {

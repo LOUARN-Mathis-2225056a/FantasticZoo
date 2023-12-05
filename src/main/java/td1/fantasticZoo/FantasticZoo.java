@@ -21,23 +21,27 @@ public class FantasticZoo {
         if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
         else Runtime.getRuntime().exec("cmd /C Get-Content log -Wait ");
 
+        FantasticZoo fz = new FantasticZoo();
+        ZooMaster zm = new ZooMaster("Suricate",false,18,fz);
+        Thread Tzm = new Thread(zm);
+
         // CREATURES
         Dragon drg1 = new Dragon("drg1",false,75,100,1);
         Dragon drg2 = new Dragon("drg2",true,75,100,1);
 
         Kraken kra1 = new Kraken("kra1",true,2,20,1);
-        Kraken kra2 = new Kraken("kra2",true,2,20,1);
+        Kraken kra2 = new Kraken("kra2",false,2,20,1);
 
-        Lycanthrope lyc1 = new Lycanthrope("kra1",false,5,30,1);
+        Lycanthrope lyc1 = new Lycanthrope("kra1",true,5,30,1);
         Lycanthrope lyc2 = new Lycanthrope("kra2",false,5,30,1);
 
         Megalodon meg1 = new Megalodon("meg1",true,4000, 10000,1);
         Megalodon meg2 = new Megalodon("meg2",false,4000, 10000,1);
 
-        Mermaid mer1 = new Mermaid("mer1",false,5,30,1);
+        Mermaid mer1 = new Mermaid("mer1",true,5,30,1);
         Mermaid mer2 = new Mermaid("mer2",false,5,30,1);
 
-        Nymph nym1 = new Nymph("nym1",true,5,30,1);
+        Nymph nym1 = new Nymph("nym1",false,5,30,1);
         Nymph nym2 = new Nymph("nym2",true,5,30,1);
 
         Phoenix pho1 = new Phoenix("pho1",true,4,54,1);
@@ -46,6 +50,57 @@ public class FantasticZoo {
         Unicorn uni1 = new Unicorn("uni1",false,18,100,1);
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
+        Aquarium aq1 = new Aquarium("Aquarium1", 100, 10, 100, 5);
+        Aquarium aq2 = new Aquarium("Aquarium1", 100, 10, 100, 5);
+        Aquarium aq3 = new Aquarium("Aquarium1", 100, 10, 100, 5);
+
+        Aviary av1 = new Aviary("Aquarium1", 100, 10,100);
+        Aviary av2 = new Aviary("Aquarium1", 100, 10,100);
+
+        Enclosure e1 = new Enclosure("Enclosure", 100, 10);
+        Enclosure e2 = new Enclosure("Enclosure", 100, 10);
+        Enclosure e3 = new Enclosure("Enclosure", 100, 10);
+
+        // Adding creatures to enclosures
+
+        aq1.addCreature(mer1);
+        aq1.addCreature(mer2);
+
+        aq2.addCreature(meg1);
+        aq2.addCreature(meg2);
+
+        aq3.addCreature(kra1);
+        aq3.addCreature(kra2);
+
+        av1.addCreature(pho1);
+        av1.addCreature(pho2);
+
+        av2.addCreature(drg1);
+        av2.addCreature(drg2);
+
+        e1.addCreature(uni1);
+        e1.addCreature(uni2);
+
+        e2.addCreature(nym1);
+        e2.addCreature(nym2);
+
+        e3.addCreature(lyc1);
+        e3.addCreature(lyc2);
+
+        // Adding enclosures to zoo
+
+        fz.addEnclosure(aq1);
+        fz.addEnclosure(aq2);
+        fz.addEnclosure(aq3);
+
+        fz.addEnclosure(av1);
+        fz.addEnclosure(av2);
+
+        fz.addEnclosure(e1);
+        fz.addEnclosure(e2);
+        fz.addEnclosure(e3);
+
+        Tzm.run();
     }
     public ArrayList<AbstractEnclosure<?>> getlistEnclosure() {
         return listEnclosure;
