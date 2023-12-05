@@ -92,8 +92,8 @@ public class ZooMaster implements Runnable{
                 while (enclosure2.equals(null)){}
                 int numEnclosure2 = Integer.parseInt(enclosure2)-1;
                 int numEnclosure1 = Integer.parseInt(enclosure1)-1;
-                if (listEnclosure.get(numEnclosure2).getCreatureList().isEmpty() /* &&
-                        listEnclosure.get(numEnclosure2).getNbMaxCreature() <= listEnclosure.get(numEnclosure1).getCreatureList().size()*/){
+                if (listEnclosure.get(numEnclosure2).getCreatureList().isEmpty() &&
+                        listEnclosure.get(numEnclosure2).getNbMaxCreature() <= listEnclosure.get(numEnclosure1).getCreatureList().size()){
                     listEnclosure.get(numEnclosure2).setCreatureList(listEnclosure.get(numEnclosure1).getCreatureList());
                     listEnclosure.get(numEnclosure1).setCreatureList(new ArrayList<Creature>());
                     System.out.println("Ok it's done !");
@@ -104,7 +104,7 @@ public class ZooMaster implements Runnable{
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
             }
-            for (int i=0; i<5;++i){
+            for (int i=0; i<100;++i){
                 System.out.println("\n");
             }
         }

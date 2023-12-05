@@ -1,6 +1,5 @@
 package model.creature;
 
-import model.enclosure.AbstractEnclosure;
 import model.enclosure.Enclosure;
 import model.fileWritter.FileWriter;
 
@@ -10,8 +9,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Nymph extends Viviparous implements Reborner{
-    public Nymph(String name, boolean sexe, float weight, float height, int age, AbstractEnclosure currentEnclosure) {
-        super(name, sexe, weight, height, age, currentEnclosure);
+    public Nymph(String name, boolean sexe, float weight, float height, int age) {
+        super(name, sexe, weight, height, age);
         setEatingValue(2);
     }
 

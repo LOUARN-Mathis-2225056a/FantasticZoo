@@ -1,6 +1,5 @@
 package model.creature;
 
-import model.enclosure.AbstractEnclosure;
 import model.enclosure.Enclosure;
 import model.fileWritter.FileWriter;
 
@@ -18,10 +17,19 @@ public abstract class Creature implements Runnable {
     private int health = 100;
     private int age = 0;
     private int eatingValue;
-    private AbstractEnclosure currentEnclosure;
+    private Enclosure currentEnclosure;
 
     /* CONSTRUCTOR */
-    public Creature(String name, boolean sexe, float weight, float height, int age, AbstractEnclosure currentEnclosure) {
+    public Creature(String name, boolean sexe, float weight, float height, int age) {
+        this.name = name;
+        this.sexe = sexe;
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
+        life = new Thread(this);
+        life.start();
+    }
+    public Creature(String name, boolean sexe, float weight, float height, int age, Enclosure currentEnclosure) {
         this.name = name;
         this.sexe = sexe;
         this.weight = weight;
@@ -90,7 +98,7 @@ public abstract class Creature implements Runnable {
         this.age = age;
     }
 
-    public AbstractEnclosure getCurrentEnclosure() {
+    public Enclosure getCurrentEnclosure() {
         return currentEnclosure;
     }
 
@@ -117,7 +125,7 @@ public abstract class Creature implements Runnable {
             FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
         }
     }
-    public void checkForFood(AbstractEnclosure enclosure){
+    public void checkForFood(Enclosure enclosure){
         if(enclosure.getFeeder() > eatingValue){
             eat();
             enclosure.setFeeder(enclosure.getFeeder()-eatingValue);

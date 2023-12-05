@@ -1,14 +1,11 @@
 package model.creature;
 
 import java.util.Random;
-
-import model.enclosure.AbstractEnclosure;
-import model.enclosure.Enclosure;
 import model.fileWritter.FileWriter;
 
 public class Mermaid extends Viviparous implements Swimmer{
-    public Mermaid(String name, boolean sexe, float weight, float height, int age, AbstractEnclosure currentEnclosure) {
-        super(name, sexe, weight, height, age, currentEnclosure);
+    public Mermaid(String name, boolean sexe, float weight, float height, int age){
+        super(name,sexe,weight,height,age);
         setEatingValue(6);
     }
 
