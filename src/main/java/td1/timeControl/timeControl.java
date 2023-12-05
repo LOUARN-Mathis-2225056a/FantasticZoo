@@ -2,6 +2,9 @@ package td1.timeControl;
 
 import td1.creature.Creature;
 import td1.fantasticZoo.FantasticZoo;
+import td1.fileWritter.FileWriter;
+
+import java.io.File;
 
 public class timeControl implements Runnable{
     private boolean status = true;
@@ -16,6 +19,7 @@ public class timeControl implements Runnable{
         while(status){
             for (Creature creature : zoo.getAllCreatures()) {
                 if(creature.getAge() == -1){
+                    FileWriter.writeInFile(creature.getName() + " viens à la vie !");
                     creature.getLife().notify();
                     creature.setName(creature.getParentName() + "'s child");
                 }
