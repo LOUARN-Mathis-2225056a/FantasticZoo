@@ -2,9 +2,8 @@ package td2.model.lycan;
 
 import td2.model.roar.*;
 
-public class Lycanthrope2 {
+public class Lycanthrope2{
     private boolean sex; // true = female && false == mal
-
     public enum AgeCategory {
         YOUNG,
         ADULT,
@@ -17,7 +16,8 @@ public class Lycanthrope2 {
     private int impetuosity;
     private boolean sleep; // true = sleep / false = dont sleep
     private boolean sick; // true = sick / false = is not sick
-
+    private Thread thread;
+    private boolean isOn; // true tread run / false thread dont run
     public Lycanthrope2(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity) {
         this.sex = sex;
         this.age = age;
@@ -27,8 +27,62 @@ public class Lycanthrope2 {
         this.impetuosity = impetuosity;
         sick = false;
         sleep = false;
+        isOn = true;
     }
 
+    public boolean isOn() {
+        return isOn;
+    }
+
+    public void setOn(boolean on) {
+        isOn = on;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+    public void startThread(){
+        thread.start();
+    }
+    public boolean isSex() {
+        return sex;
+    }
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
+    public AgeCategory getAge() {
+        return age;
+    }
+    public void setAge(AgeCategory age) {
+        this.age = age;
+    }
+    public int getStrength() {
+        return strength;
+    }
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+    public int getDomination() {
+        return domination;
+    }
+    public void setDomination(int domination) {
+        this.domination = domination;
+    }
+    public int getLevel() {
+        return level;
+    }
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    public int getImpetuosity() {
+        return impetuosity;
+    }
+    public void setImpetuosity(int impetuosity) {
+        this.impetuosity = impetuosity;
+    }
     @Override
     public String toString() {
         return "Lycanthrope: " + "-sex : " + sex + "\n"
