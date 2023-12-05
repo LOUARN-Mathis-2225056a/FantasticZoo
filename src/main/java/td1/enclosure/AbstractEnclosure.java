@@ -55,6 +55,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
                 }
             } else {
                 setAnimalType(creature.getClass());
+                setEnclosureType(type);
                 creatureList.add(creature);
                 setNbCurrentCreature(getNbCurrentCreature() + 1);
             }
@@ -80,39 +81,20 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
         return creatureList;
     }
 
-    public int getNbCurrentCreature() {
-        return nbCurrentCreature;
-    }
-
-    public void setNbCurrentCreature(int value) {
-        nbCurrentCreature = value;
-    }
-
-    public int getNbMaxCreature() {
-        return nbMaxCreature;
-    }
-
-    public int getCleanlinessLevel() {
-        return cleanlinessLevel;
-    }
-
-    public Object getAnimalType() {
-        return animalType;
-    }
     public void setCreatureList(ArrayList<Creature> creatureList) {
         this.creatureList = creatureList;
+    }
 
-    protected void setEnclosureType(String type){
+    protected void setEnclosureType(Type type){
         this.type = type;
     }
 
     public Type getEnclosureType() {
         return type;
     }
-
-    public void setAnimalType(Object animalType) {
-        this.animalType = animalType;
-    }
+        public void setAnimalType(Object animalType) {
+            this.animalType = animalType;
+        }
 
     public void clean(int cleanlinessLevel) {
         if (cleanlinessLevel > 3) {
@@ -168,6 +150,26 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
                 ", life=" + life +
                 ", hp=" + hp +
                 '}';
+    }
+
+    public int getNbCurrentCreature() {
+        return nbCurrentCreature;
+    }
+
+    public void setNbCurrentCreature(int value) {
+        nbCurrentCreature = value;
+    }
+
+    public int getNbMaxCreature() {
+        return nbMaxCreature;
+    }
+
+    public int getCleanlinessLevel() {
+        return cleanlinessLevel;
+    }
+
+    public Object getAnimalType() {
+        return animalType;
     }
 }
 

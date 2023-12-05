@@ -2,8 +2,9 @@ package td1.fantasticZoo;
 
 import td1.creature.*;
 import td1.enclosure.*;
+import td1.getOperatingSystem.GetOperatingSystem;
 import td1.zooMaster.ZooMaster;
-import td1.model.getOperatingSystem.GetOperatingSystem;
+
 
 import java.io.IOException;
 import java.util.ArrayList;

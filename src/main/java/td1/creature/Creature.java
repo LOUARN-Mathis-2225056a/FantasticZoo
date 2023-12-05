@@ -1,4 +1,4 @@
-package td1.model.creature;
+package td1.creature;
 
 import td1.enclosure.Enclosure;
 import td1.fileWritter.FileWriter;
