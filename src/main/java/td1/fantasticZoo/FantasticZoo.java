@@ -3,6 +3,7 @@ package td1.fantasticZoo;
 import td1.creature.*;
 import td1.enclosure.*;
 import td1.zooMaster.ZooMaster;
+import td1.model.getOperatingSystem.GetOperatingSystem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,13 +12,13 @@ public class FantasticZoo {
     private String nom;
     private ZooMaster zooMaster;
     private int nbMaxEnclosure;
-    private ArrayList<AbstractEnclosure> listAbstractEnclosures = new ArrayList<AbstractEnclosure>();
+    private ArrayList<AbstractEnclosure<?>> listEnclosure = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
         // Pour avoir le résultat dans une autre fenetre
-        //Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
-        Runtime.getRuntime().exec("cmd /c start cmd.exe");
+        if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
+        else Runtime.getRuntime().exec("cmd /C Get-Content log -Wait ");
 
         // CREATURES
         Dragon drg1 = new Dragon("drg1",false,75,100,1);
@@ -45,23 +46,23 @@ public class FantasticZoo {
         Unicorn uni2 = new Unicorn("uni2",true,18,100,1);
 
     }
-    public ArrayList<AbstractEnclosure> getListAbstractEnclosures() {
-        return listAbstractEnclosures;
+    public ArrayList<AbstractEnclosure<?>> getlistEnclosure() {
+        return listEnclosure;
     }
-    public void addEnclosure(AbstractEnclosure enclosure){
-        listAbstractEnclosures.add(enclosure);
+    public void addEnclosure(AbstractEnclosure<?> enclosure){
+        listEnclosure.add(enclosure);
     }
     public void showEnclosure(){
-        int sizeOfListEnclosure = listAbstractEnclosures.size();
+        int sizeOfListEnclosure = listEnclosure.size();
         System.out.println(
                 "                               ------------------\n" +
                 "                               | LIST ENCLOSURE |\n" +
                 "                               ------------------\n");
         int numberOfEnclosure = 1;
-        String stringUpDown = new String();
-        String stringSide = new String();
-        String stringMid = new String();
-        for (AbstractEnclosure enclosure : listAbstractEnclosures){
+        String stringUpDown = "";
+        String stringSide = "";
+        String stringMid = "";
+        for (AbstractEnclosure<?> enclosure : listEnclosure){
             stringSide += "|             | ";
             if (numberOfEnclosure<10){
                 stringMid += "|      "+numberOfEnclosure+"      | ";
@@ -93,24 +94,22 @@ public class FantasticZoo {
     }
     public void showNBCreature(){
         int count = 0;
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
             count += abstractEnclosure.getCreatureList().size();
         }
         System.out.println("There is a total die " + count + " in the zooFantastic");
     }
     public void showCreature(){
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
             for (Creature creature : abstractEnclosure.getCreatureList()){
-                creature.toString();
+                creature.shortToString();
             }
         }
     }
     public ArrayList<Creature> getAllCreatures(){
         ArrayList<Creature> lCreatures = new ArrayList<Creature>();
-        for (AbstractEnclosure abstractEnclosure : listAbstractEnclosures){
-            for (Creature creature : abstractEnclosure.getCreatureList()){
-                lCreatures.add(creature);
-            }
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
+            lCreatures.addAll(abstractEnclosure.getCreatureList());
         }
         return lCreatures;
     }

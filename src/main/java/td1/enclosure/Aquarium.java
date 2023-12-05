@@ -13,13 +13,13 @@ public class Aquarium extends AbstractEnclosure {
         super(name, surface, nbMaxCreature, creatureList);
         this.depht = depht;
         this.salinity = salinity;
-        setEnclosureType("Swimmer");
+        type = "Swimmer";
     }
     public Aquarium(String name, float surface, int nbMaxCreature, float depht, int salinity) {
         super(name, surface, nbMaxCreature);
         this.depht = depht;
         this.salinity = salinity;
-        setEnclosureType("Swimmer");
+        type = "Swimmer";
     }
 
     public Aquarium() {
@@ -27,31 +27,7 @@ public class Aquarium extends AbstractEnclosure {
     }
 
     @Override
-    public void addCreature(Creature creature){
-        if(getNbCurrentCreature()==getNbMaxCreature()){
-            System.out.println("This enclosure is already full");
-        }
-        else if (creature.getInterface().contains("Swimmer")){
-            if(getAnimalType()!=null){
-                if(creature.getClass() == getAnimalType()){
-                    creatureList.add(creature);
-                    setNbCurrentCreature(getNbCurrentCreature()+1);
-                }else {
-                    System.out.println("You cannot add this type of creature in this enclosure.");
-                }
-            } else{
-                setAnimalType(creature.getClass());
-                creatureList.add(creature);
-                setNbCurrentCreature(getNbCurrentCreature()+1);
-            }
-        } else {
-            System.out.println("You cannot add this creature in this type of enclosure.");
-        }
-    }
-
-    @Override
     public void clean(int cleanlinessLevel) {
-
     }
 
     public int getSalinity() {

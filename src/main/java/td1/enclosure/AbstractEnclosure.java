@@ -4,14 +4,14 @@ import td1.creature.Creature;
 
 import java.util.ArrayList;
 
-public abstract class AbstractEnclosure implements Runnable{
+public abstract class AbstractEnclosure<Type> implements Runnable {
+    protected Type type;
     protected ArrayList<Creature> creatureList = new ArrayList<>();
     private String name;
     private float surface;
     private int nbMaxCreature;
     private int nbCurrentCreature;
     private int cleanlinessLevel = 3;
-    private String type = "";
     private Object animalType = null;
     private Thread life = new Thread(this);
     private int hp = 100;
@@ -23,7 +23,6 @@ public abstract class AbstractEnclosure implements Runnable{
         this.nbMaxCreature = nbMaxCreature;
         nbCurrentCreature = 0;
         creatureList = new ArrayList<>();
-        type = "";
         life.start();
     }
 
@@ -44,18 +43,34 @@ public abstract class AbstractEnclosure implements Runnable{
     }
 
     public void addCreature(Creature creature) {
-
+        if (getNbCurrentCreature() == getNbMaxCreature()) {
+            System.out.println("This enclosure is already full");
+        } else if (creature.getInterface().contains(type.toString())) {
+            if (getAnimalType() != null) {
+                if (creature.getClass() == getAnimalType()) {
+                    creatureList.add(creature);
+                    setNbCurrentCreature(getNbCurrentCreature() + 1);
+                } else {
+                    System.out.println("You cannot add this type of creature in this enclosure.");
+                }
+            } else {
+                setAnimalType(creature.getClass());
+                creatureList.add(creature);
+                setNbCurrentCreature(getNbCurrentCreature() + 1);
+            }
+        } else {
+            System.out.println("You cannot add this creature in this type of enclosure.");
+        }
     }
 
     public void removeCreature(Creature creature) {
         if (creatureList.contains(creature)) {
             creatureList.remove(creature);
             --nbCurrentCreature;
-            if(nbCurrentCreature<=0){
+            if (nbCurrentCreature <= 0) {
                 setAnimalType(null);
             }
-        }
-        else{
+        } else {
             System.out.println("The creature you are trying to remove is not in this enclosure.");
         }
 
@@ -81,17 +96,23 @@ public abstract class AbstractEnclosure implements Runnable{
         return cleanlinessLevel;
     }
 
+    public Object getAnimalType() {
+        return animalType;
+    }
     public void setCreatureList(ArrayList<Creature> creatureList) {
         this.creatureList = creatureList;
-    }
 
     protected void setEnclosureType(String type){
         this.type = type;
     }
 
-    public Object getAnimalType() { return animalType;}
+    public Type getEnclosureType() {
+        return type;
+    }
 
-    public void setAnimalType(Object animalType) {this.animalType = animalType;}
+    public void setAnimalType(Object animalType) {
+        this.animalType = animalType;
+    }
 
     public void clean(int cleanlinessLevel) {
         if (cleanlinessLevel > 3) {
@@ -114,9 +135,10 @@ public abstract class AbstractEnclosure implements Runnable{
     public void setCleanlinessLevel(int cleanlinessLevel) {
         this.cleanlinessLevel = cleanlinessLevel;
     }
-    public void addFood(int quantity){
+
+    public void addFood(int quantity) {
         feeder = feeder + quantity;
-        if (feeder > 500){
+        if (feeder > 500) {
             feeder = 500;
         }
     }
@@ -126,11 +148,12 @@ public abstract class AbstractEnclosure implements Runnable{
     }
 
     public void setFeeder(int feeder) {
-        if (feeder > 500){
+        if (feeder > 500) {
             feeder = 500;
         }
         this.feeder = feeder;
     }
+
     @Override
     public String toString() {
         return "AbstractEnclosure{" +
