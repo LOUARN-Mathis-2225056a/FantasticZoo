@@ -18,6 +18,8 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
         FileWriter.writeInFile(getName() + " reborned !");
         setHealth(100);
         setAge(0);
+        setLife(new Thread(this));
+        getLife().start();
     }
     
     @Override
