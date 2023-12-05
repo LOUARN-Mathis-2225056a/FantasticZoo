@@ -16,9 +16,9 @@ public class LycanthropeColony {
         Lycanthrope2 lycanTwo = new LycanthropeEnMeute(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,"Alpha",lycanPackOne);
         lycanTwo.ShowToString();
 
-        lycanTwo.emitHowl(new Membership(0,true));
+        lycanTwo.emitHowl(new Membership(true));
         lycanTwo.emitHowl(new Submission());
         lycanTwo.emitHowl(new Aggressiveness());
-        lycanTwo.emitHowl(new Domination());
+        lycanTwo.emitHowl(new Domination(lycanOne));
     }
 }
