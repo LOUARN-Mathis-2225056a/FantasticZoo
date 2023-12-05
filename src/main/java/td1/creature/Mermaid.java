@@ -4,8 +4,8 @@ import java.util.Random;
 import td1.fileWritter.FileWriter;
 
 public class Mermaid extends Viviparous implements Swimmer{
-    public Mermaid(String name, boolean sexe, float weight, float height, int age){
-        super(name,sexe,weight,height,age);
+    public Mermaid(String name, boolean sex, float weight, float height, int age){
+        super(name,sex,weight,height,age);
         setEatingValue(6);
     }
 

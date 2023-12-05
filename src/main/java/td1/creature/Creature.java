@@ -6,10 +6,9 @@ import td1.fileWritter.FileWriter;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
-
     private Thread life;
     private String name;
-    private boolean sexe;
+    private boolean sex;
     private float weight;
     private float height;
     private int hunger = 100;
@@ -20,18 +19,18 @@ public abstract class Creature implements Runnable {
     private Enclosure currentEnclosure;
 
     /* CONSTRUCTOR */
-    public Creature(String name, boolean sexe, float weight, float height, int age) {
+    public Creature(String name, boolean sex, float weight, float height, int age) {
         this.name = name;
-        this.sexe = sexe;
+        this.sex = sex;
         this.weight = weight;
         this.height = height;
         this.age = age;
         life = new Thread(this);
         life.start();
     }
-    public Creature(String name, boolean sexe, float weight, float height, int age, Enclosure currentEnclosure) {
+    public Creature(String name, boolean sex, float weight, float height, int age, Enclosure currentEnclosure) {
         this.name = name;
-        this.sexe = sexe;
+        this.sex = sex;
         this.weight = weight;
         this.height = height;
         this.age = age;
@@ -194,7 +193,7 @@ public abstract class Creature implements Runnable {
     public String toString() {
         return this.getClass().getSimpleName() + "{\n" +
                 "    name : " + name + "\n" +
-                "    sexe : " + sexe + "\n" +
+                "    sex : " + sex + "\n" +
                 "    weight : " + weight + "\n" +
                 "    height : " + height + "\n" +
                 "    hunger : " + hunger + "%" + "\n" +
