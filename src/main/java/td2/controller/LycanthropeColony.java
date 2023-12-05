@@ -3,7 +3,10 @@ package td2.controller;
 import td2.model.LycanPack;
 import td2.model.lycan.Lycanthrope2;
 import td2.model.lycan.LycanthropeEnMeute;
+import td2.model.roar.Aggressiveness;
+import td2.model.roar.Domination;
 import td2.model.roar.Membership;
+import td2.model.roar.Submission;
 
 public class LycanthropeColony {
     static public void main(String[] arg){
@@ -14,5 +17,8 @@ public class LycanthropeColony {
         lycanTwo.ShowToString();
 
         lycanTwo.emitHowl(new Membership(0,true));
+        lycanTwo.emitHowl(new Submission());
+        lycanTwo.emitHowl(new Aggressiveness());
+        lycanTwo.emitHowl(new Domination());
     }
 }

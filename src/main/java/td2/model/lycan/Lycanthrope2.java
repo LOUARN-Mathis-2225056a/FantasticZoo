@@ -36,14 +36,15 @@ public class Lycanthrope2 {
     }
     public void ShowToString(){System.out.println(this.toString());}
     public void emitHowl(Roar roar){
+        // je ne sais pas si je fait le comportement des émission
         if (roar.getClass() == Domination.class){
-            
+            System.out.println(roar.getWhatISay());
         } else if (roar.getClass() == Submission.class) {
-            
+            System.out.println(roar.getWhatISay());
         } else if (roar.getClass() == Aggressiveness.class) {
-            
+            System.out.println(roar.getWhatISay());
         } else if (roar.getClass() == Membership.class) {
-            System.out.println(((Membership) roar).getWhatISay());
+            System.out.println(roar.getWhatISay());
         }
     }
 }
