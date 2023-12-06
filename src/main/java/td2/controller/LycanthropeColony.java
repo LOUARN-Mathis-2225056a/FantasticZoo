@@ -15,7 +15,6 @@ public class LycanthropeColony {
     static public void main(String[] arg){
         Enclosure2 encloOne = new Enclosure2();
         Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloOne);
-
         LycanPack lycanPackOne = new LycanPack(encloOne);
         LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
         LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);

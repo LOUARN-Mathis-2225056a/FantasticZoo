@@ -1,5 +1,6 @@
 package td2.model.lycan;
 
+import td2.model.Enclosure2;
 import td2.model.LycanPack;
 
 import java.util.ArrayList;
@@ -15,6 +16,18 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     public LycanthropeInPack(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity, int rank, LycanPack lycanPack) {
         super(sex, age, strength, domination, level, impetuosity);
         this.rank = rank;
+        this.lycanPack = lycanPack;
+        lycanPack.addLycan(this);
+        super.setThread(new Thread(this));
+        super.startThread();
+    }
+    public LycanthropeInPack(LycanthropeSolitary lycanthropeSolitary, LycanPack lycanPack){
+        super(  lycanthropeSolitary.isSex(),
+                lycanthropeSolitary.getAge(),
+                lycanthropeSolitary.getStrength(),
+                lycanthropeSolitary.getDomination(),
+                lycanthropeSolitary.getLevel(),
+                lycanthropeSolitary.getImpetuosity());
         this.lycanPack = lycanPack;
         lycanPack.addLycan(this);
         super.setThread(new Thread(this));
