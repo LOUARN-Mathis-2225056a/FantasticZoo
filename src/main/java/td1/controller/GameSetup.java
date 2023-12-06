@@ -14,16 +14,27 @@ import java.util.Scanner;
 
 public class GameSetup {
     private static GameSetup instance;
-
     private String zooMasterName;
+    private String zooName;
+    private ZooMaster zooMaster;
 
-    public void setZooMasterName() {
+    public void setupZooMaster(FantasticZoo zoo) {
         System.out.print("Choose your name : ");
         Scanner textIn = new Scanner(System.in);
         zooMasterName = textIn.nextLine();
+        System.out.print("Choose your gender (0 male, 1 female) : ");
+        boolean zooMasterGender = Boolean.parseBoolean(textIn.nextLine());
+        System.out.print("Choose your age : ");
+        int zooMasterAge = Integer.parseInt(textIn.nextLine());
+        System.out.print("Choose the name of your fantastic zoo : ");
+        zooName = textIn.nextLine();
+        zoo.setNom(zooName);
+        zooMaster = new ZooMaster(zooMasterName, zooMasterGender, zooMasterAge,zoo);
+        zoo.setZooMaster(zooMaster);
+        System.out.println("/!\\ Your can create a maximum of 5 enclosures, you can still set this maximum in the mena while playing. /!\\");
     }
 
-    public void setChooseGameMode() throws Exception {
+    public void setChooseGameMode() {
         ShowInTerminal.getInstance().showWelcomeMessage();
         Scanner textIn = new Scanner(System.in);
         int gameMode = Integer.parseInt(textIn.nextLine());
@@ -35,7 +46,7 @@ public class GameSetup {
     }
 
     private void execGroundOnlyScenario() {
-        FantasticZoo fantasticZoo = new FantasticZoo();
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -67,8 +78,8 @@ public class GameSetup {
         game.start();
     }
 
-    private void execFlyerOnlyScenario() throws Exception {
-        FantasticZoo fantasticZoo = new FantasticZoo();
+    private void execFlyerOnlyScenario() {
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -93,8 +104,8 @@ public class GameSetup {
         game.start();
     }
 
-    private void execSwimmerOnlyScenario() throws Exception {
-        FantasticZoo fantasticZoo = new FantasticZoo();
+    private void execSwimmerOnlyScenario() {
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 

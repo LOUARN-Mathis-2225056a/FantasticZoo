@@ -30,6 +30,7 @@ public class Lycanthrope2{
         isOn = true;
     }
 
+
     public boolean isOn() {
         return isOn;
     }

@@ -6,7 +6,8 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
     Enclosure2 enclosure;
     public LycanthropeSolitary(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity, Enclosure2 enclosure) {
         super(sex, age, strength, domination, level, impetuosity);
-        setEnclosure(enclosure);
+        this.enclosure = enclosure;
+        enclosure.addLycanSolitary(this);
         super.setThread(new Thread(this));
         super.startThread();
     }
@@ -17,7 +18,8 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
                 lycanthropeInPack.getDomination(),
                 lycanthropeInPack.getLevel(),
                 lycanthropeInPack.getImpetuosity());
-        setEnclosure(enclosure);
+        this.enclosure = enclosure;
+        enclosure.addLycanSolitary(this);
         super.setThread(new Thread(this));
         super.startThread();
     }
@@ -27,9 +29,15 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
         }
     }
     public void setEnclosure(Enclosure2 enclosure) {
+        this.enclosure.removeLycanSolitary(this);
         this.enclosure = enclosure;
         enclosure.addLycanSolitary(this);
     }
+
+    public Enclosure2 getEnclosure() {
+        return enclosure;
+    }
+
     @Override
     public String toString(){
         return super.toString()
