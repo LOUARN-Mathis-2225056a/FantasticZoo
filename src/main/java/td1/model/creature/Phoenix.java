@@ -42,28 +42,37 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
         while (getHealth() > 0) {
             if(getAge() >= 0 && !isPaused()){
                 Random percentage = new Random();
-                if (percentage.nextInt(4) == 0) {
-                    consumeFood(10);
+                if(!isSleep()){
+                    if (percentage.nextInt(4) == 0) {
+                        consumeFood(10);
+                    }
+
+                    if (percentage.nextInt(101) < 8) {
+                        setHealth(getHealth() - 5);
+                    }
+
+                    if(percentage.nextInt(150) < 100-getHunger()){
+                        checkForFood(getCurrentEnclosure());
+                    }
+
+                    if (isSex() && percentage.nextInt(500) == 1){
+                        giveBirth();
+                    }
+
+                    if (percentage.nextInt(101) < 25) {
+                        FileWriter.writeInFile(creatureFly());
+                    }
                 }
-                if (percentage.nextInt(101) < 8) {
-                    setHealth(getHealth() - 5);
-                }
-                if(percentage.nextInt(150) < 100-getHunger()){
-                    checkForFood(getCurrentEnclosure());
-                }
+                // The creature wakes up
                 if (percentage.nextInt(101) < 10 && isSleep()) {
                     wake();
                 }
+                // The creature falls asleep
                 else if(percentage.nextInt(101) < 10 && !isSleep()){
                     sleep();
                 }
-                if (isSex() && percentage.nextInt(500) == 1){
-                    giveBirth();
-                }
-                if (percentage.nextInt(101) < 25) {
-                    FileWriter.writeInFile(creatureFly());
-                }
 
+                // A little cooldown between actions to not spam the logs
                 int cooldown = (3+percentage.nextInt(5))*1000;
 
                 try {
