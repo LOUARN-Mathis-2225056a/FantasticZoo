@@ -120,77 +120,6 @@ public abstract class Creature implements Runnable {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
-
-    /* METHOD */
-    public void eat() {
-        if (hunger <= 100-eatingValue && !sleep) {
-            hunger += eatingValue;
-            FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
-        } else if (!sleep) {
-            FileWriter.writeInFile(name + " is not hungry.","logs");
-        }
-        else {
-            FileWriter.writeInFile(name + " is sleeping : it can not eat right now !", "logs");
-        }
-    }
-    public void consumeFood(int value) {
-        if (value > hunger) {
-            hunger = 0;
-            health -= 1; /* take damage */
-            FileWriter.writeInFile(name + " is starving.\n","logs");
-        } else {
-            hunger -= value;
-            FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
-        }
-    }
-    public void checkForFood(AbstractEnclosure<?> enclosure){
-        if(enclosure.getFeeder() > eatingValue){
-            eat();
-            enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
-        }
-    }
-    public void emitSound() {
-        FileWriter.writeInFile(name + " emits a sound.");
-    }
-
-    public void heal() {
-        String str = null;
-        if (health <= 90) {
-            health += 10;
-            FileWriter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
-        } else {
-            FileWriter.writeInFile(name + " is already healthy.\n","logs");
-        }
-    }
-
-    public void wake() {
-        if (sleep) {
-            sleep = false;
-            FileWriter.writeInFile(name + " wakes up.\n","logs");
-        } else {
-            FileWriter.writeInFile(name + " is already awake.\n","logs");
-        }
-    }
-
-    public void sleep() {
-        if (!sleep) {
-            sleep = true;
-            FileWriter.writeInFile(name + " falls asleep.\n","logs");
-        } else {
-            FileWriter.writeInFile(name + " is already asleep.\n","logs");
-        }
-    }
-
-    public String getInterface() {
-        String implementedInterface = Arrays.toString(getClass().getInterfaces());
-        if (implementedInterface.contains("Runner") ||
-                implementedInterface.contains("Flyer") ||
-                implementedInterface.contains("Swimmer")) {
-            return implementedInterface;
-        }
-        return "none";
-    }
-
     public Thread getLife() {
         return life;
     }
@@ -205,6 +134,114 @@ public abstract class Creature implements Runnable {
 
     public int getEatingValue() {return eatingValue;}
 
+    /**
+     * Make the creature eat, therefore decreases its hunger value. Creature can't eat while sleeping
+     */
+    public void eat() {
+        if (hunger <= 100-eatingValue && !sleep) {
+            hunger += eatingValue;
+            FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
+        } else if (!sleep) {
+            FileWriter.writeInFile(name + " is not hungry.","logs");
+        }
+        else {
+            FileWriter.writeInFile(name + " is sleeping : it can not eat right now !", "logs");
+        }
+    }
+
+    /**
+     * Simulates the hunger. Increases hunger value
+     *
+     * @param value how much the creature's hunger increases
+     */
+    public void consumeFood(int value) {
+        if (value > hunger) {
+            hunger = 0;
+            health -= 1; /* take damage */
+            FileWriter.writeInFile(name + " is starving.\n","logs");
+        } else {
+            hunger -= value;
+            FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
+        }
+    }
+
+    /**
+     * Makes the creature get its food from the enclosure
+     *
+     * @param enclosure in what enclosure the creature checks for food
+     */
+    public void checkForFood(AbstractEnclosure<?> enclosure){
+        if(enclosure.getFeeder() > eatingValue){
+            eat();
+            enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
+        }
+    }
+
+    /**
+     * Makes the creature emit a sound
+     */
+    public void emitSound() {
+        FileWriter.writeInFile(name + " emits a sound.");
+    }
+
+    /**
+     * Increases the creature's health points
+     */
+    public void heal() {
+        String str = null;
+        if (health <= 90) {
+            health += 10;
+            FileWriter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
+        } else {
+            FileWriter.writeInFile(name + " is already healthy.\n","logs");
+        }
+    }
+
+    /**
+     * Wakes up the creature
+     */
+    public void wake() {
+        if (sleep) {
+            sleep = false;
+            FileWriter.writeInFile(name + " wakes up.\n","logs");
+        } else {
+            FileWriter.writeInFile(name + " is already awake.\n","logs");
+        }
+    }
+
+    /**
+     * Makes the creature fall asleep
+     */
+    public void sleep() {
+        if (!sleep) {
+            sleep = true;
+            FileWriter.writeInFile(name + " falls asleep.\n","logs");
+        } else {
+            FileWriter.writeInFile(name + " is already asleep.\n","logs");
+        }
+    }
+
+    /**
+     * Returns the creature's interface.
+     * Is used to sort creatures by their interface and allow them in an enclosure
+     *
+     * @return the interface of the creature's class
+     */
+    public String getInterface() {
+        String implementedInterface = Arrays.toString(getClass().getInterfaces());
+        if (implementedInterface.contains("Runner") ||
+                implementedInterface.contains("Flyer") ||
+                implementedInterface.contains("Swimmer")) {
+            return implementedInterface;
+        }
+        return "none";
+    }
+
+    /**
+     * Returns an easier to read toString
+     *
+     * @return an easier to read toString
+     */
     public String shortToString() {
         return name + " aged of " + age + "years old.";
     }
