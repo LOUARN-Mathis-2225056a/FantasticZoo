@@ -47,7 +47,7 @@ public class FantasticZoo {
         ZooMaster zm = new ZooMaster("Suricate",false,18,fz);
         Thread Tzm = new Thread(zm);
 
-        // CREATURES
+        // Create creatures
         Dragon drg1 = new Dragon("drg1",false,75,100,1);
         Dragon drg2 = new Dragon("drg2",true,75,100,1);
 
@@ -122,6 +122,7 @@ public class FantasticZoo {
         fz.addEnclosure(e2);
         fz.addEnclosure(e3);
 
+        // Start the zoo
         Tzm.run();
     }
     public ArrayList<AbstractEnclosure<?>> getlistEnclosure() {
