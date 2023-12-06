@@ -2,15 +2,13 @@ package td1.model.fantasticZoo;
 
 
 import td1.controller.GameSetup;
+import td1.controller.ZooController;
 import td1.model.creature.Creature;
 import td1.model.enclosure.AbstractEnclosure;
-import td1.model.enclosure.Aquarium;
-import td1.model.enclosure.Aviary;
 import td1.model.zooMaster.ZooMaster;
 import td1.view.OpenNewTerminal;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class FantasticZoo {
@@ -19,72 +17,57 @@ public class FantasticZoo {
     private int nbMaxEnclosure;
     private ArrayList<AbstractEnclosure<?>> listEnclosure = new ArrayList<>();
 
+    public FantasticZoo(String nom, ZooMaster zooMaster, int nbMaxEnclosure) {
+        this.nom = nom;
+        this.zooMaster = zooMaster;
+        this.nbMaxEnclosure = nbMaxEnclosure;
+    }
+    public FantasticZoo(){}
+
     public static void main(String[] args) throws Exception {
-        GameSetup.getInstance().setZooMasterName();
+        GameSetup.getInstance().setupZooMaster(new FantasticZoo());
         GameSetup.getInstance().setChooseGameMode();
         OpenNewTerminal.execute();
 
     }
-    public ArrayList<AbstractEnclosure<?>> getlistEnclosure() {
+
+    public ArrayList<AbstractEnclosure<?>> getEnclosureList() {
         return listEnclosure;
     }
-    public void addEnclosure(AbstractEnclosure<?> enclosure){
+
+    public void addEnclosure(AbstractEnclosure<?> enclosure) {
         listEnclosure.add(enclosure);
     }
-    public void showEnclosure(){
-//        int numberOfEnclosure = 1;
-//        String stringUpDown = "";
-//        String stringSide = "";
-//        String stringMid = "";
-//        for (AbstractEnclosure<?> enclosure : listEnclosure){
-//            stringSide += "|             | ";
-//            if (numberOfEnclosure<10){
-//                stringMid += "|      "+numberOfEnclosure+"      | ";
-//            }
-//            else{
-//                stringMid += "|     "+numberOfEnclosure+"      | ";
-//            }
-//            if (enclosure.getClass() == Aquarium.class){
-//                stringUpDown += "~~~~~~~~~~~~~~~ ";
-//            }
-//            else if (enclosure.getClass() == Aviary.class){
-//                stringUpDown += "ooooooooooooooo ";
-//            }
-//            else{
-//                stringUpDown += "--------------- ";
-//            }
-//            if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
-//                System.out.println(stringUpDown);
-//                System.out.println(stringSide);
-//                System.out.println(stringMid);
-//                System.out.println(stringSide);
-//                System.out.println(stringUpDown);
-//                stringUpDown = "";
-//                stringMid = "";
-//                stringSide = "";
-//            }
-//            ++numberOfEnclosure;
-//        }
+
+    public void showEnclosure() {
+        ZooController.getInstance().showEnclosure(this);
     }
-    public void showNBCreature(){
-        int count = 0;
-        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
-            count += abstractEnclosure.getCreatureList().size();
-        }
-        System.out.println("There is a total die " + count + " in the zooFantastic");
+
+    public void showNBCreature() {
+        ZooController.getInstance().showTotalNumberOfCreature(this);
     }
-    public void showCreature(){
-        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
-            for (Creature creature : abstractEnclosure.getCreatureList()){
-                creature.shortToString();
-            }
-        }
+
+    public void showCreature() {
+        ZooController.getInstance().showAllCreatures(this);
     }
-    public ArrayList<Creature> getAllCreatures(){
+
+    public ArrayList<Creature> getAllCreatures() {
         ArrayList<Creature> lCreatures = new ArrayList<Creature>();
-        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure){
+        for (AbstractEnclosure<?> abstractEnclosure : listEnclosure) {
             lCreatures.addAll(abstractEnclosure.getCreatureList());
         }
         return lCreatures;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setZooMaster(ZooMaster zooMaster) {
+        this.zooMaster = zooMaster;
+    }
+
+    public void setNbMaxEnclosure(int nbMaxEnclosure) {
+        this.nbMaxEnclosure = nbMaxEnclosure;
     }
 }
