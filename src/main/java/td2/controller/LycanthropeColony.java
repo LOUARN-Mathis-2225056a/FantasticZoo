@@ -1,5 +1,6 @@
 package td2.controller;
 
+import td2.model.AlphaCouple;
 import td2.model.Enclosure2;
 import td2.model.LycanPack;
 import td2.model.lycan.Lycanthrope2;
@@ -17,7 +18,10 @@ public class LycanthropeColony {
         lycanOne.ShowToString();
         LycanPack lycanPackOne = new LycanPack(encloOne);
         LycanthropeEnMeute lycanTwo = new LycanthropeEnMeute(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,"Alpha",lycanPackOne);
+        LycanthropeEnMeute lycanTree = new LycanthropeEnMeute(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,"Alpha",lycanPackOne);
+        AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
         lycanTwo.ShowToString();
+        coupleOne.showToString();
 
         lycanTwo.emitHowl(new Membership(true));
         lycanTwo.emitHowl(new Submission());

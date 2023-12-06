@@ -27,6 +27,5 @@ public class LycanthropeEnMeute extends Lycanthrope2 implements Runnable{
         lycanPack.removeLycan(this);
         LycanthropeSolitary newLycan = new LycanthropeSolitary(this,lycanPack.getEnclosure());
         this.setOn(false);
-        System.out.println("ok");
     }
 }
