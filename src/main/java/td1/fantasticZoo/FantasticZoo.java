@@ -6,6 +6,7 @@ import td1.getOperatingSystem.GetOperatingSystem;
 import td1.zooMaster.ZooMaster;
 
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,7 +18,28 @@ public class FantasticZoo {
 
     public static void main(String[] args) throws IOException {
 
-        // Pour avoir le résultat dans une autre fenetre
+        // Clearing the "logs" file
+
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new java.io.FileWriter("logs", false));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            writer.newLine();
+            writer.write(" ");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Show the result in another window
         if (GetOperatingSystem.getOperatingSystem().contains("Linux")) Runtime.getRuntime().exec("/usr/bin/x-terminal-emulator --disable-factory -e tail -F logs");
         else Runtime.getRuntime().exec("cmd /C Get-Content log -Wait ");
 

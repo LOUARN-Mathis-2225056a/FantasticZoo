@@ -100,6 +100,13 @@ public class ZooMaster implements Runnable{
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");
             }
+
+            Scanner textIn2 = new Scanner(System.in);
+            String action2 = textIn2.nextLine();
+
+            // waiting for message to enter
+            while (action2.equals(null)){}
+
             for (int i=0; i<100;++i){
                 System.out.println("\n");
             }
