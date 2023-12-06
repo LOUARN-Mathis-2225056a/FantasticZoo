@@ -65,7 +65,6 @@ public class ZooMaster implements Runnable{
                 else {
                     System.out.println("This enclosure is not empty!");
                 }
-
             } else if (action.equals("Feed")) {
                 System.out.print("Choose your enclosure number to feed creature in enclosure : ");
                 Scanner textIn2 = new Scanner(System.in);
@@ -110,11 +109,9 @@ public class ZooMaster implements Runnable{
     public void checkEnclosure(AbstractEnclosure<?> abstractEnclosure){
         System.out.println(abstractEnclosure);
     }
-
     public void cleanEnclosure(AbstractEnclosure<?> abstractEnclosure, int cleanlinessLevel){
         abstractEnclosure.clean(cleanlinessLevel);
     }
-
     public void feed(Enclosure enclosure, int quantity){
         enclosure.addFood(quantity);}
 
