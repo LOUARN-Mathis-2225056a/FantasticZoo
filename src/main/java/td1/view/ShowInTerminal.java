@@ -1,6 +1,9 @@
 package td1.view;
 
 import td1.model.enclosure.AbstractEnclosure;
+import td1.model.enclosure.Aquarium;
+import td1.model.enclosure.Aviary;
+import td1.model.fantasticZoo.FantasticZoo;
 
 public class ShowInTerminal {
     private static ShowInTerminal instance;
@@ -33,23 +36,6 @@ public class ShowInTerminal {
             topAndBottomSide+="-";
         }
         text+=topAndBottomSide + "\n | " + title.toUpperCase() + " |\n" + topAndBottomSide;
-        System.out.println(text);
-    }
-
-    public void showEnclosure(AbstractEnclosure<?> enclosure, int enclosureNumber){
-        String topAndBottomSide = "";
-        switch ((String) enclosure.getType()){
-            case "Runner" -> topAndBottomSide = "--------------- ";
-            case "Swimmer" -> topAndBottomSide = "~~~~~~~~~~~~~~ ";
-            case "Flyer" -> topAndBottomSide = "ooooooooooooooo ";
-        }
-        String text = "" + topAndBottomSide;
-        String blankLine = "|           |\n";
-        if(enclosureNumber>=10){
-            String numberLine = "|     "+enclosureNumber+"    |\n";
-        }
-        String numberLine = "|     "+enclosureNumber+"     |\n";
-        text+= blankLine + blankLine + numberLine + blankLine + blankLine + topAndBottomSide;
         System.out.println(text);
     }
 
