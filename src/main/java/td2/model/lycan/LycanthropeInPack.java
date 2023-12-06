@@ -14,6 +14,7 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
         super(sex, age, strength, domination, level, impetuosity);
         this.rank = rank;
         this.lycanPack = lycanPack;
+        lycanPack.addLycan(this);
         super.setThread(new Thread(this));
         super.startThread();
     }

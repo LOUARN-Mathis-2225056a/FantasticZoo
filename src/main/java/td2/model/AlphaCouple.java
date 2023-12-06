@@ -17,9 +17,9 @@ public class AlphaCouple {
     @Override
     public String toString() {
         return "ALPHA COUPLE : \n"
-                + "--MALE--\n"
+                + "    --MALE--\n"
                 + male
-                + "--FEMALE--\n"
+                + "    --FEMALE--\n"
                 +female;
     }
     public void showToString(){System.out.println(this);}
