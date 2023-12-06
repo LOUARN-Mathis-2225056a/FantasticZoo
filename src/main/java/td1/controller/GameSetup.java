@@ -7,7 +7,7 @@ import td1.model.enclosure.Enclosure;
 import td1.model.fantasticZoo.FantasticZoo;
 import td1.model.timeControl.TimeControl;
 import td1.model.zooMaster.ZooMaster;
-import td1.view.ShowMessage;
+import td1.view.ShowInTerminal;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class GameSetup {
     }
 
     public void setChooseGameMode() throws Exception {
-        ShowMessage.getInstance().showWelcomeMessage();
+        ShowInTerminal.getInstance().showWelcomeMessage();
         Scanner textIn = new Scanner(System.in);
         int gameMode = Integer.parseInt(textIn.nextLine());
         switch (gameMode) {

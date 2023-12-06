@@ -32,46 +32,39 @@ public class FantasticZoo {
         listEnclosure.add(enclosure);
     }
     public void showEnclosure(){
-        int sizeOfListEnclosure = listEnclosure.size();
-        System.out.println(
-                """
-                                                       ------------------
-                                                       | LIST ENCLOSURE |
-                                                       ------------------
-                        """);
-        int numberOfEnclosure = 1;
-        String stringUpDown = "";
-        String stringSide = "";
-        String stringMid = "";
-        for (AbstractEnclosure<?> enclosure : listEnclosure){
-            stringSide += "|             | ";
-            if (numberOfEnclosure<10){
-                stringMid += "|      "+numberOfEnclosure+"      | ";
-            }
-            else{
-                stringMid += "|     "+numberOfEnclosure+"      | ";
-            }
-            if (enclosure.getClass() == Aquarium.class){
-                stringUpDown += "~~~~~~~~~~~~~~~ ";
-            }
-            else if (enclosure.getClass() == Aviary.class){
-                stringUpDown += "ooooooooooooooo ";
-            }
-            else{
-                stringUpDown += "--------------- ";
-            }
-            if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
-                System.out.println(stringUpDown);
-                System.out.println(stringSide);
-                System.out.println(stringMid);
-                System.out.println(stringSide);
-                System.out.println(stringUpDown);
-                stringUpDown = "";
-                stringMid = "";
-                stringSide = "";
-            }
-            ++numberOfEnclosure;
-        }
+//        int numberOfEnclosure = 1;
+//        String stringUpDown = "";
+//        String stringSide = "";
+//        String stringMid = "";
+//        for (AbstractEnclosure<?> enclosure : listEnclosure){
+//            stringSide += "|             | ";
+//            if (numberOfEnclosure<10){
+//                stringMid += "|      "+numberOfEnclosure+"      | ";
+//            }
+//            else{
+//                stringMid += "|     "+numberOfEnclosure+"      | ";
+//            }
+//            if (enclosure.getClass() == Aquarium.class){
+//                stringUpDown += "~~~~~~~~~~~~~~~ ";
+//            }
+//            else if (enclosure.getClass() == Aviary.class){
+//                stringUpDown += "ooooooooooooooo ";
+//            }
+//            else{
+//                stringUpDown += "--------------- ";
+//            }
+//            if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
+//                System.out.println(stringUpDown);
+//                System.out.println(stringSide);
+//                System.out.println(stringMid);
+//                System.out.println(stringSide);
+//                System.out.println(stringUpDown);
+//                stringUpDown = "";
+//                stringMid = "";
+//                stringSide = "";
+//            }
+//            ++numberOfEnclosure;
+//        }
     }
     public void showNBCreature(){
         int count = 0;

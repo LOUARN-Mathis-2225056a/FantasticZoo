@@ -183,5 +183,9 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
     public Object getAnimalType() {
         return animalType;
     }
+
+    public Type getType() {
+        return type;
+    }
 }
 
