@@ -1,5 +1,5 @@
 package td1.model.creature;
-import td1.model.fileWritter.FileWriter;
+import td1.view.fileWritter.FileWriter;
 
 import java.util.Random;
 

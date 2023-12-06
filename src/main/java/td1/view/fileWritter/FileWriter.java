@@ -1,4 +1,4 @@
-package td1.model.fileWritter;
+package td1.view.fileWritter;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

@@ -4,7 +4,6 @@ import td1.model.creature.Creature;
 import td1.model.enclosure.AbstractEnclosure;
 import td1.model.enclosure.Enclosure;
 import td1.model.fantasticZoo.FantasticZoo;
-import td1.model.fileWritter.FileWriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;

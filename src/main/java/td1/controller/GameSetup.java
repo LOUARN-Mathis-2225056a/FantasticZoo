@@ -7,6 +7,7 @@ import td1.model.enclosure.Enclosure;
 import td1.model.fantasticZoo.FantasticZoo;
 import td1.model.timeControl.TimeControl;
 import td1.model.zooMaster.ZooMaster;
+import td1.view.ShowMessage;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,23 +24,7 @@ public class GameSetup {
     }
 
     public void setChooseGameMode() throws Exception {
-        System.out.println(
-                """
-                                 _    _      _                        \s
-                                | |  | |    | |                       \s
-                                | |  | |   ___| | ___ ___  _ __ ___   ___
-                                | |/\\| |/ _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\
-                                \\  /\\  /  __/ | (_| (_) | | | | | |  __/
-                                 \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|
-                        """);
-        System.out.println("""
-                This game include 3 premades situations.
-                - 1 : Only ground enclosures are made with ground creatures
-                - 2 : Only aviary are made with flying creatures
-                - 3 : Only aqurium ares made with sea creatures
-                type 1, 2 or 3 to select the mode you want to play.
-                /!\\ you can I any case add new enclosure types.
-                """);
+        ShowMessage.getInstance().showWelcomeMessage();
         Scanner textIn = new Scanner(System.in);
         int gameMode = Integer.parseInt(textIn.nextLine());
         switch (gameMode) {

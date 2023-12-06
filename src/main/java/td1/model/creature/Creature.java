@@ -1,9 +1,8 @@
 package td1.model.creature;
 
 import td1.model.enclosure.AbstractEnclosure;
-import td1.model.fileWritter.FileWriter;
+import td1.view.fileWritter.FileWriter;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {

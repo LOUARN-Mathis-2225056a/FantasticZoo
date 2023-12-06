@@ -6,7 +6,6 @@ import td1.model.creature.Creature;
 import td1.model.enclosure.AbstractEnclosure;
 import td1.model.enclosure.Aquarium;
 import td1.model.enclosure.Aviary;
-import td1.model.getOperatingSystem.GetOperatingSystem;
 import td1.model.zooMaster.ZooMaster;
 import td1.view.OpenNewTerminal;
 
