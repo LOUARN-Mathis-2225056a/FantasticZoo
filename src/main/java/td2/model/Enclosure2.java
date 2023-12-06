@@ -8,9 +8,11 @@ public class Enclosure2 {
     private LycanPack lycanPack;
     private int ID;
     static int nbEnclosure = 0;
-    private ArrayList<LycanthropeSolitary> listSolitary = new ArrayList<>();
+    private ArrayList<LycanthropeSolitary> listSolitary;
 
     public Enclosure2(){
+        lycanPack = new LycanPack(this);
+        listSolitary = new ArrayList<LycanthropeSolitary>();
         nbEnclosure+=1;
         ID = nbEnclosure;
     }

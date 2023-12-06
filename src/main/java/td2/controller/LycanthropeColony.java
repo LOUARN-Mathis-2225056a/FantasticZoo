@@ -16,21 +16,39 @@ import java.util.ArrayList;
 public class LycanthropeColony {
     private ArrayList<Enclosure2> listEnclosure= new ArrayList<Enclosure2>();
     static public void main(String[] arg){
+
+        // colony creation
+        LycanthropeColony lycanthropeColony = new LycanthropeColony();
+
+        // enclosure creation
         Enclosure2 encloOne = new Enclosure2();
+
+        // enclosure in colony
+        lycanthropeColony.addEnclosure(encloOne);
+
+        // LycanthropeSolitary creation
         Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloOne);
-        LycanPack lycanPackOne = new LycanPack(encloOne);
-        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
-        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
-        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,5,lycanPackOne);
-        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,lycanPackOne);
+
+        // LycanthropeInPack creation
+
+        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,5,encloOne.getLycanPack());
+        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloOne.getLycanPack());
+
+        // test zone
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
-        lycanPackOne.setAlphaCouple(coupleOne);
+        encloOne.getLycanPack().setAlphaCouple(coupleOne);
         coupleOne.giveBirth();
         coupleOne.giveBirth();
-        lycanPackOne.showToString();
+        encloOne.getLycanPack().showToString();
+        lycanthropeColony.showAllLycan();
     }
 
-    private void showAllLycan(){
+    public void addEnclosure(Enclosure2 enclosure){listEnclosure.add(enclosure);}
+
+    public void showAllLycan(){
+        System.out.println("\u001B[32m" + "ALL LYCANTHROPE IN COLONY : ");
         for (Enclosure2 enclosure : listEnclosure){
             for (LycanthropeInPack lycanthropeInPack : enclosure.getLycanPack().getListLycan()){
                 System.out.println(lycanthropeInPack);

@@ -7,12 +7,13 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class LycanPack {
-    private ArrayList<LycanthropeInPack> listLycan = new ArrayList<LycanthropeInPack>();
+    private ArrayList<LycanthropeInPack> listLycan;
     private AlphaCouple alphaCouple;
     private Enclosure2 enclosure;
 
     /* CONSTRUCTOR */
     public LycanPack(Enclosure2 enclosure) {
+        listLycan = new ArrayList<LycanthropeInPack>();
         this.enclosure = enclosure;
     }
 
