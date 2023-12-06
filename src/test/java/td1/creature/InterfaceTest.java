@@ -1,6 +1,9 @@
 package td1.creature;
 
 import org.junit.jupiter.api.Test;
+import td1.model.creature.Dragon;
+import td1.model.creature.Mermaid;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InterfaceTest {

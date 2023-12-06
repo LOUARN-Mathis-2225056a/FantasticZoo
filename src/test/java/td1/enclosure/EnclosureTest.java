@@ -1,7 +1,10 @@
 package td1.enclosure;
 
-import td1.creature.*;
 import org.junit.jupiter.api.Test;
+import td1.model.creature.*;
+import td1.model.enclosure.Aquarium;
+import td1.model.enclosure.Aviary;
+import td1.model.enclosure.Enclosure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

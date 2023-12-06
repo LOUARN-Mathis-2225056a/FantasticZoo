@@ -3,6 +3,7 @@ package td1.creature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import td1.model.creature.Nymph;
 
 import static org.junit.jupiter.api.Assertions.*;
 
