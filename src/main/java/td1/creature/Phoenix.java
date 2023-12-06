@@ -41,7 +41,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0){
+            if(getAge() >= 0 && !isPaused()){
                 Random percentage = new Random();
                 if (percentage.nextInt(4) == 0) {
                     consumeFood(10);

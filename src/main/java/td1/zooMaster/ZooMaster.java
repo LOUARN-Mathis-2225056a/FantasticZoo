@@ -4,6 +4,7 @@ import td1.creature.Creature;
 import td1.enclosure.AbstractEnclosure;
 import td1.enclosure.Enclosure;
 import td1.fantasticZoo.FantasticZoo;
+import td1.fileWritter.FileWriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -96,6 +97,18 @@ public class ZooMaster implements Runnable{
                 }
                 else {
                     System.out.println("You can't do that...");
+                }
+            }else if (action.equals("Pause")) {
+                System.out.print("Game paused\nPress enter to resume...");
+                for (Creature creature : myZoo.getAllCreatures()) {
+                    creature.pause();
+                }
+                Scanner waitingFor = new Scanner(System.in);
+                String waitForLine = waitingFor.nextLine();
+                // waiting for message to enter
+                while (waitForLine.equals(null)){}
+                for (Creature creature : myZoo.getAllCreatures()) {
+                    creature.resume();
                 }
             }else{
                 System.out.println("This is not an action possible, pay attention to capital letters and spaces.\n");

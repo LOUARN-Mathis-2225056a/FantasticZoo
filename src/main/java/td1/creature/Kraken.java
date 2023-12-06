@@ -31,7 +31,7 @@ public class Kraken extends Oviparous implements Swimmer{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0) {
+            if(getAge() >= 0 && !isPaused()) {
                 Random percentage = new Random();
                 if (percentage.nextInt(4) == 0) {
                     consumeFood(10);

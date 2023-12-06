@@ -8,11 +8,20 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
         super(name, sex, weight, height, age);
         setEatingValue(25);
     }
+
+    /**
+     * Return a prompt of the creature flying
+     *
+     * @return the prompt of the creature flying
+     */
     @Override
     public String creatureFly() {
         return(getName() + " is flying !\n");
     }
 
+    /**
+     * Reborn the creature
+     */
     @Override
     public void creatureReborn() {
         FileWriter.writeInFile(getName() + " reborned !");
@@ -21,7 +30,12 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
         setLife(new Thread(this));
         getLife().start();
     }
-    
+
+    /**
+     * Creates a new egg (a creature with a negative age)
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void giveBirth() {
         Random rd = new Random();
@@ -36,20 +50,36 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
         }
     }
 
+    /**
+     * Returns a prompt of the creature running
+     *
+     * @return the prompt of the creature running
+     */
     @Override
     public String creatureRun() {
         return(getName() + " is running !\n");
     }
 
+    /**
+     * Returns a prompt of the creature swimming
+     *
+     * @return the prompt of the creature swimming
+     */
     @Override
     public String creatureSwim() {
         return(getName() + " is swimming !\n");
     }
 
+    /**
+     * Defines the life of the creature and its behavior in the game.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0) {
+            if(getAge() >= 0 && !isPaused()) {
                 Random percentage = new Random();
                 if (percentage.nextInt(4) == 0) {
                     consumeFood(10);
@@ -80,7 +110,6 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
                 try {
                     Thread.sleep(cooldown);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
             }
 

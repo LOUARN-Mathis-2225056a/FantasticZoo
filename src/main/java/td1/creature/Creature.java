@@ -4,15 +4,17 @@ import td1.enclosure.AbstractEnclosure;
 import td1.enclosure.Enclosure;
 import td1.fileWritter.FileWriter;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
+    private boolean paused = false;
     private String parentName;
     private Thread life;
     private String name;
     //true = female
     //false = male
-    private boolean sex;
+    final private boolean sex;
     private float weight;
     private float height;
     private int hunger = 100;
@@ -59,6 +61,10 @@ public abstract class Creature implements Runnable {
 
     public void setWeight(float weight) {
         this.weight = weight;
+    }
+
+    public boolean isPaused() {
+        return paused;
     }
 
     public float getHeight() {
@@ -235,6 +241,14 @@ public abstract class Creature implements Runnable {
             return implementedInterface;
         }
         return "none";
+    }
+
+    public void pause() {
+        paused = true;
+    }
+
+    public void resume() {
+        paused = false;
     }
 
     /**
