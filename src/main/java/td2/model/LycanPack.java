@@ -17,6 +17,11 @@ public class LycanPack {
     }
 
     /* GETTER AND SETTER */
+
+    public ArrayList<LycanthropeInPack> getListLycan() {
+        return listLycan;
+    }
+
     public Enclosure2 getEnclosure() {
         return enclosure;
     }

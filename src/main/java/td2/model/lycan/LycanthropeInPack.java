@@ -30,6 +30,7 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                 lycanthropeSolitary.getImpetuosity());
         this.lycanPack = lycanPack;
         lycanPack.addLycan(this);
+        rank = 1;
         super.setThread(new Thread(this));
         super.startThread();
     }

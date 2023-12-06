@@ -18,6 +18,11 @@ public class Enclosure2 {
     public LycanPack getLycanPack() {
         return lycanPack;
     }
+
+    public ArrayList<LycanthropeSolitary> getListSolitary() {
+        return listSolitary;
+    }
+
     public void addLycanSolitary(LycanthropeSolitary lycan){
         listSolitary.add(lycan);
     }

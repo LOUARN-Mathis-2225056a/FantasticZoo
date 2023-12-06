@@ -11,7 +11,10 @@ import td2.model.roar.Domination;
 import td2.model.roar.Membership;
 import td2.model.roar.Submission;
 
+import java.util.ArrayList;
+
 public class LycanthropeColony {
+    private ArrayList<Enclosure2> listEnclosure= new ArrayList<Enclosure2>();
     static public void main(String[] arg){
         Enclosure2 encloOne = new Enclosure2();
         Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloOne);
@@ -25,5 +28,16 @@ public class LycanthropeColony {
         coupleOne.giveBirth();
         coupleOne.giveBirth();
         lycanPackOne.showToString();
+    }
+
+    private void showAllLycan(){
+        for (Enclosure2 enclosure : listEnclosure){
+            for (LycanthropeInPack lycanthropeInPack : enclosure.getLycanPack().getListLycan()){
+                System.out.println(lycanthropeInPack);
+            }
+            for (LycanthropeSolitary lycanthropeSolitary : enclosure.getListSolitary()){
+                System.out.println(lycanthropeSolitary);
+            }
+        }
     }
 }
