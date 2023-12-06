@@ -1,10 +1,10 @@
-package td1.zooMaster;
+package td1.model.zooMaster;
 
-import td1.creature.Creature;
-import td1.enclosure.AbstractEnclosure;
-import td1.enclosure.Enclosure;
-import td1.fantasticZoo.FantasticZoo;
-import td1.fileWritter.FileWriter;
+import td1.model.creature.Creature;
+import td1.model.enclosure.AbstractEnclosure;
+import td1.model.enclosure.Enclosure;
+import td1.model.fantasticZoo.FantasticZoo;
+import td1.model.fileWritter.FileWriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;

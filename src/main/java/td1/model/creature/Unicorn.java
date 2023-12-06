@@ -64,6 +64,13 @@ public class Unicorn extends Viviparous implements Runner{
                     throw new RuntimeException(e);
                 }
             }
+            else {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         FileWriter.writeInFile(getName() + " died.\n");
     }

@@ -62,7 +62,13 @@ public class Megalodon extends Oviparous implements Swimmer{
                     throw new RuntimeException(e);
                 }
             }
-
+            else {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         FileWriter.writeInFile(getName() + " died.\n");
     }

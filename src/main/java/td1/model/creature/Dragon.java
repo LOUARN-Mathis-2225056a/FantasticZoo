@@ -112,7 +112,13 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
                 } catch (InterruptedException e) {
                 }
             }
-
+            else {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         FileWriter.writeInFile(getName() + " died.\n");
         creatureReborn();
