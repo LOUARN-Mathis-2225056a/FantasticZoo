@@ -17,6 +17,11 @@ public class LycanthropeEnMeute extends Lycanthrope2 implements Runnable{
         super.setThread(new Thread(this));
         super.startThread();
     }
+
+    public LycanPack getLycanPack() {
+        return lycanPack;
+    }
+
     @Override
     public String toString(){
         return super.toString()

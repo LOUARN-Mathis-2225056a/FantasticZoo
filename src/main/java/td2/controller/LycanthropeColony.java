@@ -28,5 +28,7 @@ public class LycanthropeColony {
         lycanTwo.emitHowl(new Aggressiveness());
         lycanTwo.emitHowl(new Domination(lycanOne));
         lycanTwo.leaveLycanPack();
+
+
     }
 }
