@@ -10,13 +10,13 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
         super.setThread(new Thread(this));
         super.startThread();
     }
-    public LycanthropeSolitary(LycanthropeEnMeute lycanthropeEnMeute,Enclosure2 enclosure){
-        super(  lycanthropeEnMeute.isSex(),
-                lycanthropeEnMeute.getAge(),
-                lycanthropeEnMeute.getStrength(),
-                lycanthropeEnMeute.getDomination(),
-                lycanthropeEnMeute.getLevel(),
-                lycanthropeEnMeute.getImpetuosity());
+    public LycanthropeSolitary(LycanthropeInPack lycanthropeInPack, Enclosure2 enclosure){
+        super(  lycanthropeInPack.isSex(),
+                lycanthropeInPack.getAge(),
+                lycanthropeInPack.getStrength(),
+                lycanthropeInPack.getDomination(),
+                lycanthropeInPack.getLevel(),
+                lycanthropeInPack.getImpetuosity());
         setEnclosure(enclosure);
         super.setThread(new Thread(this));
         super.startThread();

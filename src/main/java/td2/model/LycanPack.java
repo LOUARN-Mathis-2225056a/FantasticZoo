@@ -1,20 +1,24 @@
 package td2.model;
 
-import td2.model.lycan.LycanthropeEnMeute;
+import td2.model.lycan.LycanthropeInPack;
 
 import java.util.ArrayList;
 
 public class LycanPack {
-    private ArrayList<LycanthropeEnMeute> listLycan = new ArrayList<LycanthropeEnMeute>();
+    private ArrayList<LycanthropeInPack> listLycan = new ArrayList<LycanthropeInPack>();
+    private AlphaCouple alphaCouple;
     private Enclosure2 enclosure;
-
-    public Enclosure2 getEnclosure() {
-        return enclosure;
-    }
     public LycanPack(Enclosure2 enclosure) {
         this.enclosure = enclosure;
     }
-    public void removeLycan(LycanthropeEnMeute lycan){
+    public Enclosure2 getEnclosure() {
+        return enclosure;
+    }
+    public void removeLycan(LycanthropeInPack lycan){
         listLycan.remove(lycan);
+    }
+
+    public void setAlphaCouple(AlphaCouple alphaCouple) {
+        this.alphaCouple = alphaCouple;
     }
 }
