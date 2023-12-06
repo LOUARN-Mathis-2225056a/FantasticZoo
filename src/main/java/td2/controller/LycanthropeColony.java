@@ -17,10 +17,12 @@ public class LycanthropeColony {
         Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloOne);
 
         LycanPack lycanPackOne = new LycanPack(encloOne);
-        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,"Alpha",lycanPackOne);
-        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,"Alpha",lycanPackOne);
+        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
+        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
         lycanPackOne.setAlphaCouple(coupleOne);
+        coupleOne.giveBirth();
+        coupleOne.giveBirth();
         lycanPackOne.showToString();
     }
 }

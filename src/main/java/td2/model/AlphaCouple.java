@@ -27,10 +27,18 @@ public class AlphaCouple {
     public void giveBirth(){
         Random rd = new Random();
         int nbBaby = rd.nextInt(7);
+        int newRank;
+        if (male.getLycanPack().haveBeta()){
+            newRank = 3;
+        }
+        else {
+            newRank = 2;
+        }
+
         for (int i = 0; i <= nbBaby; ++i){
             LycanthropeInPack newLycan = new LycanthropeInPack(rd.nextBoolean(),
                                                 Lycanthrope2.AgeCategory.YOUNG,
-                                                rd.nextInt(5),0,0,0,"XXX",female.getLycanPack());
+                                                rd.nextInt(5),0,0,0,newRank,female.getLycanPack());
         }
     }
 }
