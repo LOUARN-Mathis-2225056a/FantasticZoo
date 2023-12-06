@@ -19,6 +19,8 @@ public class LycanthropeColony {
         LycanPack lycanPackOne = new LycanPack(encloOne);
         LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
         LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,lycanPackOne);
+        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,5,lycanPackOne);
+        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,lycanPackOne);
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
         lycanPackOne.setAlphaCouple(coupleOne);
         coupleOne.giveBirth();

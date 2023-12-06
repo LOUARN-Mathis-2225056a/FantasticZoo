@@ -3,6 +3,8 @@ package td2.model;
 import td2.model.lycan.LycanthropeInPack;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LycanPack {
     private ArrayList<LycanthropeInPack> listLycan = new ArrayList<LycanthropeInPack>();
@@ -23,6 +25,9 @@ public class LycanPack {
     }
 
     /* METHOD AND FUNCTION */
+    public void sortListLycan(){
+        Collections.sort(listLycan, Comparator.comparingInt(LycanthropeInPack::getRank));
+    }
     public void addLycan(LycanthropeInPack lycan){listLycan.add(lycan);}
     public void removeLycan(LycanthropeInPack lycan){
         listLycan.remove(lycan);
@@ -37,12 +42,13 @@ public class LycanPack {
     }
     @Override
     public String toString() {
-        String result = new String("LYCAN PACK : \n"
-                + "- " + enclosure + "\n"
-                + "- " + alphaCouple + "\n"
-                + "- ALL LYCAN : \n");
+        String result = new String("\u001B[34m"+ "LYCAN PACK : \n" + "\u001B[0m"
+                + "\u001B[32m" + "- " + enclosure + "\n"
+                + "\u001B[32m" + "- " + alphaCouple + "\n"
+                +"\u001B[32m"+ "- ALL LYCAN : \n" + "\u001B[0m");
+        sortListLycan();
         for (LycanthropeInPack lycanthropeInPack : listLycan){
-            result += "   - " + lycanthropeInPack + "\n";
+            result += lycanthropeInPack + "\n";
         }
         return result;
     }

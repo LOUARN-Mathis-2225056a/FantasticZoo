@@ -16,10 +16,10 @@ public class AlphaCouple {
 
     @Override
     public String toString() {
-        return "ALPHA COUPLE : \n"
-                + "    --MALE--\n"
+        return "\u001B[32m" + "ALPHA COUPLE : \n" + "\u001B[0m"
+               +"\u001B[33m" + "    --MALE--\n" + "\u001B[0m"
                 + male
-                + "    --FEMALE--\n"
+                +"\u001B[33m" + "    --FEMALE--\n"+ "\u001B[0m"
                 +female;
     }
     public void showToString(){System.out.println(this);}
@@ -34,7 +34,6 @@ public class AlphaCouple {
         else {
             newRank = 2;
         }
-
         for (int i = 0; i <= nbBaby; ++i){
             LycanthropeInPack newLycan = new LycanthropeInPack(rd.nextBoolean(),
                                                 Lycanthrope2.AgeCategory.YOUNG,
