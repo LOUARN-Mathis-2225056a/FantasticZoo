@@ -1,7 +1,7 @@
 package td1.model.creature;
 
 import java.util.Random;
-import td1.model.fileWritter.FileWriter;
+import td1.view.fileWritter.FileWriter;
 
 public class Kraken extends Oviparous implements Swimmer{
     public Kraken(String name, boolean sex, float weight, float height, int age) {

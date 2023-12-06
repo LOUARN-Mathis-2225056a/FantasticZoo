@@ -2,7 +2,7 @@ package td1.model.timeControl;
 
 import td1.model.creature.Creature;
 import td1.model.fantasticZoo.FantasticZoo;
-import td1.model.fileWritter.FileWriter;
+import td1.view.fileWritter.FileWriter;
 
 public class TimeControl implements Runnable{
     private boolean status = true;
