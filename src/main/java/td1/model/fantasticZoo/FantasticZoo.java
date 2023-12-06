@@ -40,7 +40,7 @@ public class FantasticZoo {
     }
 
     public void showEnclosure() {
-        ZooController.getInstance().showEnclosure(this);
+        ZooController.getInstance().showAllEnclosures(this);
     }
 
     public void showNBCreature() {

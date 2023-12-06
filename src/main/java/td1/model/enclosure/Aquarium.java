@@ -1,8 +1,5 @@
 package td1.model.enclosure;
 
-import td1.model.creature.Creature;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Aquarium extends AbstractEnclosure {
@@ -14,14 +11,6 @@ public class Aquarium extends AbstractEnclosure {
         this.depht = depht;
         this.salinity = salinity;
         type = "Swimmer";
-    }
-
-    public Aquarium() {
-        super();
-    }
-
-    @Override
-    public void clean(int cleanlinessLevel) {
     }
 
     public int getSalinity() {
@@ -54,5 +43,9 @@ public class Aquarium extends AbstractEnclosure {
                 throw new RuntimeException(e);
             }
         }
+    }
+    @Override
+    public String toString() {
+        return (super.toString() + "\n salinity : " + salinity + "\n depth : " + depht);
     }
 }

@@ -7,7 +7,7 @@ import td1.view.ZooView;
 public class ZooController {
     private static ZooController instance;
 
-    public void showEnclosure(FantasticZoo zoo){
+    public void showAllEnclosures(FantasticZoo zoo){
         ShowInTerminal.getInstance().showTitle("enclosure list");
         ZooView.getInstance().showAllEnclosure(zoo);
     }

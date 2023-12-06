@@ -13,10 +13,6 @@ public class Enclosure extends AbstractEnclosure{
         type = "Runner";
     }
 
-    public Enclosure() {
-
-    }
-
     @Override
     public void run() {
         int sleepTime;

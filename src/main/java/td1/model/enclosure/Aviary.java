@@ -1,13 +1,10 @@
 package td1.model.enclosure;
 
-import td1.model.creature.Creature;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Aviary extends AbstractEnclosure implements Runnable{
-    private float height;
-
+    private final float height;
+    private int roofCleanliness = 3;
 
     public Aviary(String name, float surface, int nbMaxCreature, float height) {
         super(name, surface, nbMaxCreature);
@@ -15,13 +12,11 @@ public class Aviary extends AbstractEnclosure implements Runnable{
         type = "Flyer";
     }
 
-    public Aviary() {
-
-    }
-
-    @Override
-    public void clean(int cleanlinessLevel) {
-
+    public void cleanRoof() {
+        roofCleanliness+=2;
+        if(roofCleanliness>3){
+            roofCleanliness = 3;
+        }
     }
 
     @Override
@@ -42,5 +37,10 @@ public class Aviary extends AbstractEnclosure implements Runnable{
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return (super.toString() + "\n height : " + height);
     }
 }

@@ -107,17 +107,17 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
     public Type getEnclosureType() {
         return type;
     }
-        public void setAnimalType(String animalType) {
-            this.animalType = animalType;
-        }
+    public void setAnimalType(String animalType) {
+        this.animalType = animalType;
+    }
 
-    public void clean(int cleanlinessLevel) {
-        if (cleanlinessLevel > 3) {
-            System.out.println("Cleanliness level is too high please set it between 0 or 3.");
-        } else if (cleanlinessLevel < 0) {
-            System.out.println("Cleanliness level is too low please set it between 0 or 3.");
-        } else {
-            this.cleanlinessLevel = cleanlinessLevel;
+    public void clean() {
+        if(!creatureList.isEmpty()){
+            System.out.println("You cannot clean this " + this.getClass().getSimpleName() + " while creatures are still inside.");
+        }
+        cleanlinessLevel+=2;
+        if(cleanlinessLevel>3){
+            cleanlinessLevel = 3;
         }
     }
 
