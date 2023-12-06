@@ -85,7 +85,7 @@ public class Lycanthrope2{
     }
     @Override
     public String toString() {
-        return "Lycanthrope: " + "-sex : " + sex + "\n"
+        return "\u001B[31m" + "Lycanthrope: " + "\u001B[0m" + "-sex : " + sex + "\n"
                 + "             -age : " + age + "\n"
                 + "             -strength : " + strength + "\n"
                 + "             -domination : " + domination + "\n"

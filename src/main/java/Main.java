@@ -1,11 +1,8 @@
-import td1.creature.Phoenix;
-import td1.enclosure.AbstractEnclosure;
-import td1.enclosure.Aquarium;
-import td1.enclosure.Aviary;
-import td1.enclosure.Enclosure;
-import td1.fantasticZoo.FantasticZoo;
-import td1.getOperatingSystem.GetOperatingSystem;
-import td1.zooMaster.ZooMaster;
+import td1.model.creature.Phoenix;
+import td1.model.enclosure.Aviary;
+import td1.model.fantasticZoo.FantasticZoo;
+import td1.model.getOperatingSystem.GetOperatingSystem;
+import td1.model.zooMaster.ZooMaster;
 
 import java.io.IOException;
 

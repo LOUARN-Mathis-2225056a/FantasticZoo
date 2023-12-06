@@ -10,10 +10,19 @@ public class Enclosure2 {
     static int nbEnclosure = 0;
     private ArrayList<LycanthropeSolitary> listSolitary = new ArrayList<>();
 
-    public void addLycanSolitary(LycanthropeSolitary lycan){
-        listSolitary.add(lycan);
+    public Enclosure2(){
         nbEnclosure+=1;
         ID = nbEnclosure;
+    }
+
+    public LycanPack getLycanPack() {
+        return lycanPack;
+    }
+    public void addLycanSolitary(LycanthropeSolitary lycan){
+        listSolitary.add(lycan);
+    }
+    public void removeLycanSolitary(LycanthropeSolitary lycan){
+        listSolitary.remove(lycan);
     }
     public int getID(){
         return ID;
