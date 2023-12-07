@@ -13,9 +13,10 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
         while (this.isOn()){
         }
     }
-    public LycanthropeInPack(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity, int rank, LycanPack lycanPack) {
-        super(sex, age, strength, domination, level, impetuosity);
+    public LycanthropeInPack(boolean sex, AgeCategory age, int strength, int domination, int impetuosity, int rank, LycanPack lycanPack) {
+        super(sex, age, strength, domination, impetuosity);
         this.rank = rank;
+        setLevelPack();
         this.lycanPack = lycanPack;
         lycanPack.addLycan(this);
         super.setThread(new Thread(this));
@@ -26,13 +27,18 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                 lycanthropeSolitary.getAge(),
                 lycanthropeSolitary.getStrength(),
                 lycanthropeSolitary.getDomination(),
-                lycanthropeSolitary.getLevel(),
                 lycanthropeSolitary.getImpetuosity());
         this.lycanPack = lycanPack;
         lycanPack.addLycan(this);
         rank = 1;
+        setLevelPack();
         super.setThread(new Thread(this));
         super.startThread();
+    }
+    public void setLevelPack(){
+        super.setLevel();
+        addIntLevel(24-rank);
+        System.out.println("j'ai ajouté : " + rank);
     }
 
     public int getRank() {

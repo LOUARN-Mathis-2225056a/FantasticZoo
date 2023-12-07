@@ -31,29 +31,26 @@ public class LycanthropeColony implements Runnable{
         lycanthropeColony.addEnclosure(encloTree);
 
         // LycanthropeSolitary creation
-        Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloOne);
-        Lycanthrope2 lycanOne2 = new LycanthropeSolitary(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,encloTwo);
+        Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,encloOne);
+        Lycanthrope2 lycanOne2 = new LycanthropeSolitary(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,encloTwo);
 
         // LycanthropeInPack creation
 
-        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,encloOne.getLycanPack());
-        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,1,encloOne.getLycanPack());
-        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,5,encloOne.getLycanPack());
-        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloOne.getLycanPack());
+        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,5,encloOne.getLycanPack());
+        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloOne.getLycanPack());
 
 
-        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan8 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan9 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan8 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan9 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
 
         // test zone
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
-        /*encloOne.getLycanPack().setAlphaCouple(coupleOne);
-        coupleOne.giveBirth();
-        coupleOne.giveBirth();
-        encloOne.getLycanPack().showToString();
-        lycanthropeColony.showAllLycan();*/
+        lycanthropeColony.showAllLycan();
+
     }
     private ArrayList<Enclosure2> listEnclosure= new ArrayList<Enclosure2>();
     private Thread thread;
@@ -63,7 +60,7 @@ public class LycanthropeColony implements Runnable{
     }
     @Override
     public void run() {
-        float time = 0; // 4 seasons per year (x.0, x.25, x.5, x.75) , season x.75 is the mating season, every year each lycan can age a little more
+        float time = 0; // 4 seasons per year (0, 0.25, 0.5, 0.75) , season 0.75 is the mating season, every year each lycan can age a little more
         while (true){
             // gestion of time
             time += 0.25;
@@ -151,11 +148,6 @@ public class LycanthropeColony implements Runnable{
                 System.out.println(lycanthropeSolitary);
             }
         }
-    }
-    public void changeEnclosureLycanSolitary(LycanthropeSolitary lycanthropeSolitary, Enclosure2 newEnclosure){
-        Enclosure2 oldEnclosure = lycanthropeSolitary.getEnclosure();
-        oldEnclosure.removeLycanSolitary(lycanthropeSolitary);
-        lycanthropeSolitary.setEnclosure(newEnclosure);
     }
     public ArrayList<LycanthropeSolitary> getAllLycanSolitary(){
         ArrayList<LycanthropeSolitary> lisLycanSolitary = new ArrayList<LycanthropeSolitary>();

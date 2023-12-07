@@ -20,6 +20,7 @@ public class LycanPack {
     /* GETTER AND SETTER */
 
     public ArrayList<LycanthropeInPack> getListLycan() {
+        sortListLycan();
         return listLycan;
     }
 

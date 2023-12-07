@@ -18,27 +18,27 @@ public abstract class Lycanthrope2{
     private boolean sick; // true = sick / false = is not sick
     private Thread thread;
     private boolean isOn; // true tread run / false thread dont run
-    public Lycanthrope2(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity) {
+
+    // CONSTRUCTOR
+    public Lycanthrope2(boolean sex, AgeCategory age, int strength, int domination, int impetuosity) {
         this.sex = sex;
         this.age = age;
         this.strength = strength;
         this.domination = domination;
-        this.level = level;
         this.impetuosity = impetuosity;
+        setLevel();
         sick = false;
         sleep = false;
         isOn = true;
     }
 
-
+    // SETTER AND GETTER
     public boolean isOn() {
         return isOn;
     }
-
     public void setOn(boolean on) {
         isOn = on;
     }
-
     public Thread getThread() {
         return thread;
     }
@@ -75,8 +75,20 @@ public abstract class Lycanthrope2{
     public int getLevel() {
         return level;
     }
-    public void setLevel(int level) {
-        this.level = level;
+    public void setLevel() {
+        level = 0;
+        if (age == AgeCategory.YOUNG){
+            level += 10;
+        } else if (age == AgeCategory.ADULT) {
+            level += 20;
+        } else {
+            level += 30;
+        }
+        level += strength;
+        level += domination;
+    }
+    public void addIntLevel(int moreLevel){
+        level += moreLevel;
     }
     public int getImpetuosity() {
         return impetuosity;
@@ -84,6 +96,8 @@ public abstract class Lycanthrope2{
     public void setImpetuosity(int impetuosity) {
         this.impetuosity = impetuosity;
     }
+
+    // FUNCTION AND METHOD
     @Override
     public String toString() {
         return "\u001B[31m" + "Lycanthrope: " + "\u001B[0m" + "-sex : " + sex + "\n"

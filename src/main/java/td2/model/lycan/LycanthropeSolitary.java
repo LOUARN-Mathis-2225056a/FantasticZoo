@@ -4,8 +4,8 @@ import td2.model.Enclosure2;
 
 public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
     Enclosure2 enclosure;
-    public LycanthropeSolitary(boolean sex, AgeCategory age, int strength, int domination, int level, int impetuosity, Enclosure2 enclosure) {
-        super(sex, age, strength, domination, level, impetuosity);
+    public LycanthropeSolitary(boolean sex, AgeCategory age, int strength, int domination, int impetuosity, Enclosure2 enclosure) {
+        super(sex, age, strength, domination, impetuosity);
         this.enclosure = enclosure;
         enclosure.addLycanSolitary(this);
         super.setThread(new Thread(this));
@@ -16,7 +16,6 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
                 lycanthropeInPack.getAge(),
                 lycanthropeInPack.getStrength(),
                 lycanthropeInPack.getDomination(),
-                lycanthropeInPack.getLevel(),
                 lycanthropeInPack.getImpetuosity());
         this.enclosure = enclosure;
         enclosure.addLycanSolitary(this);
