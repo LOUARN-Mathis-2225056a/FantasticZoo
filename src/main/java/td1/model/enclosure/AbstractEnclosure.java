@@ -89,7 +89,9 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
         } else {
             System.out.println("The creature you are trying to remove is not in this enclosure.");
         }
-
+    }
+    public void removeAllCreatures(){
+        creatureList.clear();
     }
 
     public ArrayList<Creature> getCreatureList() {

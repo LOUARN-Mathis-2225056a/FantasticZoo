@@ -31,7 +31,6 @@ public class GameSetup {
         zoo.setNom(zooName);
         zooMaster = new ZooMaster(zooMasterName, zooMasterGender, zooMasterAge,zoo);
         zoo.setZooMaster(zooMaster);
-        System.out.println("/!\\ Your can create a maximum of 5 enclosures, you can still set this maximum in the mena while playing. /!\\");
     }
 
     public void setChooseGameMode() {
@@ -69,9 +68,12 @@ public class GameSetup {
         Enclosure enclosure3 = new Enclosure("Charlie", 500, 10);
         enclosure3.addAllCreatures(creatureList);
 
+        Enclosure enclosure4 = new Enclosure("Delta", 300,20);
+
         fantasticZoo.addEnclosure(enclosure1);
         fantasticZoo.addEnclosure(enclosure2);
         fantasticZoo.addEnclosure(enclosure3);
+        fantasticZoo.addEnclosure(enclosure4);
 
         TimeControl time = new TimeControl(fantasticZoo);
 

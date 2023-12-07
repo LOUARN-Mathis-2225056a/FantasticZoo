@@ -57,12 +57,13 @@ public class ZooMaster implements Runnable {
     public void transferAllCreatures(AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget){
         int amountOfCreaturesBeforeAdd = abstractEnclosureTarget.getNbCurrentCreature();
         int creatureToTransfer = abstractEnclosureFrom.getNbCurrentCreature();
-        for(Creature creature : abstractEnclosureFrom.getCreatureList()){
-            transferOneCreature(creature,abstractEnclosureFrom,abstractEnclosureTarget);
-        }
-        if(abstractEnclosureTarget.getNbCurrentCreature() == amountOfCreaturesBeforeAdd+creatureToTransfer){
-            ShowInTerminal.getInstance().showTitle("Success");
+        ArrayList<Creature> creaturesToTransfer = new ArrayList<>(abstractEnclosureFrom.getCreatureList());
+        abstractEnclosureTarget.addAllCreatures(creaturesToTransfer);
+        if (abstractEnclosureTarget.getNbCurrentCreature() == amountOfCreaturesBeforeAdd + creatureToTransfer){
             ZooMasterView.getInstance().transferSucceeded();
+            abstractEnclosureFrom.removeAllCreatures();
+        }else {
+            ZooMasterView.getInstance().transferFailed();
         }
     }
 }
