@@ -13,7 +13,7 @@ public class ShowInTerminal {
                 """
                                  _    _      _                        \s
                                 | |  | |    | |                       \s
-                                | |  | |   ___| | ___ ___  _ __ ___   ___
+                                | |  | | ___| | ___ ___  _ __ ___   ___
                                 | |/\\| |/ _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\
                                 \\  /\\  /  __/ | (_| (_) | | | | | |  __/
                                  \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|
@@ -23,7 +23,6 @@ public class ShowInTerminal {
                 - 2 : Only aviary are made with flying creatures
                 - 3 : Only aqurium ares made with sea creatures
                 type 1, 2 or 3 to select the mode you want to play.
-                /!\\ you can I any case add new enclosure types.
                 
                 Selected preset:
                 """);
