@@ -89,7 +89,7 @@ public class GameSetup {
 
         creatureList.add(new Dragon("Dragon 1", false, 200, 80, 1));
         creatureList.add(new Dragon("Dragon 2", true, 250, 100, 1));
-        Aviary aviary1 = new Aviary("Alpha", 500, 10, 100);
+        Aviary aviary1 = new Aviary("Alpha", 400, 10, 100);
         aviary1.addAllCreatures(creatureList);
 
         creatureList.clear();
@@ -98,8 +98,11 @@ public class GameSetup {
         Aviary aviary2 = new Aviary("Bravo", 500, 10, 50);
         aviary2.addAllCreatures(creatureList);
 
+        Aviary aviary3 = new Aviary("Charli", 200, 10, 20);
+
         fantasticZoo.addEnclosure(aviary1);
         fantasticZoo.addEnclosure(aviary2);
+        fantasticZoo.addEnclosure(aviary3);
 
         TimeControl time = new TimeControl(fantasticZoo);
 
@@ -130,9 +133,12 @@ public class GameSetup {
         Aquarium aquarium3 = new Aquarium("Charlie", 300, 10, 20, 10);
         aquarium3.addAllCreatures(creatureList);
 
+        Aquarium aquarium4 = new Aquarium("Delta", 1000, 20, 20, 10);
+
         fantasticZoo.addEnclosure(aquarium1);
         fantasticZoo.addEnclosure(aquarium2);
         fantasticZoo.addEnclosure(aquarium3);
+        fantasticZoo.addEnclosure(aquarium4);
 
         TimeControl time = new TimeControl(fantasticZoo);
 
