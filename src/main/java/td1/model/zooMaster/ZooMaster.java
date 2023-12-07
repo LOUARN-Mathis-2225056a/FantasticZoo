@@ -5,6 +5,8 @@ import td1.model.creature.Creature;
 import td1.model.enclosure.AbstractEnclosure;
 import td1.model.enclosure.Enclosure;
 import td1.model.fantasticZoo.FantasticZoo;
+import td1.view.ShowInTerminal;
+import td1.view.ZooMasterView;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,7 +25,9 @@ public class ZooMaster implements Runnable {
     }
 
     public void run() {
-        ZooMasterController.getInstance().execBehavior(myZoo);
+        while (true) {
+            ZooMasterController.getInstance().execBehavior(myZoo);
+        }
     }
 
     public void checkEnclosure(AbstractEnclosure<?> abstractEnclosure) {
@@ -34,12 +38,31 @@ public class ZooMaster implements Runnable {
         abstractEnclosure.clean();
     }
 
-    public void feed(Enclosure enclosure, int quantity) {
+    public void feed(AbstractEnclosure<?> enclosure, int quantity) {
         enclosure.addFood(quantity);
     }
 
-    public void transfer(Creature creature, AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget) {
-        abstractEnclosureFrom.removeCreature(creature);
+    public void transferOneCreature(Creature creature, AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget) {
+        Creature creatureToTransfer = creature;
+        int amountOfCreaturesBeforeAdd = abstractEnclosureTarget.getNbCurrentCreature();
         abstractEnclosureTarget.addCreature(creature);
+        if(abstractEnclosureTarget.getNbCurrentCreature()!= amountOfCreaturesBeforeAdd+1){
+            ZooMasterView.getInstance().transferFailed();
+        }else {
+            abstractEnclosureFrom.removeCreature(creature);
+            ZooMasterView.getInstance().transferSucceeded();
+        }
+    }
+
+    public void transferAllCreatures(AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget){
+        int amountOfCreaturesBeforeAdd = abstractEnclosureTarget.getNbCurrentCreature();
+        int creatureToTransfer = abstractEnclosureFrom.getNbCurrentCreature();
+        for(Creature creature : abstractEnclosureFrom.getCreatureList()){
+            transferOneCreature(creature,abstractEnclosureFrom,abstractEnclosureTarget);
+        }
+        if(abstractEnclosureTarget.getNbCurrentCreature() == amountOfCreaturesBeforeAdd+creatureToTransfer){
+            ShowInTerminal.getInstance().showTitle("Success");
+            ZooMasterView.getInstance().transferSucceeded();
+        }
     }
 }

@@ -22,4 +22,11 @@ public class ZooMasterView {
                             - 4 : you will be redirected to the transfer menu."""
         );
     }
+    public void transferFailed(){
+        ShowInTerminal.getInstance().showTitle("error");
+        System.out.println("The transfer has failed to occur !");
+    }
+    public void transferSucceeded(){
+        System.out.println("The creature has been successfully transferred !");
+    }
 }

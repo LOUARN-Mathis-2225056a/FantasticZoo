@@ -67,6 +67,9 @@ public class FantasticZoo {
         this.zooMaster = zooMaster;
     }
 
+    public ZooMaster getZooMaster() {
+        return zooMaster;
+    }
     public void setNbMaxEnclosure(int nbMaxEnclosure) {
         this.nbMaxEnclosure = nbMaxEnclosure;
     }
