@@ -6,10 +6,7 @@ import td2.model.LycanPack;
 import td2.model.lycan.Lycanthrope2;
 import td2.model.lycan.LycanthropeInPack;
 import td2.model.lycan.LycanthropeSolitary;
-import td2.model.roar.Aggressiveness;
-import td2.model.roar.Domination;
-import td2.model.roar.Membership;
-import td2.model.roar.Submission;
+import td2.model.roar.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -31,21 +28,21 @@ public class LycanthropeColony implements Runnable{
         lycanthropeColony.addEnclosure(encloTree);
 
         // LycanthropeSolitary creation
-        Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,encloOne);
-        Lycanthrope2 lycanOne2 = new LycanthropeSolitary(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,encloTwo);
+        Lycanthrope2 lycanOne = new LycanthropeSolitary(true, Lycanthrope2.AgeCategory.YOUNG,0,encloOne);
+        Lycanthrope2 lycanOne2 = new LycanthropeSolitary(false, Lycanthrope2.AgeCategory.YOUNG,0,encloTwo);
 
         // LycanthropeInPack creation
 
-        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,1,encloOne.getLycanPack());
-        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,1,encloOne.getLycanPack());
-        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,5,encloOne.getLycanPack());
-        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloOne.getLycanPack());
+        LycanthropeInPack lycanTwo = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycanTree = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,1,encloOne.getLycanPack());
+        LycanthropeInPack lycan4 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,5,encloOne.getLycanPack());
+        LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloOne.getLycanPack());
 
 
-        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan8 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan9 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,0,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan8 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan9 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
 
         // test zone
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
@@ -84,10 +81,10 @@ public class LycanthropeColony implements Runnable{
                         if (enclosureEmpty == null) {
                             enclosureEmpty = new Enclosure2();
                             this.addEnclosure(enclosureEmpty);
-                            System.out.println("\u001B[34m" + "/\\ A new enclosure with a new lycan pack has just been created !! /\\");
+                            System.out.println("\u001B[34m" + "/\\ A new enclosure with a new lycan pack has just been created !! /\\" + "\u001B[0m");
                         }
                         else {
-                            System.out.println("\u001B[34m" + "/\\ An empty lycan pack just got two new alphas !! /\\");
+                            System.out.println("\u001B[34m" + "/\\ An empty lycan pack just got two new alphas !! /\\" + "\u001B[0m");
                         }
                         male.setEnclosure(enclosureEmpty);
                         female.setEnclosure(enclosureEmpty);
@@ -141,6 +138,9 @@ public class LycanthropeColony implements Runnable{
         System.out.println("\u001B[32m" + "ALL LYCANTHROPE IN COLONY : ");
         for (Enclosure2 enclosure : listEnclosure){
             System.out.println("\u001B[33m" + "Enclosure n°" + enclosure.getID());
+            if(enclosure.getLycanPack().getListLycan().isEmpty() && enclosure.getListSolitary().isEmpty()){
+                System.out.println("\033[0;32m" + " EMPTY ");
+            }
             for (LycanthropeInPack lycanthropeInPack : enclosure.getLycanPack().getListLycan()){
                 System.out.println(lycanthropeInPack);
             }
@@ -158,4 +158,5 @@ public class LycanthropeColony implements Runnable{
         }
         return lisLycanSolitary;
     }
+
 }

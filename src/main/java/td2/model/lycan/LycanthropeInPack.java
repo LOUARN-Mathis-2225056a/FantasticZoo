@@ -2,8 +2,13 @@ package td2.model.lycan;
 
 import td2.model.Enclosure2;
 import td2.model.LycanPack;
+import td2.model.roar.Aggressiveness;
+import td2.model.roar.Domination;
+import td2.model.roar.Roar;
+import td2.model.roar.Submission;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     private int rank;
@@ -11,10 +16,50 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     @Override
     public void run() {
         while (this.isOn()){
+            // DOMINATION TEST
+            Random rd = new Random();
+            if(100 - rd.nextInt(getImpetuosity()) == 100){
+                LycanthropeInPack target = lycanPack.getListLycan().get(rd.nextInt(lycanPack.getListLycan().size()));
+                if ( !(target.isSex() && target.rank == 1) && target.getStrength()<=getStrength() - rd.nextInt(3) && target != this){
+                    target.setLevelPack();
+                    setLevelPack();
+                    emitHowl(new Domination());
+                    System.out.println("---- AGGRESSOR ----");
+                    showToString();
+                    System.out.println("---- TARGET ----");
+                    target.showToString();
+                    if (getLevel()>target.getLevel() || target.getRank() == 24){
+                        emitHowl(new Aggressiveness());
+                        target.emitHowl(new Submission());
+                        setDomination(getDomination()+1);
+                        target.setDomination(target.getDomination()-1);
+                        if (rank>target.getRank()){
+                            int rankTarget = target.getRank();
+                            target.setRank(rankTarget);
+                            setRank(rankTarget);
+                        }
+                    }
+                    else {
+                        target.emitHowl(new Aggressiveness());
+                        emitHowl(new Submission());
+                        setDomination(getDomination()-1);
+                        target.setDomination(target.getDomination()+1);
+                    }
+                    System.out.println("---- AGGRESSOR ----");
+                    showToString();
+                    System.out.println("---- TARGET ----");
+                    target.showToString();
+                }
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-    public LycanthropeInPack(boolean sex, AgeCategory age, int strength, int domination, int impetuosity, int rank, LycanPack lycanPack) {
-        super(sex, age, strength, domination, impetuosity);
+    public LycanthropeInPack(boolean sex, AgeCategory age, int domination, int rank, LycanPack lycanPack) {
+        super(sex, age, domination);
         this.rank = rank;
         setLevelPack();
         this.lycanPack = lycanPack;
@@ -25,9 +70,7 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     public LycanthropeInPack(LycanthropeSolitary lycanthropeSolitary, LycanPack lycanPack){
         super(  lycanthropeSolitary.isSex(),
                 lycanthropeSolitary.getAge(),
-                lycanthropeSolitary.getStrength(),
-                lycanthropeSolitary.getDomination(),
-                lycanthropeSolitary.getImpetuosity());
+                lycanthropeSolitary.getDomination());
         this.lycanPack = lycanPack;
         lycanPack.addLycan(this);
         rank = 1;
@@ -38,7 +81,6 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     public void setLevelPack(){
         super.setLevel();
         addIntLevel(24-rank);
-        System.out.println("j'ai ajouté : " + rank);
     }
 
     public int getRank() {

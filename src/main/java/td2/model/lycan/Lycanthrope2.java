@@ -2,6 +2,8 @@ package td2.model.lycan;
 
 import td2.model.roar.*;
 
+import java.util.Random;
+
 public abstract class Lycanthrope2{
     private boolean sex; // true = female && false == mal
     public enum AgeCategory {
@@ -11,7 +13,7 @@ public abstract class Lycanthrope2{
     }
     private AgeCategory age;
     private int strength;
-    private int domination; // corresponding to the difference between the domination exercised and those suffered
+    private float domination; // corresponding to the difference between the domination exercised and those suffered
     private int level; // corresponding to the subjective quality criterion of a lycanthrope, both male and female; calculated based on age category, strength, dominance factor and rank
     private int impetuosity;
     private boolean sleep; // true = sleep / false = dont sleep
@@ -20,12 +22,13 @@ public abstract class Lycanthrope2{
     private boolean isOn; // true tread run / false thread dont run
 
     // CONSTRUCTOR
-    public Lycanthrope2(boolean sex, AgeCategory age, int strength, int domination, int impetuosity) {
+    public Lycanthrope2(boolean sex, AgeCategory age, float domination) {
+        Random rd = new Random();
         this.sex = sex;
         this.age = age;
-        this.strength = strength;
+        strength = rd.nextInt(10);
         this.domination = domination;
-        this.impetuosity = impetuosity;
+        impetuosity = rd.nextInt(100);
         setLevel();
         sick = false;
         sleep = false;
@@ -66,10 +69,10 @@ public abstract class Lycanthrope2{
     public void setStrength(int strength) {
         this.strength = strength;
     }
-    public int getDomination() {
+    public float getDomination() {
         return domination;
     }
-    public void setDomination(int domination) {
+    public void setDomination(float domination) {
         this.domination = domination;
     }
     public int getLevel() {
@@ -107,30 +110,19 @@ public abstract class Lycanthrope2{
                 + "             -level : " + level + "\n"
                 + "             -impetuosity : " + impetuosity + "\n";
     }
-    public void ShowToString(){System.out.println(this.toString());}
+    public void showToString(){System.out.println(this.toString());}
     public void emitHowl(Roar roar){
         System.out.println(roar.getWhatISay());
     }
-    public void receiveHowl(Roar roar){
-        if (sleep == false && sick == false){
-            if (roar.getClass() == Domination.class){
-                if (this == ((Domination) roar).getSubmitted()){
-                    emitHowl(new Submission());
-                }
-                else {
-                    emitHowl(new Aggressiveness());
-                }
-            }else if (roar.getClass() == Membership.class && ((Membership) roar).isIAmTheFirst()) {
-                this.emitHowl(new Membership());
-            }
-        }
-    }
     public abstract void death();
     public void growOld(){
+        Random rd = new Random();
+        strength += rd.nextInt(10);
         if (age == AgeCategory.YOUNG){
             age = AgeCategory.ADULT;
         } else if (age == AgeCategory.ADULT) {
             age = AgeCategory.OLD;
+            System.out.println("\u001B[31m" + "One Lycan die..." + "\u001B[0m");
         }else{
             death();
         }

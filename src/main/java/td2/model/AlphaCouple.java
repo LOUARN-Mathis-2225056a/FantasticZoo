@@ -36,8 +36,7 @@ public class AlphaCouple {
         }
         for (int i = 0; i <= nbBaby; ++i){
             LycanthropeInPack newLycan = new LycanthropeInPack(rd.nextBoolean(),
-                                                Lycanthrope2.AgeCategory.YOUNG,
-                                                rd.nextInt(5),0,0,newRank,female.getLycanPack());
+                                                Lycanthrope2.AgeCategory.YOUNG,0,newRank,female.getLycanPack());
         }
     }
 }
