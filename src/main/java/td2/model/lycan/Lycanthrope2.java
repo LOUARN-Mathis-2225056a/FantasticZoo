@@ -2,12 +2,12 @@ package td2.model.lycan;
 
 import td2.model.roar.*;
 
-public class Lycanthrope2{
+public abstract class Lycanthrope2{
     private boolean sex; // true = female && false == mal
     public enum AgeCategory {
         YOUNG,
         ADULT,
-        OLD;
+        OLD,
     }
     private AgeCategory age;
     private int strength;
@@ -109,6 +109,16 @@ public class Lycanthrope2{
             }else if (roar.getClass() == Membership.class && ((Membership) roar).isIAmTheFirst()) {
                 this.emitHowl(new Membership());
             }
+        }
+    }
+    public abstract void death();
+    public void growOld(){
+        if (age == AgeCategory.YOUNG){
+            age = AgeCategory.ADULT;
+        } else if (age == AgeCategory.ADULT) {
+            age = AgeCategory.OLD;
+        }else{
+            death();
         }
     }
 }

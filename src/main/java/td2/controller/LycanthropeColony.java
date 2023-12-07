@@ -12,6 +12,7 @@ import td2.model.roar.Membership;
 import td2.model.roar.Submission;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LycanthropeColony implements Runnable{
     static public void main(String[] arg){
@@ -62,7 +63,13 @@ public class LycanthropeColony implements Runnable{
     }
     @Override
     public void run() {
+        float time = 0; // 4 seasons per year (x.0, x.25, x.5, x.75) , season x.75 is the mating season, every year each lycan can age a little more
         while (true){
+            // gestion of time
+            time += 0.25;
+            if (time == 1){
+                time = 0;
+            }
             // possibility of creating a new colony
             ArrayList<LycanthropeSolitary> listLycanSolitary = getAllLycanSolitary();
             if (listLycanSolitary.size() > 1){
@@ -93,6 +100,30 @@ public class LycanthropeColony implements Runnable{
                     }
                 }
             }
+            // gestion of age
+            if (time == 0){
+                Random rd = new Random();
+                ArrayList<LycanthropeSolitary> growOldSolitaryList = new ArrayList<LycanthropeSolitary>();
+                ArrayList<LycanthropeInPack> growOldPackList = new ArrayList<LycanthropeInPack>();
+                for (Enclosure2 enclosure : listEnclosure){
+                    for (LycanthropeInPack lycanthropeInPack : enclosure.getLycanPack().getListLycan()){
+                        if (rd.nextInt(8) == 0){
+                            growOldPackList.add(lycanthropeInPack);
+                        }
+                    }
+                    for (LycanthropeSolitary lycanthropeSolitary : enclosure.getListSolitary()){
+                        if (rd.nextInt(8) == 0){
+                            growOldSolitaryList.add(lycanthropeSolitary);
+                        }
+                    }
+                }
+                for (LycanthropeSolitary lycanthropeSolitary : growOldSolitaryList){
+                    lycanthropeSolitary.growOld();
+                }
+                for (LycanthropeInPack lycanthropeInPack : growOldPackList){
+                    lycanthropeInPack.growOld();
+                }
+            }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -109,7 +140,6 @@ public class LycanthropeColony implements Runnable{
         }
         return null;
     }
-
     public void showAllLycan(){
         System.out.println("\u001B[32m" + "ALL LYCANTHROPE IN COLONY : ");
         for (Enclosure2 enclosure : listEnclosure){

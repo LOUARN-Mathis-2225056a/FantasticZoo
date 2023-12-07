@@ -44,6 +44,12 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
                 + "             -enclosure number : " + enclosure.getID() + "\n";
     }
 
+    @Override
+    public void death() {
+        super.setOn(false);
+        enclosure.removeLycanSolitary(this);
+    }
+
     public void goInPark(){
         enclosure.removeLycanSolitary(this);
         LycanthropeInPack newLycan = new LycanthropeInPack(this,enclosure.getLycanPack());

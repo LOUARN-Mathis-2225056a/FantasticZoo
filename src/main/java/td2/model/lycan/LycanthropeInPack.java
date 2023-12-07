@@ -80,6 +80,13 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                 + "             -rank : " + getStringRank() + "\n"
                 + "             -enclosure number : " + lycanPack.getEnclosure().getID() + "\n";
     }
+
+    @Override
+    public void death() {
+        super.setOn(false);
+        lycanPack.removeLycan(this);
+    }
+
     public void leaveLycanPack(){
         lycanPack.removeLycan(this);
         LycanthropeSolitary newLycan = new LycanthropeSolitary(this,lycanPack.getEnclosure());
