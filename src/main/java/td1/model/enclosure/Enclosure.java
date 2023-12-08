@@ -13,6 +13,13 @@ public class Enclosure extends AbstractEnclosure{
         type = "Runner";
     }
 
+
+    /**
+     * Defines how the enclosure evolves through time.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         int sleepTime;

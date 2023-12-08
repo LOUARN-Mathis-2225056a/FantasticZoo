@@ -3,24 +3,45 @@ package td1.model.enclosure;
 import java.util.Random;
 
 public class Aquarium extends AbstractEnclosure {
-    private float depht = 0;
+    private float depth;
     private int salinity;
 
-    public Aquarium(String name, float surface, int nbMaxCreature, float depht, int salinity) {
+    public Aquarium(String name, float surface, int nbMaxCreature, float depth, int salinity) {
         super(name, surface, nbMaxCreature);
-        this.depht = depht;
+        this.depth = depth;
         this.salinity = salinity;
         type = "Swimmer";
     }
 
+    /**
+     * Returns the salinity of the enclosure
+     *
+     * @return the salinity of the enclosure
+     */
     public int getSalinity() {
         return salinity;
     }
 
+    /**
+     * Sets the salinity of the enclosure
+     *
+     * @param salinity the salinity of the enclosure
+     */
     public void setSalinity(int salinity) {
         this.salinity = salinity;
     }
 
+    public void clean() {
+        System.out.println("You check the aquarium's depth and salinity !");
+        System.out.println("Depth : " + depth + "\nSalinity : " + salinity);
+    }
+
+    /**
+     * Defines how the enclosure evolves through time.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         int sleepTime;
@@ -46,6 +67,6 @@ public class Aquarium extends AbstractEnclosure {
     }
     @Override
     public String toString() {
-        return (super.toString() + "\n salinity : " + salinity + "\n depth : " + depht);
+        return (super.toString() + "\n salinity : " + salinity + "\n depth : " + depth);
     }
 }

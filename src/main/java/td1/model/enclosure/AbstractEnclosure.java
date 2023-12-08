@@ -44,6 +44,11 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
 
     }
 
+    /**
+     * Adds a creature in the enclosure
+     *
+     * @param creature the creature added
+     */
     public void addCreature(Creature creature) {
         if (getNbCurrentCreature() == getNbMaxCreature()) {
             System.out.println("This enclosure is already full");
@@ -73,12 +78,23 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
             System.out.println("You cannot add this creature in this type of enclosure.");
         }
     }
+
+    /**
+     * Adds a creature in the enclosure
+     *
+     * @param creatures the list of creatures to add
+     */
     public void addAllCreatures(ArrayList<Creature> creatures){
         for(Creature creature : creatures){
             addCreature(creature);
         }
     }
 
+    /**
+     * Removes a creature in the enclosure
+     *
+     * @param creature the creature removed
+     */
     public void removeCreature(Creature creature) {
         if (creatureList.contains(creature)) {
             creatureList.remove(creature);
@@ -90,29 +106,62 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
             System.out.println("The creature you are trying to remove is not in this enclosure.");
         }
     }
+
+    /**
+     * Removes all creatures from the enclosure
+     */
     public void removeAllCreatures(){
         creatureList.clear();
     }
 
+    /**
+     * Adds a creature in the enclosure
+     *
+     * @return the list of all creatures
+     */
     public ArrayList<Creature> getCreatureList() {
         return creatureList;
     }
 
+    /**
+     * Set a list of creatures in the enclosure
+     *
+     * @param creatureList the list of creatures
+     */
     public void setCreatureList(ArrayList<Creature> creatureList) {
         this.creatureList = creatureList;
     }
 
+    /**
+     * Set the type of enclosure
+     *
+     * @param type the list of creatures
+     */
     protected void setEnclosureType(Type type){
         this.type = type;
     }
 
+    /**
+     * Set a list of creatures in the enclosure
+     *
+     * @return the type of the enclosure
+     */
     public Type getEnclosureType() {
         return type;
     }
+
+    /**
+     * Set the type of the animals
+     *
+     * @param animalType the animal type
+     */
     public void setAnimalType(String animalType) {
         this.animalType = animalType;
     }
 
+    /**
+     * Increases the cleanliness level of the enclosure
+     */
     public void clean() {
         if(!creatureList.isEmpty()){
             System.out.println("You cannot clean this " + this.getClass().getSimpleName() + " while creatures are still inside.");
@@ -123,18 +172,38 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
         }
     }
 
+    /**
+     * Returns the hp of the enclosure
+     *
+     * @return the hp of the enclosure
+     */
     public int getHp() {
         return hp;
     }
 
+    /**
+     * Sets the hp of the enclosure
+     *
+     * @param hp the hp of the enclosure
+     */
     public void setHp(int hp) {
         this.hp = hp;
     }
 
+    /**
+     * Sets the cleanliness level of the enclosure
+     *
+     * @param cleanlinessLevel set the cleanliness level of the enclosure
+     */
     public void setCleanlinessLevel(int cleanlinessLevel) {
         this.cleanlinessLevel = cleanlinessLevel;
     }
 
+    /**
+     * Add a certain quantity of food to the feeder
+     *
+     * @param quantity the quantity of food
+     */
     public void addFood(int quantity) {
         feeder = feeder + quantity;
         if (feeder > 500) {
@@ -142,10 +211,20 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
         }
     }
 
+    /**
+     * Returns the amount of food in the feeder
+     *
+     * @return the amount of food in the feeder
+     */
     public int getFeeder() {
         return feeder;
     }
 
+    /**
+     * Sets the amount of food in the feeder
+     *
+     * @param feeder the amount of food in the feeder
+     */
     public void setFeeder(int feeder) {
         if (feeder > 500) {
             feeder = 500;
@@ -166,26 +245,56 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
                 "\nEnclosure's health : " + hp;
     }
 
+    /**
+     * Returns the number of creatures in the enclosure
+     *
+     * @return the number of creatures in the enclosure
+     */
     public int getNbCurrentCreature() {
         return nbCurrentCreature;
     }
 
+    /**
+     * Sets the number of creatures in the enclosure
+     *
+     * @param value the number of creatures in the enclosure
+     */
     public void setNbCurrentCreature(int value) {
         nbCurrentCreature = value;
     }
 
+    /**
+     * Returns the max number of creatures in the enclosure
+     *
+     * @return the max number of creatures in the enclosure
+     */
     public int getNbMaxCreature() {
         return nbMaxCreature;
     }
 
+    /**
+     * Returns the level of cleanliness of the enclosure
+     *
+     * @return the level of cleanliness of the enclosure
+     */
     public int getCleanlinessLevel() {
         return cleanlinessLevel;
     }
 
+    /**
+     * Returns the type of the animals in the enclosure
+     *
+     * @return the type of the animals in the enclosure
+     */
     public Object getAnimalType() {
         return animalType;
     }
 
+    /**
+     * Returns the type of the enclosure
+     *
+     * @return the type of the enclosure
+     */
     public Type getType() {
         return type;
     }

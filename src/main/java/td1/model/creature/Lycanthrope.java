@@ -15,6 +15,11 @@ public class Lycanthrope extends Viviparous implements Runner{
         return(getName() + " is running !\n");
     }
 
+    /**
+     * Creates this creature's child (a creature with a negative age)
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void giveBirth(){
         Random rd = new Random();
@@ -29,6 +34,12 @@ public class Lycanthrope extends Viviparous implements Runner{
         }
     }
 
+    /**
+     * Defines the life of the creature and its behavior in the game.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         while (getHealth() > 0) {
