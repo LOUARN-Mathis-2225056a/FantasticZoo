@@ -26,9 +26,9 @@ public class FantasticZoo {
 
     public static void main(String[] args) throws Exception {
         GameSetup.getInstance().setupZooMaster(new FantasticZoo());
-        GameSetup.getInstance().setChooseGameMode();
         OpenNewTerminal.execute();
-
+        GameSetup.getInstance().setChooseGameMode();
+        return;
     }
 
     /**
