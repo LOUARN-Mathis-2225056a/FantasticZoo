@@ -64,14 +64,14 @@ public class AlphaCouple {
         else{
             String errorCause;
             if(male == null && female == null){
-                errorCause = "both are null";
+                errorCause = "All Lycan are dead...";
             } else if (male == null){
-                errorCause = "male is null";
+                errorCause = "There is no longer a male in the pack";
             } else {
-                errorCause = "female is null";
+                errorCause = "There is no longer a female in the pack";
             }
-            System.out.println("                                                                                                                                            "+
-                    "This couple can't give birt ! Cause : " + errorCause);
+            System.out.println("                                                                      "+
+                    "One pack will die or will die ! Cause : " + errorCause);
         }
 
     }

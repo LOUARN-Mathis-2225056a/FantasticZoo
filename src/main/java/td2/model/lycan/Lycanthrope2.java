@@ -126,6 +126,11 @@ public abstract class Lycanthrope2{
     public void growOld(){
         Random rd = new Random();
         strength += rd.nextInt(10);
+        if (this.getClass() == LycanthropeInPack.class && domination<=-1 && ((LycanthropeInPack) this).getRank() != 24 && ((LycanthropeInPack) this).getRank() != 1){
+            ((LycanthropeInPack) this).setRank(((LycanthropeInPack) this).getRank() + 1);
+            System.out.println("\u001B[36m" + "One Lycan loses a rank because he does not have enough domination points \n"
+                    + "now it's a : " + ((LycanthropeInPack) this).getStringRank() + "\u001B[0m");
+        }
         if (age == AgeCategory.YOUNG){
             age = AgeCategory.ADULT;
         } else if (age == AgeCategory.ADULT) {
