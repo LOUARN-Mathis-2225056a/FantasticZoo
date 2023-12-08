@@ -34,6 +34,7 @@ public class Aquarium extends AbstractEnclosure {
     public void clean() {
         System.out.println("You check the aquarium's depth and salinity !");
         System.out.println("Depth : " + depth + "\nSalinity : " + salinity);
+        super.clean();
     }
 
     /**
