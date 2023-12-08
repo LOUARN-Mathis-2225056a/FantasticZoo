@@ -86,10 +86,10 @@ public class FantasticZoo {
     /**
      * Sets the name of the zoo
      *
-     * @param nom the new name
+     * @param name the new name
      */
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.nom = name;
     }
 
     /**

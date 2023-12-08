@@ -28,7 +28,7 @@ public class GameSetup {
         int zooMasterAge = Integer.parseInt(textIn.nextLine());
         System.out.print("Choose the name of your fantastic zoo : ");
         zooName = textIn.nextLine();
-        zoo.setNom(zooName);
+        zoo.setName(zooName);
         zooMaster = new ZooMaster(zooMasterName, zooMasterGender, zooMasterAge,zoo);
         zoo.setZooMaster(zooMaster);
     }
