@@ -12,13 +12,23 @@ public class Aviary extends AbstractEnclosure implements Runnable{
         type = "Flyer";
     }
 
+    /**
+     * Cleans the roof of the aviary
+     */
     public void cleanRoof() {
+        System.out.println("You check the roof's cleanliness ");
         roofCleanliness+=2;
         if(roofCleanliness>3){
             roofCleanliness = 3;
         }
     }
 
+    /**
+     * Defines how the enclosure evolves through time.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         int sleepTime;

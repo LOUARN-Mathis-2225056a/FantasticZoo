@@ -9,11 +9,21 @@ public class Unicorn extends Viviparous implements Runner{
         setEatingValue(9);
     }
 
+    /**
+     * Returns a prompt of the creature running
+     *
+     * @return the prompt of the creature running
+     */
     @Override
     public String creatureRun() {
         return(getName() + " is running !\n");
     }
 
+    /**
+     * Creates a new egg (a creature with a negative age)
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void giveBirth(){
         Random rd = new Random();
@@ -28,6 +38,12 @@ public class Unicorn extends Viviparous implements Runner{
         }
     }
 
+    /**
+     * Defines the life of the creature and its behavior in the game.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         while (getHealth() > 0) {

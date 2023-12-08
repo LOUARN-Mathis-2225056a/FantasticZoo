@@ -9,11 +9,19 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
         setEatingValue(11);
     }
 
+    /**
+     * Return a prompt of the creature flying
+     *
+     * @return the prompt of the creature flying
+     */
     @Override
     public String creatureFly() {
         return (getName() + " is flying !\n");
     }
 
+    /**
+     * Reborn the creature
+     */
     @Override
     public void creatureReborn() {
         FileWriter.writeInFile(getName() + " reborned !");
@@ -23,6 +31,11 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
         getLife().start();
     }
 
+    /**
+     * Creates a new egg (a creature with a negative age)
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void giveBirth(){
         Random rd = new Random();
@@ -37,6 +50,12 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
         }
     }
 
+    /**
+     * Defines the life of the creature and its behavior in the game.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         while (getHealth() > 0) {

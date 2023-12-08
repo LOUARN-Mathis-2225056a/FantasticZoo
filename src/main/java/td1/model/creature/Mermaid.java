@@ -9,11 +9,21 @@ public class Mermaid extends Viviparous implements Swimmer{
         setEatingValue(6);
     }
 
+    /**
+     * Returns a prompt of the creature swimming
+     *
+     * @return the prompt of the creature swimming
+     */
     @Override
     public String creatureSwim() {
         return (getName() + " is swimming !\n");
     }
 
+    /**
+     * Creates a new egg (a creature with a negative age)
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void giveBirth(){
         Random rd = new Random();
@@ -28,6 +38,12 @@ public class Mermaid extends Viviparous implements Swimmer{
         }
     }
 
+    /**
+     * Defines the life of the creature and its behavior in the game.
+     * Is used by threads
+     *
+     * @throws RuntimeException
+     */
     @Override
     public void run() {
         while (getHealth() > 0) {
