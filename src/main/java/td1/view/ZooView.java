@@ -14,6 +14,13 @@ public class ZooView {
         }
         return instance;
     }
+
+    /**
+     * Show an enclosure
+     *
+     * @param enclosure the enclosure
+     * @param enclosureNumber the enclosure's number
+     */
     public void showOneEnclosure(AbstractEnclosure<?> enclosure, int enclosureNumber){
         String topAndBottomSide = "";
         switch ((String) enclosure.getType()){
@@ -30,6 +37,12 @@ public class ZooView {
         text+= blankLine + blankLine + numberLine + blankLine + blankLine + topAndBottomSide;
         System.out.println(text);
     }
+
+    /**
+     * Shows all the enclosure in the zoo
+     *
+     * @param zoo the zoo where you get all the creatures
+     */
     public void showAllEnclosure(FantasticZoo zoo){
         int sizeOfListEnclosure = zoo.getEnclosureList().size();
         int numberOfEnclosure = 1;
@@ -67,6 +80,11 @@ public class ZooView {
         }
     }
 
+    /**
+     * Show all the creatures
+     *
+     * @param zoo the zoo where you get all the creatures
+     */
     public void showAllCreatures(FantasticZoo zoo) {
         for (AbstractEnclosure<?> abstractEnclosure : zoo.getEnclosureList()){
             for (Creature creature : abstractEnclosure.getCreatureList()){
@@ -74,6 +92,12 @@ public class ZooView {
             }
         }
     }
+
+    /**
+     * Show the total number of creatures in a zoo
+     *
+     * @param zoo the zoo where you get the creatures
+     */
     public void showNumberTotalOfCreature(FantasticZoo zoo){
         int count = 0;
         for (AbstractEnclosure<?> abstractEnclosure : zoo.getEnclosureList()) {

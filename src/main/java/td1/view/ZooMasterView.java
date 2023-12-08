@@ -11,6 +11,9 @@ public class ZooMasterView {
         return instance;
     }
 
+    /**
+     * Shows the principal menu with all the choices
+     */
     public void showPrincipalMenu(){
         ShowInTerminal.getInstance().showTitle("choose an action");
         System.out.println(
@@ -22,10 +25,18 @@ public class ZooMasterView {
                             - 4 : you will be redirected to the transfer menu."""
         );
     }
+
+    /**
+     * Runs if the transfer has failed
+     */
     public void transferFailed(){
         ShowInTerminal.getInstance().showTitle("error");
         System.out.println("The transfer has failed to occur !");
     }
+
+    /**
+     * Runs if the transfer has succeeded
+     */
     public void transferSucceeded(){
         System.out.println("The creature has been successfully transferred !");
     }

@@ -8,6 +8,9 @@ import td1.model.fantasticZoo.FantasticZoo;
 public class ShowInTerminal {
     private static ShowInTerminal instance;
 
+    /**
+     * Shows a welcome message
+     */
     public void showWelcomeMessage(){
         System.out.print(
                 """
@@ -18,16 +21,21 @@ public class ShowInTerminal {
                                 \\  /\\  /  __/ | (_| (_) | | | | | |  __/
                                  \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|
                         
-                This game include 3 premades situations.
+                This game include 3 pre-made situations.
                 - 1 : Only ground enclosures are made with ground creatures
                 - 2 : Only aviary are made with flying creatures
-                - 3 : Only aqurium ares made with sea creatures
+                - 3 : Only aquarium ares made with sea creatures
                 type 1, 2 or 3 to select the mode you want to play.
                 
                 Selected preset:
                 """);
     }
 
+    /**
+     * Shows the title of the zoo
+     *
+     * @param title the title to show
+     */
     public void showTitle(String title){
         String text = "";
         String topAndBottomSide = "";
@@ -38,6 +46,11 @@ public class ShowInTerminal {
         System.out.println(text);
     }
 
+    /**
+     * Get the instance of the class
+     *
+     * @return the instance
+     */
     public static ShowInTerminal getInstance() {
         if(instance == null){
             instance = new ShowInTerminal();

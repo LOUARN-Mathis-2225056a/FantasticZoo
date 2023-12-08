@@ -4,6 +4,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class FileWriter {
+
+    /**
+     * Writes in a file
+     *
+     * @param fileName the name of the file
+     * @param str the text to write in the file
+     */
     private static void write(String str, String fileName){
         // Init the buffer
         BufferedWriter writer = null;
@@ -29,11 +36,22 @@ public class FileWriter {
             throw new RuntimeException(e);
         }
     }
-    // Default file is "logs"
+
+    /**
+     * Writes in the logs file
+     *
+     * @param str the text to write
+     */
     public static void writeInFile(String str) {
         write(str, "logs");
     }
-    // Write in file function
+
+    /**
+     * Writes in a file
+     *
+     * @param str the text to write
+     * @param fileName the file to write in
+     */
     public static void writeInFile(String str, String fileName) {
         write(str, fileName);
     }

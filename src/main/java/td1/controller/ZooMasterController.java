@@ -30,7 +30,7 @@ public class ZooMasterController {
     public void execBehavior(FantasticZoo zoo) {
         zooMaster = zoo.getZooMaster();
         while (true) {
-            System.out.print("\033[H\033[2J"); // fonctionne peut être sur linux ?
+            System.out.print("\033[H\033[2J");
             System.out.flush();
             zoo.showEnclosure();
             ZooMasterView.getInstance().showPrincipalMenu();
