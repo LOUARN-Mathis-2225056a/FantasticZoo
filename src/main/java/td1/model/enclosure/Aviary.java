@@ -15,7 +15,7 @@ public class Aviary extends AbstractEnclosure implements Runnable{
     /**
      * Cleans the roof of the aviary
      */
-    public void cleanRoof() {
+    public void clean() {
         System.out.println("You check the roof's cleanliness ");
         roofCleanliness+=2;
         if(roofCleanliness>3){
