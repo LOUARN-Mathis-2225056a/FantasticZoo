@@ -24,7 +24,8 @@ public class ShowInTerminal {
                         This game include 3 premades situations.
                         \u001B[32m- 1 : Only ground enclosures are made with ground creatures
                         \u001B[37m- 2 : Only aviary are made with flying creatures
-                        \u001B[34m- 3 : Only aqurium ares made with sea creatures\u001B[0m
+                        \u001B[34m- 3 : Only aqurium ares made with sea creatures
+                        \u001B[31m- 4 : Run everything at once and good luck\u001B[0m
                         
                         type 1, 2 or 3 to select the mode you want to play.
                                         
