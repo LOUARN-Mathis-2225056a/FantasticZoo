@@ -14,21 +14,22 @@ public class ShowInTerminal {
     public void showWelcomeMessage(){
         System.out.print(
                 """
-                                 _    _      _                        \s
-                                | |  | |    | |                       \s
-                                | |  | | ___| | ___ ___  _ __ ___   ___
-                                | |/\\| |/ _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\
-                                \\  /\\  /  __/ | (_| (_) | | | | | |  __/
-                                 \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|
+                                         _    _      _                        \s
+                                        | |  | |    | |                       \s
+                                        | |  | | ___| | ___ ___  _ __ ___   ___
+                                        | |/\\| |/ _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\
+                                        \\  /\\  /  __/ | (_| (_) | | | | | |  __/
+                                         \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|
+                                
+                        This game include 3 premades situations.
+                        \u001B[32m- 1 : Only ground enclosures are made with ground creatures
+                        \u001B[37m- 2 : Only aviary are made with flying creatures
+                        \u001B[34m- 3 : Only aqurium ares made with sea creatures
+                        \u001B[31m- 4 : Run everything at once and good luck\u001B[0m
                         
-                This game include 3 pre-made situations.
-                - 1 : Only ground enclosures are made with ground creatures
-                - 2 : Only aviary are made with flying creatures
-                - 3 : Only aquarium ares made with sea creatures
-                type 1, 2 or 3 to select the mode you want to play.
-                
-                Selected preset:
-                """);
+                        type 1, 2 or 3 to select the mode you want to play.
+                                        
+                        \u001B[33m Selected preset :\u001B[0m""");
     }
 
     /**
@@ -42,10 +43,14 @@ public class ShowInTerminal {
         for (int i = 0; i < title.length()+2; i++) {
             topAndBottomSide+="-";
         }
-        text+=topAndBottomSide + "\n | " + title.toUpperCase() + " |\n" + topAndBottomSide;
+        text+=topAndBottomSide + "\n|" + title.toUpperCase() + "|\n" + topAndBottomSide;
         System.out.println(text);
     }
-
+    public void refreshTerminal(){
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
+        }
+    }
     /**
      * Get the instance of the class
      *

@@ -1,6 +1,7 @@
 package td1.model.enclosure;
 
 import td1.model.creature.Creature;
+import td1.view.ColorInTerminal;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
      */
     public void addCreature(Creature creature) {
         if (getNbCurrentCreature() == getNbMaxCreature()) {
-            System.out.println("This enclosure is already full");
+            System.out.println(ColorInTerminal.TEXT_RED +"This enclosure is already full" + ColorInTerminal.TEXT_RESET);
         } else if (creature.getInterface().contains(type.toString())) {
             if (getAnimalType() != null) {
                 if (creature.getClass().getSimpleName() == getAnimalType()) {
@@ -59,7 +60,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
                     creature.setCurrentEnclosure(this);
                     setNbCurrentCreature(getNbCurrentCreature() + 1);
                 } else {
-                    System.out.println("You cannot add this type of creature in this enclosure.");
+                    System.out.println(ColorInTerminal.TEXT_RED +"You cannot add this type of creature in this enclosure." + ColorInTerminal.TEXT_RESET);
                 }
             } else {
                 setAnimalType(creature.getClass().getSimpleName());
@@ -75,7 +76,7 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
             creature.setCurrentEnclosure(this);
             setNbCurrentCreature(getNbCurrentCreature() + 1);
         } else {
-            System.out.println("You cannot add this creature in this type of enclosure.");
+            System.out.println(ColorInTerminal.TEXT_RED + "You cannot add this creature in this type of enclosure." + ColorInTerminal.TEXT_RESET);
         }
     }
 
@@ -164,11 +165,13 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
      */
     public void clean() {
         if(!creatureList.isEmpty()){
-            System.out.println("You cannot clean this " + this.getClass().getSimpleName() + " while creatures are still inside.");
-        }
-        cleanlinessLevel+=2;
-        if(cleanlinessLevel>3){
-            cleanlinessLevel = 3;
+            System.out.println(ColorInTerminal.TEXT_RED + "You cannot clean this " + this.getClass().getSimpleName() + " while creatures are still inside." + ColorInTerminal.TEXT_RESET);
+        }else {
+            cleanlinessLevel+=2;
+            if(cleanlinessLevel>3){
+                    cleanlinessLevel = 3;
+            }
+            System.out.println(ColorInTerminal.TEXT_GREEN + "The enclosure has been successfully cleaned !" + ColorInTerminal.TEXT_RESET);
         }
     }
 
@@ -234,15 +237,18 @@ public abstract class AbstractEnclosure<Type> implements Runnable {
 
     @Override
     public String toString() {
-        return name +
-                "\nCreature list :" + creatureList +
+        String creatureListString = "\n";
+        for( Creature creature : creatureList){
+            creatureListString+= creature.shortToString() + "\n";
+        }
+        return ColorInTerminal.TEXT_PURPLE + "Enclosure name : " + name +
+                "\nCreature list :" + creatureListString +
                 "\nSurface : " + surface +
                 "\nNumber of maximum creatures : " + nbMaxCreature +
                 "\nNumber of current creatures : " + nbCurrentCreature +
                 "\nCleanliness level : " + cleanlinessLevel +
                 "\nEnclosure's type : " + type +
-                "\nEnclosure's animals' specie : " + animalType +
-                "\nEnclosure's health : " + hp;
+                "\nEnclosure's animals' specie : " + animalType + ColorInTerminal.TEXT_RESET;
     }
 
     /**
