@@ -18,7 +18,7 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
         while (this.isOn()){
             // DOMINATION TEST
             Random rd = new Random();
-            if(101 - rd.nextInt(getImpetuosity()) == 100){
+            if(101 - rd.nextInt(getImpetuosity()+1) == 100){
                 LycanthropeInPack target = lycanPack.getListLycan().get(rd.nextInt(lycanPack.getListLycan().size()));
                 if ( !(target.isSex() && target.rank == 1) // verification that we do not attack the alpha female
                         && target.getStrength()<=getStrength() - rd.nextInt(3) // force estimation
@@ -27,10 +27,6 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                     target.setLevelPack();
                     setLevelPack();
                     emitHowl(new Domination());
-                    System.out.println("---- AGGRESSOR ----");
-                    showToString();
-                    System.out.println("---- TARGET ----");
-                    target.showToString();
                     if (getLevel()>target.getLevel() || target.getRank() == 24){
                         emitHowl(new Aggressiveness());
                         target.emitHowl(new Submission());
@@ -53,18 +49,15 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                                     + lycanPack.getEnclosure().getID()
                                     + "\u001B[0m");
                         }
+                        System.out.println("The aggressor has won and has a dominance rank of " + getStringRank());
                     }
                     else {
                         target.emitHowl(new Aggressiveness());
                         emitHowl(new Submission());
                         setDomination(getDomination()-1);
                         target.setDomination(target.getDomination()+1);
+                        System.out.println("The aggressor has lost and has a dominance rank of " + getStringRank());
                     }
-                    System.out.println("---- AGGRESSOR ----");
-                    showToString();
-                    System.out.println("---- TARGET ----");
-                    target.showToString();
-
                     if((target.getRank() == 1 || rank == 24) && !(getLevel()>target.getLevel() || target.getRank() == 24) // domination failed
                             && rd.nextInt(2) == 0
                         ){
@@ -93,6 +86,7 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
         lycanPack.addLycan(this);
         super.setThread(new Thread(this));
         super.startThread();
+        lycanPack.getEnclosure().getLycanthropeColony().addOneLycan();
     }
     public LycanthropeInPack(LycanthropeSolitary lycanthropeSolitary, LycanPack lycanPack){
         super(  lycanthropeSolitary.isSex(),
@@ -158,6 +152,8 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
     @Override
     public void death() {
         super.setOn(false);
+        lycanPack.getEnclosure().getLycanthropeColony().addOneDeath();
+        lycanPack.getEnclosure().getLycanthropeColony().removeOneLycan();
         lycanPack.removeLycan(this);
     }
     public void leaveLycanPack(){

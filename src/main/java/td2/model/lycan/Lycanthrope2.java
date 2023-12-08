@@ -133,7 +133,9 @@ public abstract class Lycanthrope2{
         }else{
             death();
             int IDEnclosure;
+            int totalDeath;
             if (this.getClass() == LycanthropeInPack.class){
+                totalDeath = ((LycanthropeInPack) this).getLycanPack().getEnclosure().getLycanthropeColony().getTotalDeath();
                 IDEnclosure = ((LycanthropeInPack) this).getLycanPack().getEnclosure().getID();
                 if (((LycanthropeInPack) this).getRank() == 1){
                     if (isSex()){
@@ -145,9 +147,14 @@ public abstract class Lycanthrope2{
                 }
             }
             else {
+                totalDeath = ((LycanthropeSolitary) this).getEnclosure().getLycanthropeColony().getTotalDeath();
                 IDEnclosure = ((LycanthropeSolitary) this).getEnclosure().getID();
             }
-            System.out.println("\u001B[31m" + "                                                                      One Lycan dies of old age in enclosure " + IDEnclosure + "\u001B[0m");
+            System.out.println("\u001B[31m" + "                                                                      "
+                    +"One Lycan dies of old age in enclosure " + IDEnclosure
+                    + "                                                                      "
+                    + " Total death : " + totalDeath
+                    + "\u001B[0m");
         }
     }
 }

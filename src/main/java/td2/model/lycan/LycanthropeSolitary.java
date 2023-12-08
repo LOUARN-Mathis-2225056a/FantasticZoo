@@ -10,6 +10,7 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
         enclosure.addLycanSolitary(this);
         super.setThread(new Thread(this));
         super.startThread();
+        enclosure.getLycanthropeColony().addOneLycan();
     }
     public LycanthropeSolitary(LycanthropeInPack lycanthropeInPack, Enclosure2 enclosure){
         super(  lycanthropeInPack.isSex(),
@@ -44,6 +45,8 @@ public class LycanthropeSolitary extends Lycanthrope2 implements Runnable{
     @Override
     public void death() {
         super.setOn(false);
+        enclosure.getLycanthropeColony().addOneDeath();
+        enclosure.getLycanthropeColony().removeOneLycan();
         enclosure.removeLycanSolitary(this);
     }
 
