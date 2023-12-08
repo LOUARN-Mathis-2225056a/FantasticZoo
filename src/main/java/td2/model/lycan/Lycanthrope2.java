@@ -157,7 +157,7 @@ public abstract class Lycanthrope2{
             }
             System.out.println("\u001B[31m" + "                                                                      "
                     +"One Lycan dies of old age in enclosure " + IDEnclosure
-                    + "                                                                      "
+                    + "                                                            "
                     + " Total death : " + totalDeath
                     + "\u001B[0m");
         }
