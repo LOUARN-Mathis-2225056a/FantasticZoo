@@ -18,6 +18,11 @@ public class GameSetup {
     private String zooName;
     private ZooMaster zooMaster;
 
+    /**
+     * Setups the settings of the zoomaster
+     *
+     * @param zoo the zoo to setup
+     */
     public void setupZooMaster(FantasticZoo zoo) {
         System.out.print("Choose your name : ");
         Scanner textIn = new Scanner(System.in);
@@ -33,6 +38,9 @@ public class GameSetup {
         zoo.setZooMaster(zooMaster);
     }
 
+    /**
+     * Chooses the game mode
+     */
     public void setChooseGameMode() {
         ShowInTerminal.getInstance().showWelcomeMessage();
         Scanner textIn = new Scanner(System.in);
@@ -44,6 +52,9 @@ public class GameSetup {
         }
     }
 
+    /**
+     * The ground animals only scenario
+     */
     private void execGroundOnlyScenario() {
         FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
@@ -80,6 +91,9 @@ public class GameSetup {
         game.start();
     }
 
+    /**
+     * The flying animals only scenario
+     */
     private void execFlyerOnlyScenario() {
         FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
@@ -109,6 +123,9 @@ public class GameSetup {
         game.start();
     }
 
+    /**
+     * The swimming animals only scenario
+     */
     private void execSwimmerOnlyScenario() {
         FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
@@ -145,6 +162,11 @@ public class GameSetup {
         game.start();
     }
 
+    /**
+     * Returns the instance of the object
+     *
+     * @return the instance of the object
+     */
     public static GameSetup getInstance() {
         if (instance == null) {
             instance = new GameSetup();

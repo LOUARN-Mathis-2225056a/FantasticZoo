@@ -22,6 +22,11 @@ public class ZooMasterController {
         return instance;
     }
 
+    /**
+     * How the game reacts to the number you choose
+     *
+     * @param zoo the current zoo
+     */
     public void execBehavior(FantasticZoo zoo) {
         zooMaster = zoo.getZooMaster();
         while (true) {
