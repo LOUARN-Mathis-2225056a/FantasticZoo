@@ -74,6 +74,14 @@ public abstract class Lycanthrope2{
     }
     public void setDomination(float domination) {
         this.domination = domination;
+        if (domination <= -3 && this.getClass() == LycanthropeInPack.class && ((LycanthropeInPack) this).getRank() != 24){
+            ((LycanthropeInPack) this).setRank(24);
+            System.out.println("\u001B[32m"
+                    + "                                                                      "
+                    + "A Lycan has become ω in enclosure "
+                    + ((LycanthropeInPack) this).getLycanPack().getEnclosure().getID()
+                    + "\u001B[0m");
+        }
     }
     public int getLevel() {
         return level;

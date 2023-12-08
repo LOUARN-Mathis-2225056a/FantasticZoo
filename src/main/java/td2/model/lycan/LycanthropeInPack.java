@@ -45,6 +45,14 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                                 lycanPack.setBestFemale();
                             }
                         }
+                        if (target.getRank() == 24 && rd.nextInt(2) == 0){
+                            target.leaveLycanPack();
+                            System.out.println("\u001B[33m"
+                                    + "                                                                      "
+                                    + "A lycan becomes solitary due to a failure to dominate in the enclosure "
+                                    + lycanPack.getEnclosure().getID()
+                                    + "\u001B[0m");
+                        }
                     }
                     else {
                         target.emitHowl(new Aggressiveness());
@@ -56,6 +64,18 @@ public class LycanthropeInPack extends Lycanthrope2 implements Runnable{
                     showToString();
                     System.out.println("---- TARGET ----");
                     target.showToString();
+
+                    if((target.getRank() == 1 || rank == 24) && !(getLevel()>target.getLevel() || target.getRank() == 24) // domination failed
+                            && rd.nextInt(2) == 0
+                        ){
+                        leaveLycanPack();
+                        System.out.println("\u001B[33m"
+                                + "                                                                      "
+                                + "A lycan becomes solitary due to a failure to dominate in the enclosure "
+                                + lycanPack.getEnclosure().getID()
+                                + "\u001B[0m");
+                    }
+
                 }
             }
             try {
