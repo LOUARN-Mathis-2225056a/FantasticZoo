@@ -1,18 +1,19 @@
 package td1.model.creature;
 
-import java.util.Random;
 import td1.view.fileWritter.FileWriter;
 
-public class Lycanthrope extends Viviparous implements Runner{
+import java.util.Random;
 
-    public Lycanthrope(String name, boolean sex, float weight, float height,int age) {
+public class Lycanthrope extends Viviparous implements Runner {
+
+    public Lycanthrope(String name, boolean sex, float weight, float height, int age) {
         super(name, sex, weight, height, age);
         setEatingValue(6);
     }
 
     @Override
     public String creatureRun() {
-        return(getName() + " is running !\n");
+        return (getName() + " is running !\n");
     }
 
     /**
@@ -21,7 +22,7 @@ public class Lycanthrope extends Viviparous implements Runner{
      * @throws RuntimeException
      */
     @Override
-    public void giveBirth(){
+    public void giveBirth() {
         Random rd = new Random();
         FileWriter.writeInFile(getName() + " just got engrossed.\n");
         Lycanthrope d1 = new Lycanthrope(getName() + "'s child", rd.nextBoolean(), 10, 10, -3);
@@ -43,9 +44,9 @@ public class Lycanthrope extends Viviparous implements Runner{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(!isPaused()){
+            if (!isPaused()) {
                 Random percentage = new Random();
-                if(!isSleep()){
+                if (!isSleep()) {
                     // The creature's hunger increases
                     if (percentage.nextInt(4) == 0) {
                         consumeFood(10);
@@ -55,7 +56,7 @@ public class Lycanthrope extends Viviparous implements Runner{
                         setHealth(getHealth() - 5);
                     }
                     // The creature checks for food in its enclosure
-                    if(percentage.nextInt(150) < 100-getHunger()){
+                    if (percentage.nextInt(150) < 100 - getHunger()) {
                         checkForFood(getCurrentEnclosure());
                     }
                     // The creature makes an action depending on what type of moves it can make
@@ -63,7 +64,7 @@ public class Lycanthrope extends Viviparous implements Runner{
                         FileWriter.writeInFile(creatureRun());
                     }
                     // The creature gives birth (only if female)
-                    if (isSex() && percentage.nextInt(500) == 1){
+                    if (isSex() && percentage.nextInt(500) == 1) {
                         giveBirth();
                     }
                 }
@@ -72,20 +73,19 @@ public class Lycanthrope extends Viviparous implements Runner{
                     wake();
                 }
                 // The creature falls asleep
-                else if(percentage.nextInt(101) < 10 && !isSleep()){
+                else if (percentage.nextInt(101) < 10 && !isSleep()) {
                     sleep();
                 }
 
                 // A little cooldown between actions to not spam the logs
-                int cooldown = (3+percentage.nextInt(5))*1000;
+                int cooldown = (3 + percentage.nextInt(5)) * 1000;
 
                 try {
                     Thread.sleep(cooldown);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

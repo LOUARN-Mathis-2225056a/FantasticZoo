@@ -1,9 +1,10 @@
 package td1.model.creature;
 
-import java.util.Random;
 import td1.view.fileWritter.FileWriter;
 
-public class Phoenix extends Oviparous implements Flyer,Reborner{
+import java.util.Random;
+
+public class Phoenix extends Oviparous implements Flyer, Reborner {
     public Phoenix(String name, boolean sex, float weight, float height, int age) {
         super(name, sex, weight, height, age);
         setEatingValue(11);
@@ -37,7 +38,7 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
      * @throws RuntimeException
      */
     @Override
-    public void giveBirth(){
+    public void giveBirth() {
         Random rd = new Random();
         FileWriter.writeInFile(getName() + " just laid an egg.\n");
         Phoenix p1 = new Phoenix(getName() + "'s egg", rd.nextBoolean(), 10, 10, -10);
@@ -59,9 +60,9 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0 && !isPaused()){
+            if (getAge() >= 0 && !isPaused()) {
                 Random percentage = new Random();
-                if(!isSleep()){
+                if (!isSleep()) {
                     if (percentage.nextInt(4) == 0) {
                         consumeFood(10);
                     }
@@ -70,11 +71,11 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
                         setHealth(getHealth() - 5);
                     }
 
-                    if(percentage.nextInt(150) < 100-getHunger()){
+                    if (percentage.nextInt(150) < 100 - getHunger()) {
                         checkForFood(getCurrentEnclosure());
                     }
 
-                    if (isSex() && percentage.nextInt(500) == 1){
+                    if (isSex() && percentage.nextInt(500) == 1) {
                         giveBirth();
                     }
 
@@ -87,20 +88,19 @@ public class Phoenix extends Oviparous implements Flyer,Reborner{
                     wake();
                 }
                 // The creature falls asleep
-                else if(percentage.nextInt(101) < 10 && !isSleep()){
+                else if (percentage.nextInt(101) < 10 && !isSleep()) {
                     sleep();
                 }
 
                 // A little cooldown between actions to not spam the logs
-                int cooldown = (3+percentage.nextInt(5))*1000;
+                int cooldown = (3 + percentage.nextInt(5)) * 1000;
 
                 try {
                     Thread.sleep(cooldown);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

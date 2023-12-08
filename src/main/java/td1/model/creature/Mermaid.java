@@ -1,11 +1,12 @@
 package td1.model.creature;
 
-import java.util.Random;
 import td1.view.fileWritter.FileWriter;
 
-public class Mermaid extends Viviparous implements Swimmer{
-    public Mermaid(String name, boolean sex, float weight, float height, int age){
-        super(name,sex,weight,height,age);
+import java.util.Random;
+
+public class Mermaid extends Viviparous implements Swimmer {
+    public Mermaid(String name, boolean sex, float weight, float height, int age) {
+        super(name, sex, weight, height, age);
         setEatingValue(6);
     }
 
@@ -25,7 +26,7 @@ public class Mermaid extends Viviparous implements Swimmer{
      * @throws RuntimeException
      */
     @Override
-    public void giveBirth(){
+    public void giveBirth() {
         Random rd = new Random();
         FileWriter.writeInFile(getName() + " just got engrossed.\n");
         Mermaid d1 = new Mermaid(getName() + "'s child", rd.nextBoolean(), 10, 10, -3);
@@ -47,9 +48,9 @@ public class Mermaid extends Viviparous implements Swimmer{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(!isPaused()){
+            if (!isPaused()) {
                 Random percentage = new Random();
-                if(!isSleep()){
+                if (!isSleep()) {
                     // The creature's hunger increases
                     if (percentage.nextInt(4) == 0) {
                         consumeFood(10);
@@ -59,7 +60,7 @@ public class Mermaid extends Viviparous implements Swimmer{
                         setHealth(getHealth() - 5);
                     }
                     // The creature checks for food in its enclosure
-                    if(percentage.nextInt(150) < 100-getHunger()){
+                    if (percentage.nextInt(150) < 100 - getHunger()) {
                         checkForFood(getCurrentEnclosure());
                     }
                     // The creature makes an action depending on what type of moves it can make
@@ -67,7 +68,7 @@ public class Mermaid extends Viviparous implements Swimmer{
                         FileWriter.writeInFile(creatureSwim());
                     }
                     // The creature gives birth (only if female)
-                    if (isSex() && percentage.nextInt(500) == 1){
+                    if (isSex() && percentage.nextInt(500) == 1) {
                         giveBirth();
                     }
                 }
@@ -76,20 +77,19 @@ public class Mermaid extends Viviparous implements Swimmer{
                     wake();
                 }
                 // The creature falls asleep
-                else if(percentage.nextInt(101) < 10 && !isSleep()){
+                else if (percentage.nextInt(101) < 10 && !isSleep()) {
                     sleep();
                 }
 
                 // A little cooldown between actions to not spam the logs
-                int cooldown = (3+percentage.nextInt(5))*1000;
+                int cooldown = (3 + percentage.nextInt(5)) * 1000;
 
                 try {
                     Thread.sleep(cooldown);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

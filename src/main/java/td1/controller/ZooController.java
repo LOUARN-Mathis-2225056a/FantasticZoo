@@ -8,12 +8,19 @@ import td1.view.ZooView;
 public class ZooController {
     private static ZooController instance;
 
+    public static ZooController getInstance() {
+        if (instance == null) {
+            instance = new ZooController();
+        }
+        return instance;
+    }
+
     /**
      * Show all the enclosures
      *
      * @param zoo the zoo where you take all enclosures
      */
-    public void showAllEnclosures(FantasticZoo zoo){
+    public void showAllEnclosures(FantasticZoo zoo) {
         System.out.print(ColorInTerminal.TEXT_PURPLE);
         ShowInTerminal.getInstance().showTitle("enclosure list");
         ZooView.getInstance().showAllEnclosure(zoo);
@@ -25,7 +32,7 @@ public class ZooController {
      *
      * @param zoo the zoo where you take all creatures
      */
-    public void showAllCreatures(FantasticZoo zoo){
+    public void showAllCreatures(FantasticZoo zoo) {
         ZooView.getInstance().showAllCreatures(zoo);
     }
 
@@ -34,14 +41,7 @@ public class ZooController {
      *
      * @param zoo the zoo where you take all creatures
      */
-    public void showTotalNumberOfCreature(FantasticZoo zoo){
+    public void showTotalNumberOfCreature(FantasticZoo zoo) {
         ZooView.getInstance().showNumberTotalOfCreature(zoo);
-    }
-
-    public static ZooController getInstance() {
-        if(instance == null){
-            instance = new ZooController();
-        }
-        return instance;
     }
 }

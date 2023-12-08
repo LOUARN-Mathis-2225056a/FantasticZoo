@@ -8,8 +8,9 @@ import td1.model.fantasticZoo.FantasticZoo;
 
 public class ZooView {
     private static ZooView instance;
-    public static ZooView getInstance(){
-        if (instance == null){
+
+    public static ZooView getInstance() {
+        if (instance == null) {
             instance = new ZooView();
         }
         return instance;
@@ -18,23 +19,23 @@ public class ZooView {
     /**
      * Show an enclosure
      *
-     * @param enclosure the enclosure
+     * @param enclosure       the enclosure
      * @param enclosureNumber the enclosure's number
      */
-    public void showOneEnclosure(AbstractEnclosure<?> enclosure, int enclosureNumber){
+    public void showOneEnclosure(AbstractEnclosure<?> enclosure, int enclosureNumber) {
         String topAndBottomSide = "";
-        switch ((String) enclosure.getType()){
+        switch ((String) enclosure.getType()) {
             case "Runner" -> topAndBottomSide = "--------------- ";
             case "Swimmer" -> topAndBottomSide = "~~~~~~~~~~~~~~ ";
             case "Flyer" -> topAndBottomSide = "ooooooooooooooo ";
         }
         String text = "" + topAndBottomSide;
         String blankLine = "|           |\n";
-        if(enclosureNumber>=10){
-            String numberLine = "|     "+enclosureNumber+"    |\n";
+        if (enclosureNumber >= 10) {
+            String numberLine = "|     " + enclosureNumber + "    |\n";
         }
-        String numberLine = "|     "+enclosureNumber+"     |\n";
-        text+= blankLine + blankLine + numberLine + blankLine + blankLine + topAndBottomSide;
+        String numberLine = "|     " + enclosureNumber + "     |\n";
+        text += blankLine + blankLine + numberLine + blankLine + blankLine + topAndBottomSide;
         System.out.println(text);
     }
 
@@ -43,30 +44,27 @@ public class ZooView {
      *
      * @param zoo the zoo where you get all the creatures
      */
-    public void showAllEnclosure(FantasticZoo zoo){
+    public void showAllEnclosure(FantasticZoo zoo) {
         int sizeOfListEnclosure = zoo.getEnclosureList().size();
         int numberOfEnclosure = 1;
         String stringUpDown = "";
         String stringSide = "";
         String stringMid = "";
-        for (AbstractEnclosure<?> enclosure : zoo.getEnclosureList()){
+        for (AbstractEnclosure<?> enclosure : zoo.getEnclosureList()) {
             stringSide += "|             | ";
-            if (numberOfEnclosure<10){
-                stringMid += "|      "+numberOfEnclosure+"      | ";
+            if (numberOfEnclosure < 10) {
+                stringMid += "|      " + numberOfEnclosure + "      | ";
+            } else {
+                stringMid += "|     " + numberOfEnclosure + "      | ";
             }
-            else{
-                stringMid += "|     "+numberOfEnclosure+"      | ";
-            }
-            if (enclosure.getClass() == Aquarium.class){
+            if (enclosure.getClass() == Aquarium.class) {
                 stringUpDown += "~~~~~~~~~~~~~~~ ";
-            }
-            else if (enclosure.getClass() == Aviary.class){
+            } else if (enclosure.getClass() == Aviary.class) {
                 stringUpDown += "ooooooooooooooo ";
-            }
-            else{
+            } else {
                 stringUpDown += "--------------- ";
             }
-            if (numberOfEnclosure%5 == 0 || numberOfEnclosure == sizeOfListEnclosure){
+            if (numberOfEnclosure % 5 == 0 || numberOfEnclosure == sizeOfListEnclosure) {
                 System.out.println(stringUpDown);
                 System.out.println(stringSide);
                 System.out.println(stringMid);
@@ -86,8 +84,8 @@ public class ZooView {
      * @param zoo the zoo where you get all the creatures
      */
     public void showAllCreatures(FantasticZoo zoo) {
-        for (AbstractEnclosure<?> abstractEnclosure : zoo.getEnclosureList()){
-            for (Creature creature : abstractEnclosure.getCreatureList()){
+        for (AbstractEnclosure<?> abstractEnclosure : zoo.getEnclosureList()) {
+            for (Creature creature : abstractEnclosure.getCreatureList()) {
                 creature.shortToString();
             }
         }
@@ -98,7 +96,7 @@ public class ZooView {
      *
      * @param zoo the zoo where you get the creatures
      */
-    public void showNumberTotalOfCreature(FantasticZoo zoo){
+    public void showNumberTotalOfCreature(FantasticZoo zoo) {
         int count = 0;
         for (AbstractEnclosure<?> abstractEnclosure : zoo.getEnclosureList()) {
             count += abstractEnclosure.getCreatureList().size();

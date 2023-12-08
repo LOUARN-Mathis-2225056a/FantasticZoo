@@ -1,6 +1,5 @@
 package td1.controller;
 
-import td1.model.creature.Creature;
 import td1.model.enclosure.AbstractEnclosure;
 import td1.model.fantasticZoo.FantasticZoo;
 import td1.model.zooMaster.ZooMaster;
@@ -9,7 +8,6 @@ import td1.view.ShowInTerminal;
 import td1.view.ZooMasterView;
 import td1.view.ZooView;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZooMasterController {
@@ -55,19 +53,19 @@ public class ZooMasterController {
                     String enclosureChoseToBeCleaned = enclosureCleanChoice.nextLine();
                     int numEnclosureToClean = Integer.parseInt(enclosureChoseToBeCleaned);
                     zoo.getEnclosureList().get(numEnclosureToClean - 1).clean();
-                    System.out.println(ColorInTerminal.TEXT_YELLOW + "\nPress enter to continue"+ ColorInTerminal.TEXT_RESET);
+                    System.out.println(ColorInTerminal.TEXT_YELLOW + "\nPress enter to continue" + ColorInTerminal.TEXT_RESET);
                     while (enclosureCleanChoice.nextLine() == null) {
                     }
                     ShowInTerminal.getInstance().refreshTerminal();
                 }
                 case "3" -> {
-                    System.out.print(ColorInTerminal.TEXT_YELLOW +  "Choose your enclosure number to feed creature in enclosure : "+ ColorInTerminal.TEXT_RESET);
+                    System.out.print(ColorInTerminal.TEXT_YELLOW + "Choose your enclosure number to feed creature in enclosure : " + ColorInTerminal.TEXT_RESET);
                     Scanner enclosureFeedingChoice = new Scanner(System.in);
                     String enclosureToFeed = enclosureFeedingChoice.nextLine();
                     int numEnclosure = Integer.parseInt(enclosureToFeed);
                     zooMaster.feed(zoo.getEnclosureList().get(numEnclosure - 1), 250);
-                    System.out.println(ColorInTerminal.TEXT_PURPLE + "This enclosure has : " + zoo.getEnclosureList().get(numEnclosure - 1).getFeeder() + " food" + ColorInTerminal.TEXT_RESET );
-                    System.out.println(ColorInTerminal.TEXT_YELLOW + "\nPress enter to continue"+ColorInTerminal.TEXT_RESET);
+                    System.out.println(ColorInTerminal.TEXT_PURPLE + "This enclosure has : " + zoo.getEnclosureList().get(numEnclosure - 1).getFeeder() + " food" + ColorInTerminal.TEXT_RESET);
+                    System.out.println(ColorInTerminal.TEXT_YELLOW + "\nPress enter to continue" + ColorInTerminal.TEXT_RESET);
                     while (enclosureFeedingChoice.nextLine() == null) {
                     }
                     ShowInTerminal.getInstance().refreshTerminal();
@@ -85,20 +83,21 @@ public class ZooMasterController {
                         AbstractEnclosure<?> enclosureTarget = zoo.getEnclosureList().get(enclosureNumberChosenAsTarget - 1);
                         zoo.getZooMaster().transferAllCreatures(enclosureToTransfer, enclosureTarget);
                         System.out.println(ColorInTerminal.TEXT_YELLOW + "\nPress enter to continue");
-                    }catch (Exception e){
-                        System.out.println(ColorInTerminal.TEXT_RED +"The chosen enclosure does not exist" + ColorInTerminal.TEXT_RESET);
+                    } catch (Exception e) {
+                        System.out.println(ColorInTerminal.TEXT_RED + "The chosen enclosure does not exist" + ColorInTerminal.TEXT_RESET);
                     }
                     Scanner enclosureNumberToTransfer = new Scanner(System.in);
                     while (enclosureNumberToTransfer.nextLine() == null) {
                     }
                     ShowInTerminal.getInstance().refreshTerminal();
                 }
-                case "5" ->{
+                case "5" -> {
                     ZooMasterView.getInstance().goodbye();
                     isPlaying = false;
                     zooMaster.stopTheGame();
                 }
-                default -> {System.out.println(ColorInTerminal.TEXT_RED + "Select a valid option !" + ColorInTerminal.TEXT_YELLOW);
+                default -> {
+                    System.out.println(ColorInTerminal.TEXT_RED + "Select a valid option !" + ColorInTerminal.TEXT_YELLOW);
                     Scanner wait = new Scanner(System.in);
                     System.out.print("Press enter to continue" + ColorInTerminal.TEXT_RESET);
                     while (wait.nextLine() == null) {

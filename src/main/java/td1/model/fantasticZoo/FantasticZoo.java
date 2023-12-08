@@ -8,7 +8,6 @@ import td1.model.enclosure.AbstractEnclosure;
 import td1.model.zooMaster.ZooMaster;
 import td1.view.OpenNewTerminal;
 
-
 import java.util.ArrayList;
 
 public class FantasticZoo {
@@ -22,7 +21,9 @@ public class FantasticZoo {
         this.zooMaster = zooMaster;
         this.nbMaxEnclosure = nbMaxEnclosure;
     }
-    public FantasticZoo(){}
+
+    public FantasticZoo() {
+    }
 
     public static void main(String[] args) throws Exception {
         GameSetup.getInstance().setupZooMaster(new FantasticZoo());
@@ -93,21 +94,21 @@ public class FantasticZoo {
     }
 
     /**
-     * Sets the master of the zoo
-     *
-     * @param zooMaster the zoomaster
-     */
-    public void setZooMaster(ZooMaster zooMaster) {
-        this.zooMaster = zooMaster;
-    }
-
-    /**
      * Returns the zoomaster
      *
      * @return the zoomaster
      */
     public ZooMaster getZooMaster() {
         return zooMaster;
+    }
+
+    /**
+     * Sets the master of the zoo
+     *
+     * @param zooMaster the zoomaster
+     */
+    public void setZooMaster(ZooMaster zooMaster) {
+        this.zooMaster = zooMaster;
     }
 
     /**

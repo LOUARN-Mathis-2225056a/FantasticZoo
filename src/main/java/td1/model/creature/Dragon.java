@@ -1,9 +1,10 @@
 package td1.model.creature;
+
 import td1.view.fileWritter.FileWriter;
 
 import java.util.Random;
 
-public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
+public class Dragon extends Oviparous implements Runner, Reborner, Flyer, Swimmer {
     public Dragon(String name, boolean sex, float weight, float height, int age) {
         super(name, sex, weight, height, age);
         setEatingValue(25);
@@ -16,7 +17,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
      */
     @Override
     public String creatureFly() {
-        return(getName() + " is flying !\n");
+        return (getName() + " is flying !\n");
     }
 
     /**
@@ -57,7 +58,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
      */
     @Override
     public String creatureRun() {
-        return(getName() + " is running !\n");
+        return (getName() + " is running !\n");
     }
 
     /**
@@ -67,7 +68,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
      */
     @Override
     public String creatureSwim() {
-        return(getName() + " is swimming !\n");
+        return (getName() + " is swimming !\n");
     }
 
     /**
@@ -79,9 +80,9 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0 && !isPaused()) {
+            if (getAge() >= 0 && !isPaused()) {
                 Random percentage = new Random();
-                if (!isSleep()){
+                if (!isSleep()) {
                     // The creature's hunger increases
                     if (percentage.nextInt(4) == 0) {
                         consumeFood(10);
@@ -103,7 +104,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
                         FileWriter.writeInFile(creatureFly());
                     }
                     // The creature gives birth (only if female)
-                    if (isSex() && percentage.nextInt(500) == 1){
+                    if (isSex() && percentage.nextInt(500) == 1) {
                         giveBirth();
                     }
                 }
@@ -123,8 +124,7 @@ public class Dragon extends Oviparous implements Runner,Reborner,Flyer,Swimmer{
                     Thread.sleep(cooldown);
                 } catch (InterruptedException e) {
                 }
-            }
-            else {
+            } else {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

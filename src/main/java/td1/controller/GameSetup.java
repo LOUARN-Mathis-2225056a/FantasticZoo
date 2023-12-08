@@ -22,6 +22,18 @@ public class GameSetup {
     private int zooMasterAge;
 
     /**
+     * Returns the instance of the object
+     *
+     * @return the instance of the object
+     */
+    public static GameSetup getInstance() {
+        if (instance == null) {
+            instance = new GameSetup();
+        }
+        return instance;
+    }
+
+    /**
      * Setups the settings of the zoomaster
      *
      * @param zoo the zoo to setup
@@ -33,18 +45,18 @@ public class GameSetup {
         Scanner textIn = new Scanner(System.in);
         zooMasterName = textIn.nextLine();
         System.out.print("Choose your gender (0 male, anything else female) : ");
-        try{
+        try {
             boolean zooMasterGender = Boolean.parseBoolean(textIn.nextLine());
             zooMaster.setSex(zooMasterGender);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(ColorInTerminal.TEXT_RED + " This is not a Number, default gender set to male" + ColorInTerminal.TEXT_YELLOW);
             zooMaster.setSex(false);
         }
         System.out.print("Choose your age : ");
-        try{
+        try {
             zooMasterAge = Integer.parseInt(textIn.nextLine());
             zooMaster.setAge(zooMasterAge);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println(ColorInTerminal.TEXT_RED + " This is not a Number, default age set to 12" + ColorInTerminal.TEXT_YELLOW);
             zooMaster.setAge(12);
         }
@@ -69,9 +81,10 @@ public class GameSetup {
                 case 2 -> execFlyerOnlyScenario();
                 case 3 -> execSwimmerOnlyScenario();
                 case 4 -> execAllAtOnce();
-                default -> System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
+                default ->
+                        System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
             System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
             System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
@@ -83,7 +96,7 @@ public class GameSetup {
      * The ground animals only scenario
      */
     private void execGroundOnlyScenario() {
-        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName, zooMaster, 5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -106,7 +119,7 @@ public class GameSetup {
         Enclosure enclosure3 = new Enclosure("Charlie", 500, 10);
         enclosure3.addAllCreatures(creatureList);
 
-        Enclosure enclosure4 = new Enclosure("Delta", 300,20);
+        Enclosure enclosure4 = new Enclosure("Delta", 300, 20);
 
         fantasticZoo.addEnclosure(enclosure1);
         fantasticZoo.addEnclosure(enclosure2);
@@ -122,7 +135,7 @@ public class GameSetup {
      * The flying animals only scenario
      */
     private void execFlyerOnlyScenario() {
-        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName, zooMaster, 5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -154,7 +167,7 @@ public class GameSetup {
      * The swimming animals only scenario
      */
     private void execSwimmerOnlyScenario() {
-        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,5);
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName, zooMaster, 5);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -189,8 +202,8 @@ public class GameSetup {
         game.start();
     }
 
-    public void execAllAtOnce(){
-        FantasticZoo fantasticZoo = new FantasticZoo(zooName,zooMaster,50);
+    public void execAllAtOnce() {
+        FantasticZoo fantasticZoo = new FantasticZoo(zooName, zooMaster, 50);
         ZooMaster zooMaster = new ZooMaster(zooMasterName, false, 18, fantasticZoo);
         Thread game = new Thread(zooMaster);
 
@@ -256,7 +269,7 @@ public class GameSetup {
         Enclosure enclosure3 = new Enclosure("Charlie", 500, 10);
         enclosure3.addAllCreatures(creatureList);
 
-        Enclosure enclosure4 = new Enclosure("Delta", 300,20);
+        Enclosure enclosure4 = new Enclosure("Delta", 300, 20);
 
         fantasticZoo.addEnclosure(enclosure1);
         fantasticZoo.addEnclosure(enclosure2);
@@ -266,17 +279,5 @@ public class GameSetup {
         TimeControl time = new TimeControl(fantasticZoo);
 
         game.start();
-    }
-
-    /**
-     * Returns the instance of the object
-     *
-     * @return the instance of the object
-     */
-    public static GameSetup getInstance() {
-        if (instance == null) {
-            instance = new GameSetup();
-        }
-        return instance;
     }
 }

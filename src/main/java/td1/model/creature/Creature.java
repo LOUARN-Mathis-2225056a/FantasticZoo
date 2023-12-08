@@ -6,13 +6,13 @@ import td1.view.fileWritter.FileWriter;
 import java.util.Arrays;
 
 public abstract class Creature implements Runnable {
+    //true = female
+    //false = male
+    final private boolean sex;
     private boolean paused = false;
     private String parentName;
     private Thread life;
     private String name;
-    //true = female
-    //false = male
-    final private boolean sex;
     private float weight;
     private float height;
     private int hunger = 100;
@@ -32,6 +32,7 @@ public abstract class Creature implements Runnable {
         life = new Thread(this);
         life.start();
     }
+
     public Creature(String name, boolean sex, float weight, float height, int age, AbstractEnclosure<?> currentEnclosure) {
         this.name = name;
         this.sex = sex;
@@ -124,6 +125,7 @@ public abstract class Creature implements Runnable {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
+
     public Thread getLife() {
         return life;
     }
@@ -132,23 +134,24 @@ public abstract class Creature implements Runnable {
         this.life = life;
     }
 
+    public int getEatingValue() {
+        return eatingValue;
+    }
+
     public void setEatingValue(int eatingValue) {
         this.eatingValue = eatingValue;
     }
-
-    public int getEatingValue() {return eatingValue;}
 
     /**
      * Make the creature eat, therefore decreases its hunger value. Creature can't eat while sleeping
      */
     public void eat() {
-        if (hunger <= 100-eatingValue && !sleep) {
+        if (hunger <= 100 - eatingValue && !sleep) {
             hunger += eatingValue;
             FileWriter.writeInFile(name + "'s hunger is at " + hunger, "logs");
         } else if (!sleep) {
-            FileWriter.writeInFile(name + " is not hungry.","logs");
-        }
-        else {
+            FileWriter.writeInFile(name + " is not hungry.", "logs");
+        } else {
             FileWriter.writeInFile(name + " is sleeping : it can not eat right now !", "logs");
         }
     }
@@ -162,10 +165,10 @@ public abstract class Creature implements Runnable {
         if (value > hunger) {
             hunger = 0;
             health -= 1; /* take damage */
-            FileWriter.writeInFile(name + " is starving.\n","logs");
+            FileWriter.writeInFile(name + " is starving.\n", "logs");
         } else {
             hunger -= value;
-            FileWriter.writeInFile(name + " gets a little hungrier.\n","logs");
+            FileWriter.writeInFile(name + " gets a little hungrier.\n", "logs");
         }
     }
 
@@ -174,10 +177,10 @@ public abstract class Creature implements Runnable {
      *
      * @param enclosure in what enclosure the creature checks for food
      */
-    public void checkForFood(AbstractEnclosure<?> enclosure){
-        if(enclosure.getFeeder() > eatingValue){
+    public void checkForFood(AbstractEnclosure<?> enclosure) {
+        if (enclosure.getFeeder() > eatingValue) {
             eat();
-            enclosure.setFeeder(enclosure.getFeeder()-eatingValue);
+            enclosure.setFeeder(enclosure.getFeeder() - eatingValue);
         }
     }
 
@@ -195,9 +198,9 @@ public abstract class Creature implements Runnable {
         String str = null;
         if (health <= 90) {
             health += 10;
-            FileWriter.writeInFile(name + "'s health is now at  " + health + "\n","logs");
+            FileWriter.writeInFile(name + "'s health is now at  " + health + "\n", "logs");
         } else {
-            FileWriter.writeInFile(name + " is already healthy.\n","logs");
+            FileWriter.writeInFile(name + " is already healthy.\n", "logs");
         }
     }
 
@@ -207,9 +210,9 @@ public abstract class Creature implements Runnable {
     public void wake() {
         if (sleep) {
             sleep = false;
-            FileWriter.writeInFile(name + " wakes up.\n","logs");
+            FileWriter.writeInFile(name + " wakes up.\n", "logs");
         } else {
-            FileWriter.writeInFile(name + " is already awake.\n","logs");
+            FileWriter.writeInFile(name + " is already awake.\n", "logs");
         }
     }
 
@@ -219,9 +222,9 @@ public abstract class Creature implements Runnable {
     public void sleep() {
         if (!sleep) {
             sleep = true;
-            FileWriter.writeInFile(name + " falls asleep.\n","logs");
+            FileWriter.writeInFile(name + " falls asleep.\n", "logs");
         } else {
-            FileWriter.writeInFile(name + " is already asleep.\n","logs");
+            FileWriter.writeInFile(name + " is already asleep.\n", "logs");
         }
     }
 
@@ -256,9 +259,11 @@ public abstract class Creature implements Runnable {
      */
     public String shortToString() {
         String gender = "";
-        if(sex){
+        if (sex) {
             gender = "female";
-        } else {gender = "male";}
+        } else {
+            gender = "male";
+        }
         return gender + " " + name + " aged of " + age + " years old." + " has " + health + " life points.";
     }
 

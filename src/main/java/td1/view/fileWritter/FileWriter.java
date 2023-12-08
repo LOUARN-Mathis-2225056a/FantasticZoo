@@ -9,9 +9,9 @@ public class FileWriter {
      * Writes in a file
      *
      * @param fileName the name of the file
-     * @param str the text to write in the file
+     * @param str      the text to write in the file
      */
-    private static void write(String str, String fileName){
+    private static void write(String str, String fileName) {
         // Init the buffer
         BufferedWriter writer = null;
         try {
@@ -49,7 +49,7 @@ public class FileWriter {
     /**
      * Writes in a file
      *
-     * @param str the text to write
+     * @param str      the text to write
      * @param fileName the file to write in
      */
     public static void writeInFile(String str, String fileName) {

@@ -1,11 +1,10 @@
 package td1.view;
 
-import td1.controller.ZooMasterController;
-
 public class ZooMasterView {
     private static ZooMasterView instance;
+
     public static ZooMasterView getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new ZooMasterView();
         }
         return instance;
@@ -14,7 +13,7 @@ public class ZooMasterView {
     /**
      * Shows the principal menu with all the choices
      */
-    public void showPrincipalMenu(){
+    public void showPrincipalMenu() {
         System.out.print(ColorInTerminal.TEXT_YELLOW);
         ShowInTerminal.getInstance().showTitle("choose an action");
         System.out.print(ColorInTerminal.TEXT_RESET);
@@ -32,7 +31,7 @@ public class ZooMasterView {
     /**
      * Runs if the transfer has failed
      */
-    public void transferFailed(){
+    public void transferFailed() {
         ShowInTerminal.getInstance().showTitle(ColorInTerminal.TEXT_RED + "error");
         System.out.println("The transfer has failed to occur !" + ColorInTerminal.TEXT_RESET);
 
@@ -41,11 +40,11 @@ public class ZooMasterView {
     /**
      * Runs if the transfer has succeeded
      */
-    public void transferSucceeded(){
+    public void transferSucceeded() {
         System.out.println(ColorInTerminal.TEXT_GREEN + "The creature has been successfully transferred !" + ColorInTerminal.TEXT_RESET);
     }
 
-    public void goodbye(){
+    public void goodbye() {
         ShowInTerminal.getInstance().refreshTerminal();
         ShowInTerminal.getInstance().showTitle("Goodbye !");
     }

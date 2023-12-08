@@ -4,11 +4,12 @@ import td1.model.creature.Creature;
 import td1.model.fantasticZoo.FantasticZoo;
 import td1.view.fileWritter.FileWriter;
 
-public class TimeControl implements Runnable{
-    private boolean status = true;
+public class TimeControl implements Runnable {
     private final FantasticZoo zoo;
     Thread time = new Thread(this);
-    public TimeControl(FantasticZoo zoo){
+    private boolean status = true;
+
+    public TimeControl(FantasticZoo zoo) {
         this.zoo = zoo;
         time.start();
     }
@@ -19,17 +20,17 @@ public class TimeControl implements Runnable{
      */
     @Override
     public void run() {
-        while(status){
+        while (status) {
             for (Creature creature : zoo.getAllCreatures()) {
-                if(creature.getAge() == -1){
+                if (creature.getAge() == -1) {
                     FileWriter.writeInFile(creature.getName() + " is coming to life !\n");
                     creature.getLife().notify();
                     creature.setName(creature.getParentName() + "'s child");
                 }
-                creature.setAge(creature.getAge()+1);
+                creature.setAge(creature.getAge() + 1);
             }
             try {
-                Thread.sleep(1000*60);
+                Thread.sleep(1000 * 60);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -38,17 +39,19 @@ public class TimeControl implements Runnable{
 
     /**
      * Pauses the time
-     *
+     * <p>
      * ZA WARUDO ! TOKI WO TOMARE !
      */
-    public void timePause(){status = false;}
+    public void timePause() {
+        status = false;
+    }
 
     /**
      * Resumes the time
-     *
+     * <p>
      * Toki wo Ugokidasu
      */
-    public void timeResume(){
+    public void timeResume() {
         status = true;
         time = new Thread(this);
         time.start();

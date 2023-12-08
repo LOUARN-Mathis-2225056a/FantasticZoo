@@ -1,9 +1,10 @@
 package td1.model.creature;
 
-import java.util.Random;
 import td1.view.fileWritter.FileWriter;
 
-public class Kraken extends Oviparous implements Swimmer{
+import java.util.Random;
+
+public class Kraken extends Oviparous implements Swimmer {
     public Kraken(String name, boolean sex, float weight, float height, int age) {
         super(name, sex, weight, height, age);
         setEatingValue(25);
@@ -25,7 +26,7 @@ public class Kraken extends Oviparous implements Swimmer{
      * @throws RuntimeException
      */
     @Override
-    public void giveBirth(){
+    public void giveBirth() {
         Random rd = new Random();
         FileWriter.writeInFile(getName() + " just laid an egg.");
         Kraken p1 = new Kraken(getName() + "'s egg", rd.nextBoolean(), 10, 10, -10);
@@ -47,9 +48,9 @@ public class Kraken extends Oviparous implements Swimmer{
     @Override
     public void run() {
         while (getHealth() > 0) {
-            if(getAge() >= 0 && !isPaused()) {
+            if (getAge() >= 0 && !isPaused()) {
                 Random percentage = new Random();
-                if(!isSleep()){
+                if (!isSleep()) {
                     // The creature's hunger increases
                     if (percentage.nextInt(4) == 0) {
                         consumeFood(10);
@@ -67,7 +68,7 @@ public class Kraken extends Oviparous implements Swimmer{
                         FileWriter.writeInFile(creatureSwim());
                     }
                     // The creature gives birth (only if female)
-                    if (isSex() && percentage.nextInt(500) == 1){
+                    if (isSex() && percentage.nextInt(500) == 1) {
                         giveBirth();
                     }
                 }
@@ -88,8 +89,7 @@ public class Kraken extends Oviparous implements Swimmer{
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

@@ -2,7 +2,7 @@ package td1.model.enclosure;
 
 import java.util.Random;
 
-public class Aviary extends AbstractEnclosure implements Runnable{
+public class Aviary extends AbstractEnclosure implements Runnable {
     private final float height;
     private int roofCleanliness = 3;
 
@@ -18,8 +18,8 @@ public class Aviary extends AbstractEnclosure implements Runnable{
     public void clean() {
         System.out.println("You check the roof's cleanliness");
         super.clean();
-        roofCleanliness+=2;
-        if(roofCleanliness>3){
+        roofCleanliness += 2;
+        if (roofCleanliness > 3) {
             roofCleanliness = 3;
         }
     }
@@ -33,15 +33,15 @@ public class Aviary extends AbstractEnclosure implements Runnable{
     @Override
     public void run() {
         int sleepTime;
-        while (getHp()>0){
+        while (getHp() > 0) {
             Random rng = new Random();
-            if(rng.nextInt(1000)<getNbCurrentCreature()){ /* the more creature there are in the enclosure, the easier it is to lose cleanliness level */
-                setCleanlinessLevel(getCleanlinessLevel()-1);
-                if(getCleanlinessLevel()<0){ /* if cleanliness level is below 0 the enclosure will lose hp based on the number of cleanliness level below 0 */
-                    setHp(getHp()-getCleanlinessLevel());
+            if (rng.nextInt(1000) < getNbCurrentCreature()) { /* the more creature there are in the enclosure, the easier it is to lose cleanliness level */
+                setCleanlinessLevel(getCleanlinessLevel() - 1);
+                if (getCleanlinessLevel() < 0) { /* if cleanliness level is below 0 the enclosure will lose hp based on the number of cleanliness level below 0 */
+                    setHp(getHp() - getCleanlinessLevel());
                 }
             }
-            sleepTime = (rng.nextInt(5)+10)*1000;
+            sleepTime = (rng.nextInt(5) + 10) * 1000;
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
