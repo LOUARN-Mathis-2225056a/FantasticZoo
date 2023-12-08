@@ -39,14 +39,16 @@ public class LycanthropeColony implements Runnable{
         LycanthropeInPack lycan5 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloOne.getLycanPack());
 
 
-        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
-        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
+        LycanthropeInPack lycan6 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,1,encloTwo.getLycanPack());
+        LycanthropeInPack lycan7 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,1,encloTwo.getLycanPack());
         LycanthropeInPack lycan8 = new LycanthropeInPack(false, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
         LycanthropeInPack lycan9 = new LycanthropeInPack(true, Lycanthrope2.AgeCategory.YOUNG,0,2,encloTwo.getLycanPack());
 
         // test zone
         AlphaCouple coupleOne = new AlphaCouple(lycanTree,lycanTwo);
-        lycanthropeColony.showAllLycan();
+        AlphaCouple coupleTwo = new AlphaCouple(lycan7,lycan6);
+        encloOne.getLycanPack().setAlphaCouple(coupleOne);
+        encloTwo.getLycanPack().setAlphaCouple(coupleTwo);
 
     }
     private ArrayList<Enclosure2> listEnclosure= new ArrayList<Enclosure2>();
@@ -81,32 +83,44 @@ public class LycanthropeColony implements Runnable{
                         if (enclosureEmpty == null) {
                             enclosureEmpty = new Enclosure2();
                             this.addEnclosure(enclosureEmpty);
-                            System.out.println("\u001B[34m" + "/\\ A new enclosure with a new lycan pack has just been created !! /\\" + "\u001B[0m");
+                            System.out.println("\u001B[34m" + "                                                                      /\\ A new enclosure with a new lycan pack has just been created !! /\\" + "\u001B[0m");
                         }
                         else {
-                            System.out.println("\u001B[34m" + "/\\ An empty lycan pack just got two new alphas !! /\\" + "\u001B[0m");
+                            System.out.println("\u001B[34m" + "                                                                      /\\ An empty lycan pack just got two new alphas !! /\\" + "\u001B[0m");
                         }
                         male.setEnclosure(enclosureEmpty);
                         female.setEnclosure(enclosureEmpty);
                         male.goInPark();
                         female.goInPark();
+                        enclosureEmpty.getLycanPack().setAlphaCouple(new AlphaCouple(enclosureEmpty.getLycanPack().getListLycan().get(0),enclosureEmpty.getLycanPack().getListLycan().get(1)));
                         break;
                     }
                 }
             }
-            // gestion of age
-            if (time == 0){
+
+            if (time == 0){ //every year we do:
+                // aging management
                 Random rd = new Random();
                 ArrayList<LycanthropeSolitary> growOldSolitaryList = new ArrayList<LycanthropeSolitary>();
                 ArrayList<LycanthropeInPack> growOldPackList = new ArrayList<LycanthropeInPack>();
                 for (Enclosure2 enclosure : listEnclosure){
+                    if (rd.nextInt(5)==0){
+                        enclosure.getLycanPack().getAlphaCouple().giveBirth();
+                    }
                     for (LycanthropeInPack lycanthropeInPack : enclosure.getLycanPack().getListLycan()){
-                        if (rd.nextInt(8) == 0){
-                            growOldPackList.add(lycanthropeInPack);
+                        if (rd.nextInt(10) == 0){
+                            growOldPackList.add(lycanthropeInPack);/*
+                            int rankOfLycanTarget = lycanthropeInPack.getRank();
+                            // rank management when lycans have less than 0 dominance
+                            if (enclosure.getLycanPack().hasLowerRank(rankOfLycanTarget)) {
+                                lycanthropeInPack.setRank(lycanthropeInPack.getRank() + 1);
+                                System.out.println("\u001B[34m" + "                                                                      One Lycan lose rank" + "\u001B[0m");
+                            }*/
                         }
+
                     }
                     for (LycanthropeSolitary lycanthropeSolitary : enclosure.getListSolitary()){
-                        if (rd.nextInt(8) == 0){
+                        if (rd.nextInt(10) == 0){
                             growOldSolitaryList.add(lycanthropeSolitary);
                         }
                     }
@@ -117,6 +131,7 @@ public class LycanthropeColony implements Runnable{
                 for (LycanthropeInPack lycanthropeInPack : growOldPackList){
                     lycanthropeInPack.growOld();
                 }
+
             }
             try {
                 Thread.sleep(1000);

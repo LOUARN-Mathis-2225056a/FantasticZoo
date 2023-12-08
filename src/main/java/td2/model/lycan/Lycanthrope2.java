@@ -112,7 +112,7 @@ public abstract class Lycanthrope2{
     }
     public void showToString(){System.out.println(this.toString());}
     public void emitHowl(Roar roar){
-        System.out.println(roar.getWhatISay());
+        System.out.println("                                                                      "+roar.getWhatISay());
     }
     public abstract void death();
     public void growOld(){
@@ -122,9 +122,24 @@ public abstract class Lycanthrope2{
             age = AgeCategory.ADULT;
         } else if (age == AgeCategory.ADULT) {
             age = AgeCategory.OLD;
-            System.out.println("\u001B[31m" + "One Lycan die..." + "\u001B[0m");
         }else{
             death();
+            int IDEnclosure;
+            if (this.getClass() == LycanthropeInPack.class){
+                IDEnclosure = ((LycanthropeInPack) this).getLycanPack().getEnclosure().getID();
+                if (((LycanthropeInPack) this).getRank() == 1){
+                    if (isSex()){
+                        ((LycanthropeInPack) this).getLycanPack().setBestFemale();
+                    }
+                    else {
+                        ((LycanthropeInPack) this).getLycanPack().setBestMale();
+                    }
+                }
+            }
+            else {
+                IDEnclosure = ((LycanthropeSolitary) this).getEnclosure().getID();
+            }
+            System.out.println("\u001B[31m" + "                                                                      One Lycan dies of old age in enclosure " + IDEnclosure + "\u001B[0m");
         }
     }
 }

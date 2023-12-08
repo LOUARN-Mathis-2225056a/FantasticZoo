@@ -6,11 +6,27 @@ import java.util.Random;
 
 public class AlphaCouple {
 
-    LycanthropeInPack male;
-    LycanthropeInPack female;
+    private LycanthropeInPack male;
+    private LycanthropeInPack female;
 
     public AlphaCouple(LycanthropeInPack male, LycanthropeInPack female) {
         this.male = male;
+        this.female = female;
+    }
+
+    public LycanthropeInPack getMale() {
+        return male;
+    }
+
+    public void setMale(LycanthropeInPack male) {
+        this.male = male;
+    }
+
+    public LycanthropeInPack getFemale() {
+        return female;
+    }
+
+    public void setFemale(LycanthropeInPack female) {
         this.female = female;
     }
 
@@ -25,18 +41,36 @@ public class AlphaCouple {
     public void showToString(){System.out.println(this);}
 
     public void giveBirth(){
-        Random rd = new Random();
-        int nbBaby = rd.nextInt(7);
-        int newRank;
-        if (male.getLycanPack().haveBeta()){
-            newRank = 3;
+        if (male != null && female != null){
+            Random rd = new Random();
+            int nbBaby = rd.nextInt(7);
+            int newRank;
+            if (male.getLycanPack().haveBeta()){
+                newRank = 3;
+            }
+            else {
+                newRank = 2;
+            }
+            for (int i = 0; i <= nbBaby; ++i){
+                LycanthropeInPack newLycan = new LycanthropeInPack(rd.nextBoolean(),
+                        Lycanthrope2.AgeCategory.YOUNG,0,newRank,female.getLycanPack());
+            }
+            System.out.println("\u001B[35m                                                                      "
+                    + nbBaby + " lycans just born in the enclosure " + male.getLycanPack().getEnclosure().getID()
+                    + "\u001B[0m");
         }
-        else {
-            newRank = 2;
+        else{
+            String errorCause;
+            if(male == null && female == null){
+                errorCause = "both are null";
+            } else if (male == null){
+                errorCause = "male is null";
+            } else {
+                errorCause = "female is null";
+            }
+            System.out.println("                                                                                                                                            "+
+                    "This couple can't give birt ! Cause : " + errorCause);
         }
-        for (int i = 0; i <= nbBaby; ++i){
-            LycanthropeInPack newLycan = new LycanthropeInPack(rd.nextBoolean(),
-                                                Lycanthrope2.AgeCategory.YOUNG,0,newRank,female.getLycanPack());
-        }
+
     }
 }

@@ -15,13 +15,18 @@ public class LycanPack {
     public LycanPack(Enclosure2 enclosure) {
         listLycan = new ArrayList<LycanthropeInPack>();
         this.enclosure = enclosure;
+        alphaCouple = new AlphaCouple(null,null);
     }
 
     /* GETTER AND SETTER */
 
     public ArrayList<LycanthropeInPack> getListLycan() {
-        sortListLycan();
+        //sortListLycan();
         return listLycan;
+    }
+
+    public AlphaCouple getAlphaCouple() {
+        return alphaCouple;
     }
 
     public Enclosure2 getEnclosure() {
@@ -60,4 +65,39 @@ public class LycanPack {
         return result;
     }
     public void showToString(){System.out.println(this);}
+    public boolean hasLowerRank(int rankOfTheLycan){
+        sortListLycan();
+        for (LycanthropeInPack lycanthropeInPack : listLycan){
+            if (lycanthropeInPack.getRank()>rankOfTheLycan && lycanthropeInPack.getRank() != 24){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void setBestFemale(){
+        LycanthropeInPack bestFemale = null;
+        for (LycanthropeInPack lycanthropeInPack : listLycan){
+            if (lycanthropeInPack.isSex() && (bestFemale == null || bestFemale.getLevel()<lycanthropeInPack.getLevel())){
+                bestFemale = lycanthropeInPack;
+            }
+        }
+        alphaCouple.setFemale(bestFemale);
+        System.out.println("\u001B[32m"
+                + "                                                                      A new couple has been designated in the enclosure "
+                + enclosure.getID()
+                + "\u001B[0m" );
+    }
+    public void setBestMale(){
+        LycanthropeInPack bestMale = null;
+        for (LycanthropeInPack lycanthropeInPack : listLycan){
+            if (!lycanthropeInPack.isSex() && (bestMale == null || bestMale.getLevel()<lycanthropeInPack.getLevel())){
+                bestMale = lycanthropeInPack;
+            }
+        }
+        alphaCouple.setMale(bestMale);
+        System.out.println("\u001B[32m"
+                + "                                                                      A new couple has been designated in the enclosure "
+                + enclosure.getID()
+                + "\u001B[0m" );
+    }
 }
