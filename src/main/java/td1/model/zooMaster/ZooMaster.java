@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZooMaster implements Runnable {
-    private final String name;
-    private final boolean sex;
-    private final int age;
-    private final FantasticZoo myZoo;
+    private String name;
+    private boolean sex;
+    private int age;
+    private FantasticZoo myZoo;
+
+    private boolean playing = true;
 
     public ZooMaster(String name, boolean sex, int age, FantasticZoo myZoo) {
         this.name = name;
@@ -23,15 +25,32 @@ public class ZooMaster implements Runnable {
         this.age = age;
         this.myZoo = myZoo;
     }
+    public ZooMaster(){};
 
     /**
      * The run needed to start a thread.
      * Starts the zoomaster commands
      */
     public void run() {
-        while (true) {
+        while (playing) {
             ZooMasterController.getInstance().execBehavior(myZoo);
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setMyZoo(FantasticZoo myZoo) {
+        this.myZoo = myZoo;
     }
 
     /**
@@ -80,7 +99,9 @@ public class ZooMaster implements Runnable {
             ZooMasterView.getInstance().transferSucceeded();
         }
     }
-
+    public void stopTheGame(){
+        playing = false;
+    }
     /**
      * Transfers all the creatures from an enclosure to another
      *

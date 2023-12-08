@@ -255,7 +255,11 @@ public abstract class Creature implements Runnable {
      * @return an easier to read toString
      */
     public String shortToString() {
-        return name + " aged of " + age + "years old.";
+        String gender = "";
+        if(sex){
+            gender = "female";
+        } else {gender = "male";}
+        return gender + " " + name + " aged of " + age + " years old." + " has " + health + " life points.";
     }
 
     @Override

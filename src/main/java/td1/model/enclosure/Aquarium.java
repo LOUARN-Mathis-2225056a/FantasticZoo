@@ -54,7 +54,7 @@ public class Aquarium extends AbstractEnclosure {
                     setHp(getHp()-getCleanlinessLevel());
                 }
             }
-            if(rng.nextInt(100)<40){
+            if(rng.nextInt(100)<10){
                 if(rng.nextInt(10)%2==0){setSalinity(getSalinity()+5);}
                 else {setSalinity(getSalinity()-5);}
             }

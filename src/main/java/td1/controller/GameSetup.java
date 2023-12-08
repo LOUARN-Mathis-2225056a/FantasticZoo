@@ -7,6 +7,7 @@ import td1.model.enclosure.Enclosure;
 import td1.model.fantasticZoo.FantasticZoo;
 import td1.model.timeControl.TimeControl;
 import td1.model.zooMaster.ZooMaster;
+import td1.view.ColorInTerminal;
 import td1.view.ShowInTerminal;
 
 import java.util.ArrayList;
@@ -18,24 +19,41 @@ public class GameSetup {
     private String zooName;
     private ZooMaster zooMaster;
 
+    private int zooMasterAge;
+
     /**
      * Setups the settings of the zoomaster
      *
      * @param zoo the zoo to setup
      */
     public void setupZooMaster(FantasticZoo zoo) {
+        zooMaster = new ZooMaster();
+        System.out.print(ColorInTerminal.TEXT_YELLOW);
         System.out.print("Choose your name : ");
         Scanner textIn = new Scanner(System.in);
         zooMasterName = textIn.nextLine();
-        System.out.print("Choose your gender (0 male, 1 female) : ");
-        boolean zooMasterGender = Boolean.parseBoolean(textIn.nextLine());
+        System.out.print("Choose your gender (0 male, anything else female) : ");
+        try{
+            boolean zooMasterGender = Boolean.parseBoolean(textIn.nextLine());
+            zooMaster.setSex(zooMasterGender);
+        } catch (Exception e){
+            System.out.println(ColorInTerminal.TEXT_RED + " This is not a Number, default gender set to male" + ColorInTerminal.TEXT_YELLOW);
+            zooMaster.setSex(false);
+        }
         System.out.print("Choose your age : ");
-        int zooMasterAge = Integer.parseInt(textIn.nextLine());
+        try{
+            zooMasterAge = Integer.parseInt(textIn.nextLine());
+            zooMaster.setAge(zooMasterAge);
+        }catch (NumberFormatException e){
+            System.out.println(ColorInTerminal.TEXT_RED + " This is not a Number, default age set to 12" + ColorInTerminal.TEXT_YELLOW);
+            zooMaster.setAge(12);
+        }
         System.out.print("Choose the name of your fantastic zoo : ");
         zooName = textIn.nextLine();
         zoo.setName(zooName);
-        zooMaster = new ZooMaster(zooMasterName, zooMasterGender, zooMasterAge,zoo);
         zoo.setZooMaster(zooMaster);
+        System.out.print(ColorInTerminal.TEXT_RESET);
+        ShowInTerminal.getInstance().refreshTerminal();
     }
 
     /**
@@ -44,11 +62,18 @@ public class GameSetup {
     public void setChooseGameMode() {
         ShowInTerminal.getInstance().showWelcomeMessage();
         Scanner textIn = new Scanner(System.in);
-        int gameMode = Integer.parseInt(textIn.nextLine());
-        switch (gameMode) {
-            case 1 -> execGroundOnlyScenario();
-            case 2 -> execFlyerOnlyScenario();
-            case 3 -> execSwimmerOnlyScenario();
+        try {
+            int gameMode = Integer.parseInt(textIn.nextLine());
+            switch (gameMode) {
+                case 1 -> execGroundOnlyScenario();
+                case 2 -> execFlyerOnlyScenario();
+                case 3 -> execSwimmerOnlyScenario();
+            }
+        }catch (NumberFormatException e){
+            System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
+            System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
+            System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
+            System.out.println(ColorInTerminal.TEXT_RED + "Please stop doing random stuff, as a punishment we will not let you play !" + ColorInTerminal.TEXT_RESET);
         }
     }
 
