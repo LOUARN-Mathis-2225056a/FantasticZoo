@@ -12,15 +12,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class LycanthropeColony implements Runnable{
+
     static public void main(String[] arg){
 
         // colony creation
         LycanthropeColony lycanthropeColony = new LycanthropeColony();
 
         // enclosure creation
-        Enclosure2 encloOne = new Enclosure2();
-        Enclosure2 encloTwo = new Enclosure2();
-        Enclosure2 encloTree = new Enclosure2();
+        Enclosure2 encloOne = new Enclosure2(lycanthropeColony);
+        Enclosure2 encloTwo = new Enclosure2(lycanthropeColony);
+        Enclosure2 encloTree = new Enclosure2(lycanthropeColony);
 
         // enclosure in colony
         lycanthropeColony.addEnclosure(encloOne);
@@ -51,6 +52,8 @@ public class LycanthropeColony implements Runnable{
         encloTwo.getLycanPack().setAlphaCouple(coupleTwo);
 
     }
+    private int totalDeath = 0;
+    private int totalLycanInColony;
     private ArrayList<Enclosure2> listEnclosure= new ArrayList<Enclosure2>();
     private Thread thread;
     public LycanthropeColony(){
@@ -81,12 +84,12 @@ public class LycanthropeColony implements Runnable{
                     if (female != null && male != null){
                         Enclosure2 enclosureEmpty = giveEmptyEnclosure();
                         if (enclosureEmpty == null) {
-                            enclosureEmpty = new Enclosure2();
+                            enclosureEmpty = new Enclosure2(this);
                             this.addEnclosure(enclosureEmpty);
-                            System.out.println("\u001B[34m" + "                                                                      /\\ A new enclosure with a new lycan pack has just been created !! /\\" + "\u001B[0m");
+                            System.out.println("\u001B[34m" + "                                                                  /\\ A new enclosure with a new lycan pack has just been created !! /\\" + "\u001B[0m");
                         }
                         else {
-                            System.out.println("\u001B[34m" + "                                                                      /\\ An empty lycan pack just got two new alphas !! /\\" + "\u001B[0m");
+                            System.out.println("\u001B[34m" + "                                                                  /\\ An empty lycan pack just got two new alphas !! /\\" + "\u001B[0m");
                         }
                         male.setEnclosure(enclosureEmpty);
                         female.setEnclosure(enclosureEmpty);
@@ -141,6 +144,24 @@ public class LycanthropeColony implements Runnable{
         }
     }
     public void addEnclosure(Enclosure2 enclosure){listEnclosure.add(enclosure);}
+    public void addOneDeath(){
+        totalDeath +=1;
+    }
+    public void addOneLycan(){
+        totalLycanInColony += 1;
+
+    }
+    public void removeOneLycan(){
+        totalLycanInColony -= 1;
+    }
+
+    public int getTotalLycanInColony() {
+        return totalLycanInColony;
+    }
+
+    public int getTotalDeath() {
+        return totalDeath;
+    }
     public Enclosure2 giveEmptyEnclosure(){
         for (Enclosure2 enclosure : listEnclosure){
             if (enclosure.getLycanPack().getListLycan().isEmpty()){

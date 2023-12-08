@@ -56,7 +56,9 @@ public class AlphaCouple {
                         Lycanthrope2.AgeCategory.YOUNG,0,newRank,female.getLycanPack());
             }
             System.out.println("\u001B[35m                                                                      "
-                    + nbBaby + " lycans just born in the enclosure " + male.getLycanPack().getEnclosure().getID()
+                    + (nbBaby +1)  + " lycans just born in the enclosure " + male.getLycanPack().getEnclosure().getID()
+                    + "                                                                          "
+                    + "Total Lycan in colony : " + male.getLycanPack().getEnclosure().getLycanthropeColony().getTotalLycanInColony()
                     + "\u001B[0m");
         }
         else{
