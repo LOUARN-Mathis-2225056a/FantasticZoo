@@ -24,24 +24,51 @@ public class ZooMaster implements Runnable {
         this.myZoo = myZoo;
     }
 
+    /**
+     * The run needed to start a thread.
+     * Starts the zoomaster commands
+     */
     public void run() {
         while (true) {
             ZooMasterController.getInstance().execBehavior(myZoo);
         }
     }
 
+    /**
+     * Prints out the enclosure's stats
+     *
+     * @param abstractEnclosure the enclosure to check
+     */
     public void checkEnclosure(AbstractEnclosure<?> abstractEnclosure) {
         System.out.println(abstractEnclosure);
     }
 
+    /**
+     * Cleans an enclosure
+     *
+     * @param abstractEnclosure the enclosure to clean
+     */
     public void cleanEnclosure(AbstractEnclosure<?> abstractEnclosure) {
         abstractEnclosure.clean();
     }
 
+    /**
+     * Add foods to the feeder of an enclosure
+     *
+     * @param enclosure the enclosure to check
+     * @param quantity the quantity of food
+     */
     public void feed(AbstractEnclosure<?> enclosure, int quantity) {
         enclosure.addFood(quantity);
     }
 
+    /**
+     * Transfers a creature to another enclosure
+     *
+     * @param creature the creature to transfer
+     * @param abstractEnclosureFrom the enclosure where the creature is from
+     * @param abstractEnclosureTarget the enclosure where the creature is going to go
+     */
     public void transferOneCreature(Creature creature, AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget) {
         Creature creatureToTransfer = creature;
         int amountOfCreaturesBeforeAdd = abstractEnclosureTarget.getNbCurrentCreature();
@@ -54,6 +81,12 @@ public class ZooMaster implements Runnable {
         }
     }
 
+    /**
+     * Transfers all the creatures from an enclosure to another
+     *
+     * @param abstractEnclosureFrom the enclosure where the creatures are from
+     * @param abstractEnclosureTarget the enclosure where the creatures are going to go
+     */
     public void transferAllCreatures(AbstractEnclosure<?> abstractEnclosureFrom, AbstractEnclosure<?> abstractEnclosureTarget){
         int amountOfCreaturesBeforeAdd = abstractEnclosureTarget.getNbCurrentCreature();
         int creatureToTransfer = abstractEnclosureFrom.getNbCurrentCreature();

@@ -12,6 +12,11 @@ public class TimeControl implements Runnable{
         this.zoo = zoo;
         time.start();
     }
+
+    /**
+     * The run needed to start a thread.
+     * Defines how time changes the game
+     */
     @Override
     public void run() {
         while(status){
@@ -30,7 +35,19 @@ public class TimeControl implements Runnable{
             }
         }
     }
+
+    /**
+     * Pauses the time
+     *
+     * ZA WARUDO ! TOKI WO TOMARE !
+     */
     public void timePause(){status = false;}
+
+    /**
+     * Resumes the time
+     *
+     * Toki wo Ugokidasu
+     */
     public void timeResume(){
         status = true;
         time = new Thread(this);
