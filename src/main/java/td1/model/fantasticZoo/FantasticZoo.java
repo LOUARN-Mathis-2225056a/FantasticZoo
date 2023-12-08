@@ -31,26 +31,50 @@ public class FantasticZoo {
 
     }
 
+    /**
+     * Returns the list of enclosures in the zoo
+     *
+     * @return the list of enclosures in the zoo
+     */
     public ArrayList<AbstractEnclosure<?>> getEnclosureList() {
         return listEnclosure;
     }
 
+    /**
+     * Add an enclosure in the zoo
+     *
+     * @param enclosure the enclosure to add in the zoo
+     */
     public void addEnclosure(AbstractEnclosure<?> enclosure) {
         listEnclosure.add(enclosure);
     }
 
+    /**
+     * Shows all the enclosures in the zoo
+     */
     public void showEnclosure() {
         ZooController.getInstance().showAllEnclosures(this);
     }
 
+    /**
+     * Shows the number of creatures in the zoo
+     */
     public void showNBCreature() {
         ZooController.getInstance().showTotalNumberOfCreature(this);
     }
 
+    /**
+     * Shows all the creatures in the zoo
+     */
     public void showCreature() {
         ZooController.getInstance().showAllCreatures(this);
     }
 
+    /**
+     * Return a list of all creatures in the zoo
+     *
+     * @return the list of all creatures in the zoo
+     */
     public ArrayList<Creature> getAllCreatures() {
         ArrayList<Creature> lCreatures = new ArrayList<Creature>();
         for (AbstractEnclosure<?> abstractEnclosure : listEnclosure) {
@@ -59,17 +83,38 @@ public class FantasticZoo {
         return lCreatures;
     }
 
+    /**
+     * Sets the name of the zoo
+     *
+     * @param nom the new name
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * Sets the master of the zoo
+     *
+     * @param zooMaster the zoomaster
+     */
     public void setZooMaster(ZooMaster zooMaster) {
         this.zooMaster = zooMaster;
     }
 
+    /**
+     * Returns the zoomaster
+     *
+     * @return the zoomaster
+     */
     public ZooMaster getZooMaster() {
         return zooMaster;
     }
+
+    /**
+     * Sets the max number of enclosures
+     *
+     * @param nbMaxEnclosure the new max number
+     */
     public void setNbMaxEnclosure(int nbMaxEnclosure) {
         this.nbMaxEnclosure = nbMaxEnclosure;
     }
